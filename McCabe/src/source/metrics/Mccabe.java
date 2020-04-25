@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import source.main.Options;
 import source.main.TokenList;
 import source.main.Utils;
 import source.scanner.Scanner;
@@ -267,10 +268,11 @@ public class Mccabe extends TokenList {
 		}
 	}
 	
-    public void compute(String filename, List<Token> list, boolean useExceptions) {
+    public void compute(String filename, List<Token> list, Options options) {
     	Integer currentTokenIndex = 0;
     	Integer classNumber = 0;
     	String  className = "";
+    	boolean useExceptions = options.getUseExceptions();
     	
     	Token token = list.get(currentTokenIndex);
     	while (token.enumeration != TokenEnum.EOF) {
@@ -287,7 +289,12 @@ public class Mccabe extends TokenList {
     	    								   classNumber, useExceptions);
     	    }
     	}
-    	
+
+    	if (options.isComputeOnlyOneMethod()) {    		
+    		String targetName = options.getMethodName();
+          	System.out.print("method: <" + targetName + ">  ");
+          	System.out.println("Complexity Factor: " + getMethodComplexityFactor(targetName));
+    	}
     }
     
     public void debugging_print() {
@@ -342,7 +349,7 @@ public class Mccabe extends TokenList {
     public Integer getMethodComplexityFactor(String method) {
     	Integer complexityFactor;
     	
-		debugging_print();
+//		debugging_print();
 		complexityFactor = 0;
     	for (MccabeNode item : methods) { // get the overall Mccabe Complexity Factor
     		if (item.getMethodName().equals(method))
@@ -379,6 +386,7 @@ public class Mccabe extends TokenList {
 	}
         
 	public static void main(String[] args) {
+    	Options options = new Options(args);
 		Mccabe mcCabe = new Mccabe();
 		
 	   	Token token = null;
@@ -398,7 +406,7 @@ public class Mccabe extends TokenList {
        	}
   		tokenList.add(token);
   		 	
-  		mcCabe.compute("TestInput.java", tokenList.getList(), true);
+  		mcCabe.compute("TestInput.java", tokenList.getList(), options);
 		mcCabe.debugging_print();
 		mcCabe.print();
 		

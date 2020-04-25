@@ -36,8 +36,8 @@ public class Main {
 		//tokenList.print(tokenList.getList());
     }
    
-    private static void processTokens(String filename, boolean processExceptions) {
- 		metrics.compute(filename, tokenList.clone(), processExceptions);
+    private static void processTokens(String filename, Options options) {
+ 		metrics.compute(filename, tokenList.clone(), options);
     }
     
  	public static void main(String[] args) {
@@ -49,9 +49,9 @@ public class Main {
 	 		
 		// Pass in just one file
     	if (options.getMcCabeDirectory().endsWith(".java")) {
-			System.out.println(options.getMcCabeDirectory());
+//			System.out.println(options.getMcCabeDirectory());
     		getTokensFromFile(options.getMcCabeDirectory());
-    		processTokens(options.getMcCabeDirectory(), options.getUseExceptions());
+    		processTokens(options.getMcCabeDirectory(), options);
     	}
     	else { // else pass in a directory
  		    try {
@@ -68,7 +68,7 @@ public class Main {
  		    			if (filename.endsWith(".java")) { // make sure its a .java file;
 // 		    				System.out.println(filename); // &
  		    				getTokensFromFile(filename);  // not .c/.txt etc
- 		    				processTokens(filename, options.getUseExceptions());
+ 		    				processTokens(filename, options);
  		    				tokenList.clear();
  		    			}
 		    		}
@@ -79,8 +79,8 @@ public class Main {
 			}
 		}
     	
-    	if (!PRINT_JUST_FILENAME) {
-    		metrics.print();
-    	}
+//    	if (!PRINT_JUST_FILENAME) {
+//    		metrics.print();
+//    	}
 	}
 }

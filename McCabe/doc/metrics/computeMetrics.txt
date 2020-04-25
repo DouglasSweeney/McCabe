@@ -1,0 +1,134 @@
+======================
+cd build/ant of the eclipse project
+ant all
+// generate javadoc
+   To generate javadoc within Eclipse
+       	Check main
+       	Check main.pdf
+       	Check model
+       	Check system
+       	Check view.inputs
+       	Check view.outputs
+   Select destination under "Use standard doclet"
+       	eclipse-workspace/Retirement/logs/javadoc
+Enable Metrics
+	Properties/Metrics
+Enable PMD
+	Properties/PMD
+ v1 - 10/2019
+ v2 - 11/2019
+      	
+SOURCE CODE METRICS
+===================
+===================
+
+Lines of Code (no javadoc, comments or blank lines)
+===================================================
+cd ~/eclipse-workspace/<project>/src/[test:application] in a "Terminal"
+find controller -name "*.java" | xargs cat | grep "^[[:space:]]*[a-zA-Z0-9{}]" | wc -l
+find model -name "*.java" | xargs cat | grep "^[[:space:]]*[a-zA-Z0-9{}]" | wc -l
+find view -name "*.java" | xargs cat | grep "^[[:space:]]*[a-zA-Z0-9{}]" | wc -l
+Gives 593+419+739 (v2) LOC for test & app
+
+find ./test -name "*.java" | xargs cat | grep "^[[:space:]]*[a-zA-Z0-9{}]" | wc -l
+Gives 6408 (v2) LOC in the test directory
+
+find ./application -name "*.java" | xargs cat | grep "^[[:space:]]*[a-zA-Z0-9{}]" | wc -l
+8192 (v3) LOC in the application directory
+
+Subtract that number from all the source code lines for the applications LOC
+ 	17241 - 6408 = 10833 (v2) LOC for the application
+     	
+Number of javadocs
+==================
+cd ~/eclipse-workspace/<project>/src/application in a "Terminal"
+grep "/\*\*" */*.java | wc -l
+grep "/\*\*" */*/*.java | wc -l
+(514 + 946) = 1460 (v2)
+
+McCabe Cyclomatic Complexity (metrics view) (don't forget to enable Metrics in properties)
+==========================================
+1.429 (v2)
+1.71 (McCabe)
+
+Number of Methods (metrics view)
+===============================
+1361 (v2)
+1563 (Mccabe) = 753  (McCabe - application only) + 808 (McCabe - test only)
+
+Number of Classes
+===============================
+cd ~/eclipse-workspace/<project>/src/application in a "Terminal"
+grep "public class" */*.java | wc -l
+grep "public class" */*/*.java | wc -l
+grep "public enum" */*.java | wc -l
+grep "public enum" */*/*.java | wc -l
+26 + 43 + 0 + 3 = 72 (v2)	
+
+Percent of javadocs
+===================
+(1361 + 72) / 1460 = 1433 / 1460 = 98.2% (v2)
+
+DEVELOPMENT METRICS
+===================
+===================
+
+checkstyle (google style - app only; no tests) (logs/checkstyle/checkstyle.html - "Warnings" at top)
+=========================
+cd eclipse-workspace/Retirement/build/ant
+ant checkstyle
+0 errors (1484 warnings) (v2)
+0 errors (1624 warnings) (v3)
+
+spotbugs (possible bugs- app & tests) (logs/spotbugs/spotbugs.html - Metrics - Total Warnings)
+==================
+cd eclipse-workspace/Retirement/build/ant
+ant spotbugs
+257 (v2) (high are included jar files / (Opened in firefox & looked))
+
+pmd (smells - app & tests) (logs/pmd/index.html)
+==================
+114 (v2)
+
+
+cpd (duplicates - app (v2 included tests)) (logs/cpd/cpd.txt - grep duplication <cpd.txt | wc -l                           )
+==================
+48 (v2)
+
+TESTING METRICS
+===============
+===============
+
+Number of tests - (JUnit output tab in eclipse)
+===============
+cd ~/eclipse-workspace/<project>/src/test/system in a "Terminal"
+grep "@Test" */*.java | wc -l
+grep "@Test" */*/*.java | wc -l
+532 (v2)
+
+Test Coverage (of app)
+======================
+Preferences->Java->Code Coverage
+include application/main/*:
+        application/model/*:
+        application/system/*:
+        application/view/inputs/*:
+        application/view/outputs/*:
+exclude test/system/main/*:
+        test/system/model/*:
+        test/system/view/inputs/*:
+        test/system/view/outputs/*:
+
+Select project & Coverage As "Junit Test"
+32.8% (v2) (from coverage.ods)
+
+Number of test files
+====================
+cd ~/eclipse-workspace/<project>/src/test/system in a "Terminal"
+ll */*Test.java | wc -l
+ll */*/*Test.java | wc -l
+(17 + 33) = 50 (v2) 
+
+Percent of test files versus app files
+======================================
+50 / 72 = 69.4% (v2) 
