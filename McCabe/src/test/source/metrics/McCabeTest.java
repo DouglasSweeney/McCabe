@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import source.main.Options;
 import source.main.TokenList;
 import source.metrics.Mccabe;
 import source.scanner.Scanner;
@@ -26,6 +27,12 @@ class McCabeTest {
 	@BeforeAll
 	public static void beforeClass() {
     	String filename = "TestInput.java";
+    	String[] args = new String[4];
+    	args[0] = "-exceptions";
+    	args[1] = "--method";
+    	args[2] = "main";
+    	args[3] = "test/source/metrics/TestInput.java";
+    	Options options = new Options(args);
     	
 		try {
 			scanner = new Scanner(DIRECTORY + "/" + filename);
@@ -40,7 +47,7 @@ class McCabeTest {
        	}
   		tokenList.add(token);
   		 	
-  		mcCabe.compute(filename, tokenList.getList(), true);
+  		mcCabe.compute(filename, tokenList.getList(), options);
 		
 	}
 

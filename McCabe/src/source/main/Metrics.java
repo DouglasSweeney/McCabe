@@ -18,11 +18,11 @@ public class Metrics {
     	mccabeComplexity = new Mccabe();
     }
     
-    public void compute(String filename, List<Token> list, boolean processExceptions) {
+    public void compute(String filename, List<Token> list, Options options) {
     	
     	packageIdentifier.compute(list);
     	slocCounter.compute(filename, list);
-    	mccabeComplexity.compute(filename, list, processExceptions);
+    	mccabeComplexity.compute(filename, list, options);
 
     	//debugging_print();
     }
