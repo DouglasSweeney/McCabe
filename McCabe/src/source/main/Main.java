@@ -17,7 +17,6 @@ public class Main {
 	static TokenList tokenList = new TokenList();
  	static Metrics metrics = new Metrics(); 
  	
-		
     private static void getTokensFromFile(String directoryAndFilename) {
 		
 	    Scanner scanner = null;
@@ -34,7 +33,7 @@ public class Main {
  			token = scanner.getNextToken();
  			tokenList.add(token);;
  		}
- //		tokenList.print(tokenList.getList());
+		//tokenList.print(tokenList.getList());
     }
    
     private static void processTokens(String filename, boolean processExceptions) {
@@ -46,7 +45,7 @@ public class Main {
 		Options options = new Options(args);
 //	       System.out.println("useExceptions: " + options.getUseExceptions());
 //	        System.out.println("Last parameter: "+ args[args.length-1]);
-//	        options.setMcCabeDirectory(args[args.length-1]);
+	        options.setMcCabeDirectory(args[args.length-1]);
 	 		
 		// Pass in just one file
     	if (options.getMcCabeDirectory().endsWith(".java")) {
@@ -74,6 +73,7 @@ public class Main {
  		    			}
 		    		}
  		    	}
+ 		    	walk.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

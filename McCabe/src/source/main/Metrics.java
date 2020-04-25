@@ -23,6 +23,8 @@ public class Metrics {
     	packageIdentifier.compute(list);
     	slocCounter.compute(filename, list);
     	mccabeComplexity.compute(filename, list, processExceptions);
+
+    	//debugging_print();
     }
     
     public void debugging_print() {

@@ -166,8 +166,8 @@ public class Scanner {
             nextCh();
             return new Token(TokenEnum.COMMA, lineNumber);
         case '.':
-        	buffer = new StringBuffer();
-        	return decimalLiteral(sign, buffer);
+        	nextCh();
+   			return new Token(TokenEnum.PERIOD, lineNumber);
         case '?':
             nextCh();
             return new Token(TokenEnum.QUESTION_MARK, lineNumber);
@@ -530,7 +530,7 @@ public class Scanner {
             buffer.append(ch);
             nextCh(); 
         }
-
+       
         // its a floating point number
         if (ch == '.' || ch == 'e' || ch == 'E') {
             if (ch == '.') {

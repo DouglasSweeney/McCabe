@@ -54,7 +54,7 @@ public class TokenList {
    /* Do a deep copy */
    @Override
    public List<Token> clone() {
-	   List<Token> newList = new LinkedList();
+	   List<Token> newList = new LinkedList<Token>();
 	   Token       newToken = null;
 	   
 	   for (Token token : list) {
@@ -66,12 +66,12 @@ public class TokenList {
    }
    
     public void setCurrentIndex(Integer index) {
-	   currentIndex = index;;
+	   TokenList.currentIndex = index;;
    }
    
    public static void main(String[] args) {
 	  TokenList list = new TokenList();
-	  List<Token> newList = new LinkedList();
+	  List<Token> newList = new LinkedList<Token>();
 	   
 	  list.add(new Token(TokenEnum.GT, 0));
 	  list.add(new Token(TokenEnum.PLUS, 0));
