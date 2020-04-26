@@ -73,8 +73,9 @@ public class Options {
 		System.out.println("-e, -exceptions: Include the try/catch/finally statements."); 
 		System.out.println("-m, --method <methodName>: print the McCabe complexity factor of the file.");
 		System.out.println("");
-		System.out.println("Example:");
-		System.out.println("	McCabe -e -m methodName /path[/filename.java]");
+		System.out.println("Examples:");
+		System.out.println("	McCabe -e path[/filename.java]");
+		System.out.println("	McCabe -e -m methodName /path/filename.java");
 		Runtime.getRuntime().exit(0);
 	}
 	

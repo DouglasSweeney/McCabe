@@ -34,34 +34,44 @@ public class Slocs extends TokenList {
  	static List<SlocNode> slocList = new ArrayList();;
 	
 	public Slocs() {
+		assert tokenList != null : Slocs.class.getCanonicalName() + 
+                "constructor: tokenList = null";
+		assert slocList != null : Slocs.class.getCanonicalName() + 
+                "constructor: slocList = null";
 	}
 	
 	public void compute(String filename, List<Token> list) {
 		boolean found = false;;
 		Integer currentTokenIndex = 0;
 		
-		Token token = list.get(currentTokenIndex);		
-		while (token.enumeration != TokenEnum.EOF) {
-   			found = false;
- 			for (int i=0; i<slocList.size(); i++) {
-                SlocNode item = slocList.get(i);
+		if (list != null) {
+			Token token = list.get(currentTokenIndex);		
+			while (token.enumeration != TokenEnum.EOF) {
+				found = false;
+				for (int i=0; i<slocList.size(); i++) {
+					SlocNode item = slocList.get(i);
                 
-      			if (token.lineNumber == 383)
-       				token.lineNumber = 383;
-				if ((item.filename.equals(filename)) && 
-					(item.lineNumber.intValue() == token.lineNumber.intValue())) {
-					found = true;
-					break;
-				}
-			} 
+//      			if (token.lineNumber == 383)
+//       				token.lineNumber = 383;
+					if ((item.filename.equals(filename)) && 
+						(item.lineNumber.intValue() == token.lineNumber.intValue())) {
+						found = true;
+						break;
+					}
+				} 
 			
-			if (!found) {
-				SlocNode slocNode = new SlocNode(filename, token.lineNumber);
+				if (!found) {
+					SlocNode slocNode = new SlocNode(filename, token.lineNumber);
 				
-				slocList.add(slocNode);
+					slocList.add(slocNode);
+				}
+				currentTokenIndex = currentTokenIndex + 1;
+				token = list.get(currentTokenIndex);
 			}
-			currentTokenIndex = currentTokenIndex + 1;
-			token = list.get(currentTokenIndex);
+		}
+		else {
+			System.err.println(Slocs.class.getCanonicalName() + 
+					           "The list is null.");
 		}
 	}
 	

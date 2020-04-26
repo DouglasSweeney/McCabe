@@ -1,5 +1,6 @@
 package source.main;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -21,23 +22,37 @@ public class Main {
 		
 	    Scanner scanner = null;
         Token token = null;
+	    File  file = new File(directoryAndFilename);
 	    
- 		try {
-			scanner = new Scanner(directoryAndFilename);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+	    if (file.exists()) {
+	    	try {
+	    		scanner = new Scanner(directoryAndFilename);
+	    	} catch (FileNotFoundException e) {
+	    		e.printStackTrace();
+	    	}
   			
- 		token = new Token(TokenEnum.NONE, 0);
- 		while  (token.enumeration != TokenEnum.EOF) {
- 			token = scanner.getNextToken();
- 			tokenList.add(token);;
- 		}
-		//tokenList.print(tokenList.getList());
-    }
+	    	token = new Token(TokenEnum.NONE, 0);
+	    	while  (token.enumeration != TokenEnum.EOF) {
+	    		token = scanner.getNextToken();
+	    		tokenList.add(token);;
+	    	}
+	    	//tokenList.print(tokenList.getList());
+	    }
+	    else {
+	    	System.err.println(Main.class.getCanonicalName() + 
+	    			           " getTokensFromFile(): File doesn't exist: " + file);
+	    }
+	}
    
-    private static void processTokens(String filename, Options options) {
- 		metrics.compute(filename, tokenList.clone(), options);
+    private static void processTokens(String filename, Options options) {    	
+    	File file = new File(filename);
+    	
+    	if (file.exists()) {
+ 	 		metrics.compute(filename, tokenList.clone(), options);
+    	}
+    	else {
+	    	System.err.println("File doesn't exist (2): " + file);
+	    }
     }
     
  	public static void main(String[] args) {

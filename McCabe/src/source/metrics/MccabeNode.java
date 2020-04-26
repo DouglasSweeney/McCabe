@@ -1,7 +1,5 @@
 package source.metrics;
 
-import source.scanner.TokenEnum;
-
 public class MccabeNode {
 	private String    filename;
 	private String    className;

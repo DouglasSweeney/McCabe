@@ -42,8 +42,10 @@ public class Scanner {
         this.fileName = fileName;
         isInError = false;
 
-        // Keywords in j--
+        // Keywords
         reserved = new Hashtable<String, TokenEnum>();
+        assert reserved != null : Scanner.class.getCanonicalName() +
+        		                  "constructor: reserved == null";
         reserved.put("abstract", TokenEnum.ABSTRACT);
         reserved.put("assert", TokenEnum.ASSERT);
         reserved.put("boolean", TokenEnum.BOOLEAN);

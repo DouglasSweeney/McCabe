@@ -19,6 +19,10 @@ public class Mccabe extends TokenList {
 	Utils            utils = new Utils();
 	
 	public Mccabe() {
+		assert classList != null : Mccabe.class.getCanonicalName() +
+                "constructor: classList = null";
+		assert methods != null : Mccabe.class.getCanonicalName() +
+				                "constructor: method = null";
 	}
 			
     private void returns(List<Token> procedureList) {

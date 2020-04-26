@@ -16,10 +16,16 @@ public class Metrics {
     	packageIdentifier = new Packages();
     	slocCounter = new Slocs();
     	mccabeComplexity = new Mccabe();
+    	
+    	assert packageIdentifier != null : Metrics.class.getCanonicalName() + 
+    			" constructor: packageIdentifier = null";
+    	assert slocCounter != null : Metrics.class.getCanonicalName() + 
+    			" constructor: slocCounter = null";
+    	assert mccabeComplexity != null : Metrics.class.getCanonicalName() + 
+    			" constructor: mccabeComplexity = null";
     }
     
     public void compute(String filename, List<Token> list, Options options) {
-    	
     	packageIdentifier.compute(list);
     	slocCounter.compute(filename, list);
     	mccabeComplexity.compute(filename, list, options);

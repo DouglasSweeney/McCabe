@@ -21,6 +21,11 @@ public class Packages extends TokenList {
 
 	static List<String> packageList = new ArrayList();
 	
+	public Packages() {
+		assert packageList != null : Packages.class.getCanonicalName() + 
+			                      "constructor: packageList = null";
+	}
+	
 	public void compute(List<Token> list) {
 		Integer index = 0;
 		boolean found;

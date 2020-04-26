@@ -13,6 +13,9 @@ public class TokenList {
    public TokenList() {
 	   list = new LinkedList<Token>();
 	   currentIndex = 0;
+	   
+	   assert list != null : TokenList.class.getCanonicalName() + 
+			                 "constructor: list = null";
    }
    public void add(Token token) {
 	   list.add(token);
