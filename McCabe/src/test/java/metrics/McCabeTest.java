@@ -1,4 +1,4 @@
-package test.metrics;
+package test.java.metrics;
 
 import static org.junit.Assert.assertEquals;
 

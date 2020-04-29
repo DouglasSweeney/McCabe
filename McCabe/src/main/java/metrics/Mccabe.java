@@ -218,7 +218,7 @@ public class Mccabe extends TokenList {
    	}
     
 	/**
-	 * Counts each &&/||/? and possibly count the colon statements as 1.
+	 * Counts each &&/||/? and possibly count the colon statement as 1.
 	 * 
 	 * @param methodName debugging
 	 * @param procedureList a list of tokens just for the method
@@ -511,8 +511,10 @@ public class Mccabe extends TokenList {
    	    for (MccabeNode item2 : methods) { // get the overall Mccabe Complexity Factor
    			total += item2.getMccabeComplexityFactor();
    	    }
-  	 	mccabeComplexityFactor = total/methods.size();
-	    System.out.println("McCabe Complexity Factor: " + mccabeComplexityFactor);   	
+   	    if (methods.size() > 0) {
+   	    	mccabeComplexityFactor = total/methods.size();
+   	    	System.out.println("McCabe Complexity Factor: " + mccabeComplexityFactor);
+   	    }
     }
     
     /**
@@ -525,8 +527,12 @@ public class Mccabe extends TokenList {
     	for (MccabeNode item : methods) { // get the overall Mccabe Complexity Factor
    			total += item.getMccabeComplexityFactor();
    	    }
-  	 	complexityFactor = (double)(total/methods.size());
-	    System.out.println("McCabe Complexity Factor: " + complexityFactor);
+    	
+    	if (methods.size() > 0) {
+    		complexityFactor = (double)(total/methods.size());
+    		System.out.println("McCabe Complexity Factor: " + complexityFactor);
+    	}
+    	
 	    System.out.println("Number of classes: " + classList.size());
 	    System.out.println("Number of methods: " + methods.size());
 	}

@@ -5,13 +5,18 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({test.debug.CategoriesTest.class,
-	
-	           test.main.OptionsTest.class,
-	
-	           test.metrics.McCabeTest.class,
+@SuiteClasses({test.java.debug.CategoriesTest.class,
+	           test.java.debug.DebugTest.class,
+	         
+	           test.java.main.MainTest.class,
+	           test.java.main.MetricsTest.class,
+	           test.java.main.OptionsTest.class,
+	           test.java.main.TokenListTest.class,
 	           
-	           test.scanner.ScannerTest.class})
+	           test.java.metrics.McCabeTest.class,
+	           
+	           test.java.scanner.ScannerTest.class})
+
 public class AllTests {
 
 }

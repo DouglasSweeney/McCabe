@@ -26,7 +26,6 @@ import main.java.main.TokenList;
 import main.java.scanner.Scanner;
 import main.java.scanner.Token;
 import main.java.scanner.TokenEnum;
-import sun.awt.windows.ThemeReader;
 
 /**
  * Keep track of the source lines of code (SLOC) for the file(s).
@@ -53,7 +52,7 @@ public class Slocs extends TokenList {
 		}
 	}
 	
- 	static List<SlocNode> slocList = new ArrayList();;
+ 	static List<SlocNode> slocList = new ArrayList<>();;
 	
  	/**
  	 * The constructor.
@@ -64,7 +63,13 @@ public class Slocs extends TokenList {
 		assert slocList != null : Slocs.class.getCanonicalName() + 
                 "constructor: slocList = null";
 	}
-	
+
+	/**
+	 * Clear the source lines of code counter
+	 */
+	public void clearList() {
+		slocList.clear();
+	}
 	/**
 	 * Keep track of the SLOCs - watch for duplicates
 	 * 
@@ -75,23 +80,23 @@ public class Slocs extends TokenList {
     	Debug.println(Categories.INTERNAL_METHODS, Slocs.class.getCanonicalName() + " " + 
 			      "compute()");
 		boolean found = false;;
+		Integer lineNumbers = 0;
 		Integer currentTokenIndex = 0;
 		
 		if (list != null) {
 			Token token = list.get(currentTokenIndex);		
 			while (token.enumeration != TokenEnum.EOF) {
 				found = false;
-				for (int i=0; i<slocList.size() && !found; i++) {
+				lineNumbers = 0;
+				for (int i=0; i<slocList.size(); i++) {
 					SlocNode item = slocList.get(i);
                 
-					if ((item.filename.equals(filename)) && 
-						(item.lineNumber.intValue() == token.lineNumber.intValue())) {
-						found = true;
-						break;
-					}
+					if (item.filename.equals(filename)) {
+						lineNumbers++;
+				    }
 				}
 				
-				if (!found) {
+				if (token.lineNumber > lineNumbers) {
 					SlocNode slocNode = new SlocNode(filename, token.lineNumber);
 				
 					slocList.add(slocNode);
@@ -107,6 +112,24 @@ public class Slocs extends TokenList {
 		}
 	}
 	
+	public int getNumberOfSlocs(String filename) {
+		int slocs = 0;
+		
+		if (filename.endsWith(".java")) {
+			for (int i=0; i < slocList.size(); i++) {
+				SlocNode item = slocList.get(i);
+				if (item.filename.equals(filename)) {
+					slocs++;
+				} 
+			}
+		} 
+		else {
+			slocs = slocList.size();
+		}
+		
+		return slocs;
+	}
+
 	/**
 	 * Print verbosely information about the SLOCs
 	 */
@@ -118,7 +141,7 @@ public class Slocs extends TokenList {
 			System.out.println("slocList(" + counter + ")" + file.getName() + " " + sloc.lineNumber);
 			counter++;
 		}
-		System.out.println("slocList.size (SB 2031): " + slocList.size());
+		System.out.println("slocList.size(): " + slocList.size());
 	}
 	
 	/**

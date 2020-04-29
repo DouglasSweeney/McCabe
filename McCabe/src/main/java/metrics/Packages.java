@@ -99,6 +99,13 @@ public class Packages extends TokenList {
 			System.out.println("package: " + packageName);
 		}
 	}
+	/**
+	 * Get the number of packages
+	 */
+	public int size() {
+	    return packageList.size();
+	}
+	
 	
 	/**
 	 * Print out just the number of packages

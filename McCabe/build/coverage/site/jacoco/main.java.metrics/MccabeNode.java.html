@@ -1,38 +1,78 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MccabeNode.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">McCabe project</a> &gt; <a href="index.source.html" class="el_package">main.java.metrics</a> &gt; <span class="el_source">MccabeNode.java</span></div><h1>MccabeNode.java</h1><pre class="source lang-java linenums">package main.java.metrics;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MccabeNode.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">McCabe project</a> &gt; <a href="index.source.html" class="el_package">main.java.metrics</a> &gt; <span class="el_source">MccabeNode.java</span></div><h1>MccabeNode.java</h1><pre class="source lang-java linenums">//
+// File:    MccabeNode.java
+// Created: 4/28/2020
+// Author:  Douglas Sweeney
+//
+// History: 
+//           v1.0     4/28/2020        Douglas Sweeney 
+//
+package main.java.metrics;
 
+/**
+ * Keep track of the McCabe complexity factor.
+ * 
+ * @author dks
+ * @since  1.0
+ */
 public class MccabeNode {
 	private String    filename;
 	private String    className;
 	private String    methodName;
 	private Integer   lineNumber;
-<span class="fc" id="L8">	private Integer   mccabeComplexityFactor = 0;</span>
+<span class="fc" id="L22">	private Integer   mccabeComplexityFactor = 0;</span>
 	
 	public MccabeNode(String filename, String className, String methodName,
-<span class="fc" id="L11">			          Integer lineNumber, Integer mccabe) {</span>
-<span class="fc" id="L12">		this.filename = filename;</span>
-<span class="fc" id="L13">		this.className = className;</span>
-<span class="fc" id="L14">		this.methodName = methodName;</span>
-<span class="fc" id="L15">		this.lineNumber = lineNumber;</span>
-<span class="fc" id="L16">		this.mccabeComplexityFactor = mccabe;</span>
-<span class="fc" id="L17">	}</span>
+<span class="fc" id="L25">			          Integer lineNumber, Integer mccabe) {</span>
+<span class="fc" id="L26">		this.filename = filename;</span>
+<span class="fc" id="L27">		this.className = className;</span>
+<span class="fc" id="L28">		this.methodName = methodName;</span>
+<span class="fc" id="L29">		this.lineNumber = lineNumber;</span>
+<span class="fc" id="L30">		this.mccabeComplexityFactor = mccabe;</span>
+<span class="fc" id="L31">	}</span>
 	
+	/**
+	 * A getter.
+	 * 
+	 * @return the filename
+	 */
 	public String getFilename()  {
-<span class="fc" id="L20">		return filename;</span>
+<span class="fc" id="L39">		return filename;</span>
 	}
 	
+	/**
+	 * Another getter.
+	 * 
+	 * @return the class of the method (maybe two classes in a single file)
+	 */
 	public String getClassName()  {
-<span class="nc" id="L24">		return className;</span>
+<span class="nc" id="L48">		return className;</span>
 	}
 	
+	/** 
+	 * Another getter.
+	 * 
+	 * @return the method
+	 */
 	public String getMethodName()  {
-<span class="fc" id="L28">		return methodName;</span>
-	}
-	public Integer getLineNumber()  {
-<span class="nc" id="L31">		return lineNumber;</span>
+<span class="fc" id="L57">		return methodName;</span>
 	}
 	
+	/**
+	 * Another getter
+	 * 
+	 * @return the line number
+	 */
+	public Integer getLineNumber()  {
+<span class="nc" id="L66">		return lineNumber;</span>
+	}
+	
+	/**
+	 * Another getter
+	 * 
+	 * @return the complexity factor
+	 */
 	public Integer getMccabeComplexityFactor()  {
-<span class="fc" id="L35">		return mccabeComplexityFactor;</span>
+<span class="fc" id="L75">		return mccabeComplexityFactor;</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

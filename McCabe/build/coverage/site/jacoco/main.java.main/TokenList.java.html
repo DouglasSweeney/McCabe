@@ -1,4 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TokenList.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">McCabe project</a> &gt; <a href="index.source.html" class="el_package">main.java.main</a> &gt; <span class="el_source">TokenList.java</span></div><h1>TokenList.java</h1><pre class="source lang-java linenums">package main.java.main;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TokenList.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">McCabe project</a> &gt; <a href="index.source.html" class="el_package">main.java.main</a> &gt; <span class="el_source">TokenList.java</span></div><h1>TokenList.java</h1><pre class="source lang-java linenums">//
+// File:    TokenList.java
+// Created: 4/28/2020
+// Author:  Douglas Sweeney
+//
+// History: 
+//           v1.0     4/28/2020        Douglas Sweeney 
+//
+package main.java.main;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -6,92 +14,143 @@ import java.util.List;
 import main.java.scanner.Token;
 import main.java.scanner.TokenEnum;
 
-<span class="pc bpc" id="L9" title="1 of 2 branches missed.">public class TokenList {</span>
-<span class="fc" id="L10">   static private List&lt;Token&gt; list = null;;</span>
+/**
+ * Build a list of tokens.
+ * 
+ * @author dks
+ * @since 1.0
+ */
+<span class="pc bpc" id="L23" title="1 of 2 branches missed.">public class TokenList {</span>
+<span class="fc" id="L24">   static private List&lt;Token&gt; list = null;;</span>
    static private Integer     currentIndex;
    
-<span class="fc" id="L13">   public TokenList() {</span>
-<span class="fc" id="L14">	   list = new LinkedList&lt;Token&gt;();</span>
-<span class="fc" id="L15">	   currentIndex = 0;</span>
+   /**
+    * The constructor.
+    */
+<span class="fc" id="L30">   public TokenList() {</span>
+<span class="fc" id="L31">	   list = new LinkedList&lt;Token&gt;();</span>
+<span class="fc" id="L32">	   currentIndex = 0;</span>
 	   
-<span class="pc bpc" id="L17" title="3 of 4 branches missed.">	   assert list != null : TokenList.class.getCanonicalName() + </span>
+<span class="pc bpc" id="L34" title="3 of 4 branches missed.">	   assert list != null : TokenList.class.getCanonicalName() + </span>
 			                 &quot;constructor: list = null&quot;;
-<span class="fc" id="L19">   }</span>
+<span class="fc" id="L36">   }</span>
+   
+   /** 
+    * Add a token to the list.
+    * 
+    * @param token the token to be added
+    */
    public void add(Token token) {
-<span class="fc" id="L21">	   list.add(token);</span>
-<span class="fc" id="L22">   }</span>
+<span class="fc" id="L44">	   list.add(token);</span>
+<span class="fc" id="L45">   }</span>
    
+   /**
+    * Clear/Reset the list. 
+    */
    public void clear() {
-<span class="nc" id="L25">	   list.clear();</span>
-<span class="nc" id="L26">	   currentIndex = 0;</span>
-<span class="nc" id="L27">   }</span>
+<span class="fc" id="L51">	   list.clear();</span>
+<span class="fc" id="L52">	   currentIndex = 0;</span>
+<span class="fc" id="L53">   }</span>
    
+   /**
+    * Gets a token.
+    * 
+    * @param index position in the list
+    * @return a token from the list
+    */
    public Token get(int index) {
-<span class="nc" id="L30">	   Token token = null;</span>
+<span class="nc" id="L62">	   Token token = null;</span>
 	   
-<span class="nc bnc" id="L32" title="All 2 branches missed.">	   if (index &gt;= 0) {</span>
-<span class="nc" id="L33">		  token = list.get(index);</span>
+<span class="nc bnc" id="L64" title="All 2 branches missed.">	   if (index &gt;= 0) {</span>
+<span class="nc" id="L65">		  token = list.get(index);</span>
 	   }
 	   
-<span class="nc" id="L36">	   return token;</span>
+<span class="nc" id="L68">	   return token;</span>
    }
 
+   /**
+    * A getter.
+    * 
+    * @return the list of tokens
+    */
    public List&lt;Token&gt; getList() {
-<span class="fc" id="L40">	   return list;</span>
+<span class="fc" id="L77">	   return list;</span>
    }
    
+   /**
+    * Another getter.
+    * 
+    * @return the index into the list
+    */
    public Integer getCurrentIndex() {
-<span class="nc" id="L44">	   return currentIndex;</span>
+<span class="fc" id="L86">	   return currentIndex;</span>
    }
    
+   /** 
+    * Print the list of tokens.
+    * 
+    * @param list the list to be printed
+    */
    public void print(List&lt;Token&gt; list) {
 	   
-<span class="nc bnc" id="L49" title="All 2 branches missed.">	   for (Token token : list) {</span>
-<span class="nc bnc" id="L50" title="All 2 branches missed.">		   if (token.string != null)</span>
-<span class="nc" id="L51">			   System.out.println(token.string + &quot;: &quot; + token.enumeration + &quot;(&quot; + token.lineNumber + &quot;)&quot;);</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">	   for (Token token : list) {</span>
+<span class="pc bpc" id="L97" title="1 of 2 branches missed.">		   if (token.string != null)</span>
+<span class="nc" id="L98">			   System.out.println(token.string + &quot;: &quot; + token.enumeration + &quot;(&quot; + token.lineNumber + &quot;)&quot;);</span>
 		   else
-<span class="nc" id="L53">		       System.out.println(token.enumeration + &quot;(&quot; + token.lineNumber + &quot;)&quot;);</span>
-<span class="nc" id="L54">	   }</span>
-<span class="nc" id="L55">   }</span>
+<span class="fc" id="L100">		       System.out.println(token.enumeration + &quot;(&quot; + token.lineNumber + &quot;)&quot;);</span>
+<span class="fc" id="L101">	   }</span>
+<span class="fc" id="L102">   }</span>
    
-   /* Do a deep copy */
+   /**
+    * Do a deep copy of the list.
+    */
    @Override
    public List&lt;Token&gt; clone() {
-<span class="nc" id="L60">	   List&lt;Token&gt; newList = new LinkedList&lt;Token&gt;();</span>
-<span class="nc" id="L61">	   Token       newToken = null;</span>
+<span class="fc" id="L109">	   List&lt;Token&gt; newList = new LinkedList&lt;Token&gt;();</span>
+<span class="fc" id="L110">	   Token       newToken = null;</span>
 	   
-<span class="nc bnc" id="L63" title="All 2 branches missed.">	   for (Token token : list) {</span>
-<span class="nc" id="L64">		   newToken = token;</span>
-<span class="nc" id="L65">		   newList.add(newToken);</span>
-<span class="nc" id="L66">	   }</span>
+<span class="fc bfc" id="L112" title="All 2 branches covered.">	   for (Token token : list) {</span>
+<span class="fc" id="L113">		   newToken = token;</span>
+<span class="fc" id="L114">		   newList.add(newToken);</span>
+<span class="fc" id="L115">	   }</span>
 	   
-<span class="nc" id="L68">	   return newList;</span>
+<span class="fc" id="L117">	   return newList;</span>
    }
    
-    public void setCurrentIndex(Integer index) {
-<span class="nc" id="L72">	   TokenList.currentIndex = index;;</span>
-<span class="nc" id="L73">   }</span>
+   /**
+    * A setter.
+    * 
+    * @param index set the currentIndex into the list
+    */
+   public void setCurrentIndex(Integer index) {
+<span class="fc" id="L126">	   TokenList.currentIndex = index;;</span>
+<span class="fc" id="L127">   }</span>
    
+   /**
+    * The main entry point to test out this file.
+    * 
+    * @param args user specified on the commend line
+    */
    public static void main(String[] args) {
-<span class="nc" id="L76">	  TokenList list = new TokenList();</span>
-<span class="nc" id="L77">	  List&lt;Token&gt; newList = new LinkedList&lt;Token&gt;();</span>
+<span class="nc" id="L135">	  TokenList list = new TokenList();</span>
+<span class="nc" id="L136">	  List&lt;Token&gt; newList = new LinkedList&lt;Token&gt;();</span>
 	   
-<span class="nc" id="L79">	  list.add(new Token(TokenEnum.GT, 0));</span>
-<span class="nc" id="L80">	  list.add(new Token(TokenEnum.PLUS, 0));</span>
-<span class="nc" id="L81">	  list.print(list.getList());</span>
-<span class="nc" id="L82">	  newList = list.clone();</span>
-<span class="nc bnc" id="L83" title="All 2 branches missed.">	  for (Token token : newList) {</span>
-<span class="nc bnc" id="L84" title="All 2 branches missed.">	     if (token.string != null)</span>
-<span class="nc" id="L85">		    System.out.println(token.string + &quot;: &quot; + token.enumeration + &quot;(&quot; + token.lineNumber + &quot;)&quot;);</span>
+<span class="nc" id="L138">	  list.add(new Token(TokenEnum.GT, 0));</span>
+<span class="nc" id="L139">	  list.add(new Token(TokenEnum.PLUS, 0));</span>
+<span class="nc" id="L140">	  list.print(list.getList());</span>
+<span class="nc" id="L141">	  newList = list.clone();</span>
+<span class="nc bnc" id="L142" title="All 2 branches missed.">	  for (Token token : newList) {</span>
+<span class="nc bnc" id="L143" title="All 2 branches missed.">	     if (token.string != null)</span>
+<span class="nc" id="L144">		    System.out.println(token.string + &quot;: &quot; + token.enumeration + &quot;(&quot; + token.lineNumber + &quot;)&quot;);</span>
 		 else {
-<span class="nc bnc" id="L87" title="All 2 branches missed.">			if (token.string != null) {</span>
-<span class="nc" id="L88">			   System.out.println(token.string + &quot;: &quot; + token.enumeration + &quot;(&quot; + token.lineNumber + &quot;)&quot;);</span>
+<span class="nc bnc" id="L146" title="All 2 branches missed.">			if (token.string != null) {</span>
+<span class="nc" id="L147">			   System.out.println(token.string + &quot;: &quot; + token.enumeration + &quot;(&quot; + token.lineNumber + &quot;)&quot;);</span>
 			}
 			else {
-<span class="nc" id="L91"> 			   System.out.println(token.enumeration + &quot;(&quot; + token.lineNumber + &quot;)&quot;);</span>
+<span class="nc" id="L150"> 			   System.out.println(token.enumeration + &quot;(&quot; + token.lineNumber + &quot;)&quot;);</span>
 			   }
 		  }
-<span class="nc" id="L94">       }</span>
-<span class="nc" id="L95">    }</span>
+<span class="nc" id="L153">       }</span>
+<span class="nc" id="L154">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

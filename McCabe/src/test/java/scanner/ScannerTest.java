@@ -1,4 +1,4 @@
-package test.scanner;
+package test.java.scanner;
 
 import static org.junit.Assert.assertEquals;
 
@@ -12,7 +12,7 @@ import main.java.scanner.TokenEnum;
 
 public class ScannerTest {
 
-	private static final String DIRECTORY = "/home/dks/git/McCabe_v1/McCabe/src/test/scanner/inputs/";
+	private static final String DIRECTORY = "/home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/";
 	
    	private Token token = null;
    	private Scanner scanner = null;

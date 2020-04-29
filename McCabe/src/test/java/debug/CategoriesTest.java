@@ -1,4 +1,4 @@
-package test.debug;
+package test.java.debug;
 
 import static org.junit.Assert.assertEquals;
 

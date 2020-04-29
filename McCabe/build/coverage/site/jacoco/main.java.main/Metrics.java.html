@@ -1,4 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Metrics.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">McCabe project</a> &gt; <a href="index.source.html" class="el_package">main.java.main</a> &gt; <span class="el_source">Metrics.java</span></div><h1>Metrics.java</h1><pre class="source lang-java linenums">package main.java.main;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Metrics.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">McCabe project</a> &gt; <a href="index.source.html" class="el_package">main.java.main</a> &gt; <span class="el_source">Metrics.java</span></div><h1>Metrics.java</h1><pre class="source lang-java linenums">//
+// File:    Metrics.java
+// Created: 4/28/2020
+// Author:  Douglas Sweeney
+//
+// History: 
+//           v1.0     4/28/2020        Douglas Sweeney 
+//
+package main.java.main;
 
 import java.util.List;
 
@@ -9,44 +17,85 @@ import main.java.metrics.Packages;
 import main.java.metrics.Slocs;
 import main.java.scanner.Token;
 
-<span class="nc bnc" id="L12" title="All 2 branches missed.">public class Metrics {</span>
-<span class="nc" id="L13">    Packages packageIdentifier = null;</span>
-<span class="nc" id="L14">    Slocs    slocCounter = null;</span>
-<span class="nc" id="L15">    Mccabe   mccabeComplexity = null;</span>
+/**
+ * Coordinates the calculation of the McCabe complexity measurement.
+ *  
+ * @author dks
+ * @since  1.0
+ *
+ */
+<span class="pc bpc" id="L27" title="1 of 2 branches missed.">public class Metrics {</span>
+<span class="fc" id="L28">    Packages packageIdentifier = null;</span>
+<span class="fc" id="L29">    Slocs    slocCounter = null;</span>
+<span class="fc" id="L30">    Mccabe   mccabeComplexity = null;</span>
 	
-<span class="nc" id="L17">    public Metrics() {</span>
-<span class="nc" id="L18">    	packageIdentifier = new Packages();</span>
-<span class="nc" id="L19">    	slocCounter = new Slocs();</span>
-<span class="nc" id="L20">    	mccabeComplexity = new Mccabe();</span>
+    /**
+     * The constructor - creates some classes. Then the post condition assert are called.
+     */
+<span class="fc" id="L35">    public Metrics() {</span>
+<span class="fc" id="L36">    	packageIdentifier = new Packages();</span>
+<span class="fc" id="L37">    	slocCounter = new Slocs();</span>
+<span class="fc" id="L38">    	mccabeComplexity = new Mccabe();</span>
     	
-<span class="nc bnc" id="L22" title="All 4 branches missed.">    	assert packageIdentifier != null : Metrics.class.getCanonicalName() + </span>
+<span class="pc bpc" id="L40" title="3 of 4 branches missed.">    	assert packageIdentifier != null : Metrics.class.getCanonicalName() + </span>
     			&quot; constructor: packageIdentifier = null&quot;;
-<span class="nc bnc" id="L24" title="All 4 branches missed.">    	assert slocCounter != null : Metrics.class.getCanonicalName() + </span>
+<span class="pc bpc" id="L42" title="3 of 4 branches missed.">    	assert slocCounter != null : Metrics.class.getCanonicalName() + </span>
     			&quot; constructor: slocCounter = null&quot;;
-<span class="nc bnc" id="L26" title="All 4 branches missed.">    	assert mccabeComplexity != null : Metrics.class.getCanonicalName() + </span>
+<span class="pc bpc" id="L44" title="3 of 4 branches missed.">    	assert mccabeComplexity != null : Metrics.class.getCanonicalName() + </span>
     			&quot; constructor: mcCabeComplexity = null&quot;;
-<span class="nc" id="L28">    }</span>
+<span class="fc" id="L46">    }</span>
     
+    /** 
+     * Call the individual classes to get some statistics of the file(s) that were
+     * passed in.
+     * 
+     * @param filename debugging
+     * @param list the list of tokens 
+     * @param options the user specified arguments on the command line 
+     */
     public void compute(String filename, List&lt;Token&gt; list, Options options) {
-<span class="nc" id="L31">    	Debug.println(Categories.INTERNAL_METHODS, Metrics.class.getCanonicalName() + &quot; &quot; + </span>
-			      &quot;compute()&quot;);
-<span class="nc" id="L33">    	packageIdentifier.compute(list);</span>
-<span class="nc" id="L34">    	slocCounter.compute(filename, list);</span>
-<span class="nc" id="L35">    	mccabeComplexity.compute(filename, list, options);</span>
-
+<span class="fc" id="L57">     	Debug.println(Categories.INTERNAL_METHODS, Metrics.class.getCanonicalName() + &quot; &quot; + </span>
+    						&quot;compute()&quot;);
+<span class="fc" id="L59">    	packageIdentifier.compute(list);</span>
+<span class="fc" id="L60">    	slocCounter.compute(filename, list);</span>
+<span class="pc bpc" id="L61" title="1 of 2 branches missed.">      	if (options != null) {</span>
+<span class="fc" id="L62">    		mccabeComplexity.compute(filename, list, options);</span>
+    	}
     	//debugging_print();
-<span class="nc" id="L38">    }</span>
+<span class="fc" id="L65">    }</span>
     
-    public void debugging_print() {
-<span class="nc" id="L41">    	packageIdentifier.debugging_print();</span>
-<span class="nc" id="L42">    	slocCounter.debugging_print();</span>
-<span class="nc" id="L43">    	mccabeComplexity.debugging_print();</span>
-<span class="nc" id="L44">    }</span>
+    /**
+     * Debugging only.
+     */
+    public int getNumberOfPackages() {
+<span class="nc" id="L71">    	return packageIdentifier.size();</span>
+    }
 
+    /**
+     * Debugging only.
+     */
+    public int getNumberOfSlocs() {
+<span class="nc" id="L78">    	return slocCounter.getList().size();</span>
+    }
+
+    /**
+     * Print out in a verbose form the internal metrics. 
+     * Not normally called as part of the program.
+     * Debugging only.
+     */
+    public void debugging_print() {
+<span class="nc" id="L87">    	packageIdentifier.debugging_print();</span>
+<span class="nc" id="L88">    	slocCounter.debugging_print();</span>
+<span class="nc" id="L89">    	mccabeComplexity.debugging_print();</span>
+<span class="nc" id="L90">    }</span>
+
+    /** 
+     * Print a non-verbose output of the metrics.
+     */
     public void print() {
-<span class="nc" id="L47">    	packageIdentifier.print();</span>
-<span class="nc" id="L48">    	slocCounter.print();</span>
-<span class="nc" id="L49">    	mccabeComplexity.print();</span>
-<span class="nc" id="L50">    }</span>
+<span class="fc" id="L96">    	packageIdentifier.print();</span>
+<span class="fc" id="L97">    	slocCounter.print();</span>
+<span class="fc" id="L98">    	mccabeComplexity.print();</span>
+<span class="fc" id="L99">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

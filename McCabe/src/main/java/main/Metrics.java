@@ -54,15 +54,37 @@ public class Metrics {
      * @param options the user specified arguments on the command line 
      */
     public void compute(String filename, List<Token> list, Options options) {
-    	Debug.println(Categories.INTERNAL_METHODS, Metrics.class.getCanonicalName() + " " + 
-			      "compute()");
+     	Debug.println(Categories.INTERNAL_METHODS, Metrics.class.getCanonicalName() + " " + 
+    						"compute()");
     	packageIdentifier.compute(list);
     	slocCounter.compute(filename, list);
-    	mccabeComplexity.compute(filename, list, options);
-
+      	if (options != null) {
+    		mccabeComplexity.compute(filename, list, options);
+    	}
     	//debugging_print();
     }
     
+    /**
+     * debugging only
+     */
+    public void clearSlocList() {
+    	slocCounter.clearList();
+    }
+    
+    /**
+     * Debugging only.
+     */
+    public int getNumberOfPackages() {
+    	return packageIdentifier.size();
+    }
+
+    /**
+     * Debugging only.
+     */
+    public int getNumberOfSlocs(String filename) {
+    	return slocCounter.getNumberOfSlocs(filename);
+    }
+
     /**
      * Print out in a verbose form the internal metrics. 
      * Not normally called as part of the program.

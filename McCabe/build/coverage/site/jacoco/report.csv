@@ -1,18 +1,18 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-McCabe project,main.java.main,TokenList,163,28,18,2,37,10,17,4,7,4
+McCabe project,main.java.main,TokenList,105,86,13,7,19,28,10,11,2,9
 McCabe project,main.java.main,Utils,23,146,7,17,2,25,6,8,0,2
-McCabe project,main.java.main,Main,263,0,22,0,66,0,23,0,12,0
-McCabe project,main.java.main,Metrics,112,0,14,0,25,0,12,0,5,0
+McCabe project,main.java.main,Main,53,210,10,12,15,51,9,14,1,11
+McCabe project,main.java.main,Metrics,50,73,11,5,6,22,11,4,3,4
 McCabe project,main.java.main,Options,99,154,5,10,29,41,7,13,2,9
-McCabe project,main.java.scanner,Scanner,279,1714,57,226,56,358,50,127,4,14
+McCabe project,main.java.scanner,Scanner,263,1730,54,229,50,364,47,130,4,14
 McCabe project,main.java.scanner,Token,0,23,0,0,0,9,0,2,0,2
 McCabe project,main.java.scanner,CharReader,7,26,0,0,3,6,2,3,2,3
 McCabe project,main.java.scanner,TokenEnum,0,1084,0,0,0,109,0,1,0,1
-McCabe project,main.java.debug,Debug,169,31,29,5,41,10,22,6,5,6
+McCabe project,main.java.debug,Debug,10,190,10,24,3,48,10,18,0,11
 McCabe project,main.java.debug,Categories,0,64,0,0,0,7,0,1,0,1
-McCabe project,main.java.metrics,Packages,270,0,28,0,66,0,22,0,8,0
-McCabe project,main.java.metrics,Mccabe,362,1138,44,128,87,193,44,68,12,14
+McCabe project,main.java.metrics,Packages,133,140,10,18,34,33,11,12,5,4
+McCabe project,main.java.metrics,Mccabe,295,1211,35,141,73,209,34,80,10,16
 McCabe project,main.java.metrics,SlocNode,16,0,0,0,6,0,1,0,1,0
-McCabe project,main.java.metrics,Slocs.SlocNode,19,0,0,0,6,0,1,0,1,0
-McCabe project,main.java.metrics,Slocs,310,0,34,0,72,0,27,0,10,0
+McCabe project,main.java.metrics,Slocs.SlocNode,0,19,0,0,0,6,0,1,0,1
+McCabe project,main.java.metrics,Slocs,199,111,19,15,43,29,18,9,6,4
 McCabe project,main.java.metrics,MccabeNode,6,31,0,0,2,11,2,4,2,4

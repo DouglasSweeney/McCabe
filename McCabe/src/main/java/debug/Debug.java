@@ -95,8 +95,7 @@ public class Debug {
 //			}
 		}
 	}
-	
-	
+		
 	private static boolean isEnabled(String category) {
 		return System.getProperty("debug." + category.toLowerCase()) != null;
 	}

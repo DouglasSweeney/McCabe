@@ -1,120 +1,127 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TokenEnum.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">McCabe project</a> &gt; <a href="index.source.html" class="el_package">main.java.scanner</a> &gt; <span class="el_source">TokenEnum.java</span></div><h1>TokenEnum.java</h1><pre class="source lang-java linenums">package main.java.scanner;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TokenEnum.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">McCabe project</a> &gt; <a href="index.source.html" class="el_package">main.java.scanner</a> &gt; <span class="el_source">TokenEnum.java</span></div><h1>TokenEnum.java</h1><pre class="source lang-java linenums">//
+// File:    Scanner.java
+// Created: 4/28/2020
+// Author:  Douglas Sweeney
+//
+// History: 
+//           v1.0     4/28/2020        Douglas Sweeney
+//
+package main.java.scanner;
 
-<span class="fc" id="L3">public enum TokenEnum {</span>
-<span class="fc" id="L4">	NONE,</span>
-<span class="fc" id="L5">	TILDE,</span>
-<span class="fc" id="L6">	LPAREN,</span>
-<span class="fc" id="L7">    RPAREN,</span>
-<span class="fc" id="L8">    LBRACE,</span>
-<span class="fc" id="L9">    RBRACE,</span>
-<span class="fc" id="L10">    LBRACKET,</span>
-<span class="fc" id="L11">    RBRACKET,</span>
-<span class="fc" id="L12">    SEMICOLON,</span>
-<span class="fc" id="L13">    COMMA,</span>
-<span class="fc" id="L14">    PERIOD,</span>
-<span class="fc" id="L15">    QUESTION_MARK,</span>
-<span class="fc" id="L16">    COLON,</span>
-<span class="fc" id="L17">    EQUAL_EQUAL,</span>
-<span class="fc" id="L18">    EQUALS,</span>
-<span class="fc" id="L19">    NOT_EQUALS,</span>
-<span class="fc" id="L20">    NOT,</span>
-<span class="fc" id="L21">    OR_EQUALS,</span>
-<span class="fc" id="L22">    OR,</span>
-<span class="fc" id="L23">    OROR,</span>
-<span class="fc" id="L24">    CARET_EQUALS,</span>
-<span class="fc" id="L25">    CARET,</span>
-<span class="fc" id="L26">    MOD_EQUALS,	</span>
-<span class="fc" id="L27">    MOD,</span>
-<span class="fc" id="L28">    MULTIPLY_EQUALS,</span>
-<span class="fc" id="L29">    ASTERISK,</span>
-<span class="fc" id="L30">    DIVIDE_EQUALS,</span>
-<span class="fc" id="L31">    DIVIDE,</span>
-<span class="fc" id="L32">    PLUS_EQUALS,</span>
-<span class="fc" id="L33">    INCREMENT,</span>
-<span class="fc" id="L34">    PLUS,</span>
-<span class="fc" id="L35">    DECREMENT,</span>
-<span class="fc" id="L36">    MINUS,</span>
-<span class="fc" id="L37">    AMPERSAND_AMPERSAND,</span>
-<span class="fc" id="L38">    AMPERSAND,</span>
-<span class="fc" id="L39">    GT_EQUALS,</span>
-<span class="fc" id="L40">    UNSIGNED_SHIFT_RIGHT,</span>
-<span class="fc" id="L41">    UNSIGNED_SHIFT_RIGHT_EQUALS,</span>
-<span class="fc" id="L42">    SHIFT_RIGHT,</span>
-<span class="fc" id="L43">    SHIFT_RIGHT_EQUALS,</span>
-<span class="fc" id="L44">    GT,</span>
-<span class="fc" id="L45">    LESS_EQUALS,</span>
-<span class="fc" id="L46">    SHIFT_LEFT,</span>
-<span class="fc" id="L47">    SHIFT_LEFT_EQUALS,</span>
-<span class="fc" id="L48">    LESS,</span>
-<span class="fc" id="L49">    STRING_LITERAL,	</span>
-<span class="fc" id="L50">    EOF,</span>
-<span class="fc" id="L51">    BASE16_INTEGER,</span>
-<span class="fc" id="L52">    BASE2_INTEGER,</span>
-<span class="fc" id="L53">    BASE8_INTEGER,</span>
-<span class="fc" id="L54">    LONG_LITERAL,</span>
-<span class="fc" id="L55">    IDENTIFIER,</span>
-    
-<span class="fc" id="L57">    ABSTRACT,</span>
-<span class="fc" id="L58">    ASSERT,</span>
-<span class="fc" id="L59">    BOOLEAN,</span>
-<span class="fc" id="L60">    BREAK,</span>
-<span class="fc" id="L61">    BYTE,</span>
-<span class="fc" id="L62">    CASE,</span>
-<span class="fc" id="L63">    CATCH,</span>
-<span class="fc" id="L64">    CHAR,</span>
-<span class="fc" id="L65">    CLASS,</span>
-<span class="fc" id="L66">    CONST,</span>
-    
-<span class="fc" id="L68">    CONTINUE,</span>
-<span class="fc" id="L69">    DEFAULT,</span>
-<span class="fc" id="L70">    DO,</span>
-<span class="fc" id="L71">    DOUBLE,</span>
-<span class="fc" id="L72">    ELSE,</span>
-<span class="fc" id="L73">    ENUM,</span>
-<span class="fc" id="L74">    EXTENDS,</span>
-<span class="fc" id="L75">    FALSE,</span>
-<span class="fc" id="L76">    FINAL,</span>
-<span class="fc" id="L77">    FINALLY,</span>
-<span class="fc" id="L78">    FLOAT,</span>
-    
-<span class="fc" id="L80">    FOR,</span>
-<span class="fc" id="L81">    IF,</span>
-<span class="fc" id="L82">    GOTO,</span>
-<span class="fc" id="L83">    IMPLEMENTS,</span>
-<span class="fc" id="L84">    IMPORT,</span>
-<span class="fc" id="L85">    INSTANCEOF,</span>
-<span class="fc" id="L86">    INT,</span>
-<span class="fc" id="L87">    INTERFACE,</span>
-<span class="fc" id="L88">    LONG,</span>
-<span class="fc" id="L89">    NATIVE,</span>
-    
-<span class="fc" id="L91">    NEW,</span>
-<span class="fc" id="L92">    NULL,</span>
-<span class="fc" id="L93">    PACKAGE,</span>
-<span class="fc" id="L94">    PRIVATE,</span>
-<span class="fc" id="L95">    PROTECTED,</span>
-<span class="fc" id="L96">    PUBLIC,</span>
-<span class="fc" id="L97">    RETURN,</span>
-<span class="fc" id="L98">    SHORT,</span>
-<span class="fc" id="L99">    STATIC,</span>
-<span class="fc" id="L100">    STRICTFP,</span>
-<span class="fc" id="L101">    SUPER,</span>
-    
-<span class="fc" id="L103">    SWITCH,</span>
-<span class="fc" id="L104">    SYNCHRONIZED,</span>
-<span class="fc" id="L105">    THIS,</span>
-<span class="fc" id="L106">    THROW,</span>
-<span class="fc" id="L107">    THROWS,</span>
-<span class="fc" id="L108">    TRANSIENT,</span>
-<span class="fc" id="L109">    TRUE,</span>
-<span class="fc" id="L110">    TRY,</span>
-<span class="fc" id="L111">    VOID,</span>
-<span class="fc" id="L112">    VOLATILE,</span>
-<span class="fc" id="L113">    WHILE,</span>
-	
-<span class="fc" id="L115">	OVERRIDE_ANNOTATION,</span>
-<span class="fc" id="L116">	DEPRECATED_ANNOTATION,</span>
-<span class="fc" id="L117">	SUPPRESSWARNINGS_ANNOTATION;</span>
-	
+/**
+ * Keep track of the enumeration of the tokens representing the keywords/identifiers.
+ * 
+ * @author dks
+ * @since 1.0
+ */
+<span class="fc" id="L17">public enum TokenEnum {</span>
+<span class="fc" id="L18">	NONE,</span>
+<span class="fc" id="L19">	TILDE,</span>
+<span class="fc" id="L20">	LPAREN,</span>
+<span class="fc" id="L21">    RPAREN,</span>
+<span class="fc" id="L22">    LBRACE,</span>
+<span class="fc" id="L23">    RBRACE,</span>
+<span class="fc" id="L24">    LBRACKET,</span>
+<span class="fc" id="L25">    RBRACKET,</span>
+<span class="fc" id="L26">    SEMICOLON,</span>
+<span class="fc" id="L27">    COMMA,</span>
+<span class="fc" id="L28">    PERIOD,</span>
+<span class="fc" id="L29">    QUESTION_MARK,</span>
+<span class="fc" id="L30">    COLON,</span>
+<span class="fc" id="L31">    EQUAL_EQUAL,</span>
+<span class="fc" id="L32">    EQUALS,</span>
+<span class="fc" id="L33">    NOT_EQUALS,</span>
+<span class="fc" id="L34">    NOT,</span>
+<span class="fc" id="L35">    OR_EQUALS,</span>
+<span class="fc" id="L36">    OR,</span>
+<span class="fc" id="L37">    OROR,</span>
+<span class="fc" id="L38">    CARET_EQUALS,</span>
+<span class="fc" id="L39">    CARET,</span>
+<span class="fc" id="L40">    MOD_EQUALS,	</span>
+<span class="fc" id="L41">    MOD,</span>
+<span class="fc" id="L42">    MULTIPLY_EQUALS,</span>
+<span class="fc" id="L43">    ASTERISK,</span>
+<span class="fc" id="L44">    DIVIDE_EQUALS,</span>
+<span class="fc" id="L45">    DIVIDE,</span>
+<span class="fc" id="L46">    PLUS_EQUALS,</span>
+<span class="fc" id="L47">    INCREMENT,</span>
+<span class="fc" id="L48">    PLUS,</span>
+<span class="fc" id="L49">    DECREMENT,</span>
+<span class="fc" id="L50">    MINUS,</span>
+<span class="fc" id="L51">    AMPERSAND_AMPERSAND,</span>
+<span class="fc" id="L52">    AMPERSAND,</span>
+<span class="fc" id="L53">    GT_EQUALS,</span>
+<span class="fc" id="L54">    UNSIGNED_SHIFT_RIGHT,</span>
+<span class="fc" id="L55">    UNSIGNED_SHIFT_RIGHT_EQUALS,</span>
+<span class="fc" id="L56">    SHIFT_RIGHT,</span>
+<span class="fc" id="L57">    SHIFT_RIGHT_EQUALS,</span>
+<span class="fc" id="L58">    GT,</span>
+<span class="fc" id="L59">    LESS_EQUALS,</span>
+<span class="fc" id="L60">    SHIFT_LEFT,</span>
+<span class="fc" id="L61">    SHIFT_LEFT_EQUALS,</span>
+<span class="fc" id="L62">    LESS,</span>
+<span class="fc" id="L63">    STRING_LITERAL,	</span>
+<span class="fc" id="L64">    EOF,</span>
+<span class="fc" id="L65">    BASE16_INTEGER,</span>
+<span class="fc" id="L66">    BASE2_INTEGER,</span>
+<span class="fc" id="L67">    BASE8_INTEGER,</span>
+<span class="fc" id="L68">    LONG_LITERAL,</span>
+<span class="fc" id="L69">    IDENTIFIER,</span>
+<span class="fc" id="L70">    ABSTRACT,</span>
+<span class="fc" id="L71">    ASSERT,</span>
+<span class="fc" id="L72">    BOOLEAN,</span>
+<span class="fc" id="L73">    BREAK,</span>
+<span class="fc" id="L74">    BYTE,</span>
+<span class="fc" id="L75">    CASE,</span>
+<span class="fc" id="L76">    CATCH,</span>
+<span class="fc" id="L77">    CHAR,</span>
+<span class="fc" id="L78">    CLASS,</span>
+<span class="fc" id="L79">    CONST,</span>
+<span class="fc" id="L80">    CONTINUE,</span>
+<span class="fc" id="L81">    DEFAULT,</span>
+<span class="fc" id="L82">    DO,</span>
+<span class="fc" id="L83">    DOUBLE,</span>
+<span class="fc" id="L84">    ELSE,</span>
+<span class="fc" id="L85">    ENUM,</span>
+<span class="fc" id="L86">    EXTENDS,</span>
+<span class="fc" id="L87">    FALSE,</span>
+<span class="fc" id="L88">    FINAL,</span>
+<span class="fc" id="L89">    FINALLY,</span>
+<span class="fc" id="L90">    FLOAT,</span>
+<span class="fc" id="L91">    FOR,</span>
+<span class="fc" id="L92">    IF,</span>
+<span class="fc" id="L93">    GOTO,</span>
+<span class="fc" id="L94">    IMPLEMENTS,</span>
+<span class="fc" id="L95">    IMPORT,</span>
+<span class="fc" id="L96">    INSTANCEOF,</span>
+<span class="fc" id="L97">    INT,</span>
+<span class="fc" id="L98">    INTERFACE,</span>
+<span class="fc" id="L99">    LONG,</span>
+<span class="fc" id="L100">    NATIVE,</span>
+<span class="fc" id="L101">    NEW,</span>
+<span class="fc" id="L102">    NULL,</span>
+<span class="fc" id="L103">    PACKAGE,</span>
+<span class="fc" id="L104">    PRIVATE,</span>
+<span class="fc" id="L105">    PROTECTED,</span>
+<span class="fc" id="L106">    PUBLIC,</span>
+<span class="fc" id="L107">    RETURN,</span>
+<span class="fc" id="L108">    SHORT,</span>
+<span class="fc" id="L109">    STATIC,</span>
+<span class="fc" id="L110">    STRICTFP,</span>
+<span class="fc" id="L111">    SUPER,</span>
+<span class="fc" id="L112">    SWITCH,</span>
+<span class="fc" id="L113">    SYNCHRONIZED,</span>
+<span class="fc" id="L114">    THIS,</span>
+<span class="fc" id="L115">    THROW,</span>
+<span class="fc" id="L116">    THROWS,</span>
+<span class="fc" id="L117">    TRANSIENT,</span>
+<span class="fc" id="L118">    TRUE,</span>
+<span class="fc" id="L119">    TRY,</span>
+<span class="fc" id="L120">    VOID,</span>
+<span class="fc" id="L121">    VOLATILE,</span>
+<span class="fc" id="L122">    WHILE,</span>
+<span class="fc" id="L123">	OVERRIDE_ANNOTATION,</span>
+<span class="fc" id="L124">	DEPRECATED_ANNOTATION,</span>
+<span class="fc" id="L125">	SUPPRESSWARNINGS_ANNOTATION;</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
