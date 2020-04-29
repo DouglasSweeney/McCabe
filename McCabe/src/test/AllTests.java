@@ -5,7 +5,9 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({test.main.OptionsTest.class,
+@SuiteClasses({test.debug.CategoriesTest.class,
+	
+	           test.main.OptionsTest.class,
 	
 	           test.metrics.McCabeTest.class,
 	           
