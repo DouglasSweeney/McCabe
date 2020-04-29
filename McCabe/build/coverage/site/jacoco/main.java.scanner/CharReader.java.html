@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CharReader.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">McCabe project</a> &gt; <a href="index.source.html" class="el_package">main.java.scanner</a> &gt; <span class="el_source">CharReader.java</span></div><h1>CharReader.java</h1><pre class="source lang-java linenums">package main.java.scanner;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.LineNumberReader;
+
+/**
+ * A buffered character reader. Abstracts out differences between platforms,
+ * mapping all new lineNumbers to '\n'. Also, keeps track of lineNumber numbers where the
+ * first lineNumber is numbered 1.
+ */
+
+public class CharReader {
+
+    /** A representation of the end of file as a character. */
+    public final static char EOFCH = (char) -1;
+
+    /** The underlying reader records lineNumber numbers. */
+    private LineNumberReader lineNumberReader;
+
+    /** Name of the file that is being read. */
+    private String fileName;
+
+    /**
+     * Construct a CharReader from a file name.
+     * 
+     * @param fileName
+     *            the name of the input file.
+     * @exception FileNotFoundException
+     *                if the file is not found.
+     */
+
+<span class="fc" id="L34">    public CharReader(String fileName) throws FileNotFoundException {</span>
+<span class="fc" id="L35">        lineNumberReader = new LineNumberReader(new FileReader(fileName));</span>
+<span class="fc" id="L36">        this.fileName = fileName;</span>
+<span class="fc" id="L37">    }</span>
+
+    /**
+     * Scan the next character.
+     * 
+     * @return the character scanned.
+     * @exception IOException
+     *                if an I/O error occurs.
+     */
+
+    public char nextChar() throws IOException {
+<span class="fc" id="L48">        return (char) lineNumberReader.read();</span>
+    }
+
+    /**
+     * The current lineNumber number in the source file, starting at 1.
+     * 
+     * @return the current lineNumber number.
+     */
+
+    public int lineNumber() {
+        // lineNumberNumberReader counts lineNumbers from 0.
+<span class="fc" id="L59">        return lineNumberReader.getLineNumber() + 1;</span>
+    }
+
+    /**
+     * Return the file name.
+     * 
+     * @return the file name.
+     */
+
+    public String fileName() {
+<span class="nc" id="L69">        return fileName;</span>
+    }
+
+    /**
+     * Close the file.
+     * 
+     * @exception IOException
+     *                if an I/O error occurs.
+     */
+
+    public void close() throws IOException {
+<span class="nc" id="L80">        lineNumberReader.close();</span>
+<span class="nc" id="L81">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

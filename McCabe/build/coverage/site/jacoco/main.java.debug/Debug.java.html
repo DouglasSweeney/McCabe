@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Debug.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">McCabe project</a> &gt; <a href="index.source.html" class="el_package">main.java.debug</a> &gt; <span class="el_source">Debug.java</span></div><h1>Debug.java</h1><pre class="source lang-java linenums">package main.java.debug;
+
+import java.util.List;
+
+import main.java.main.Options;
+import main.java.scanner.Token;
+
+/**
+ * To use this class.
+ * Set the define in the &quot;java -Ddebug.options -jar filename.jar&quot;.
+ * Calling function is &quot;Debug.println(category, message);&quot;.
+ *  
+ * @author dks
+ *
+ */
+<span class="nc" id="L16">public class Debug {</span>
+<span class="fc" id="L17">	private final static Integer MAX_TOKENS_TO_PRINT = 500;</span>
+	
+	private static Boolean useExceptions;
+	private static Boolean oneFilename;
+	private static String  methodName;
+	private static String  directoryOrFilename;
+	
+	/**
+	 * Set some properties.
+	 * The properties coorespond to those in the Categories.java file
+	 * 
+	 */
+	public static void setProperties() {
+<span class="nc" id="L30">		final String value = &quot;1&quot;;</span>
+		
+<span class="nc" id="L32">		System.setProperty(&quot;debug.&quot; + Categories.OPTIONS.toString().toLowerCase(), value);</span>
+<span class="nc" id="L33">		System.setProperty(&quot;debug.&quot; + Categories.TOKENS.toString().toLowerCase(), value);</span>
+<span class="nc" id="L34">		System.setProperty(&quot;debug.&quot; + Categories.MCCABE.toString().toLowerCase(), value);</span>
+<span class="nc" id="L35">		System.setProperty(&quot;debug.&quot; + Categories.BRACES.toString().toLowerCase(), value);</span>
+<span class="nc" id="L36">		System.setProperty(&quot;debug.&quot; + Categories.INPUT_METHODS.toString().toLowerCase(), value);</span>
+<span class="nc" id="L37">		System.setProperty(&quot;debug.&quot; + Categories.INTERNAL_METHODS.toString().toLowerCase(), value);</span>
+<span class="nc" id="L38">	}</span>
+	
+	private static void printList(String methodName, List&lt;Token&gt; list) {
+<span class="nc" id="L41">		System.out.println(&quot;methodName: &quot; + methodName);</span>
+<span class="nc bnc" id="L42" title="All 2 branches missed.">		if (list.size() &lt; MAX_TOKENS_TO_PRINT) {</span>
+<span class="nc bnc" id="L43" title="All 2 branches missed.">			for (Token item : list) { // get the overall Mccabe Complexity Factor</span>
+<span class="nc" id="L44">				System.out.println(&quot;Token: &quot; + item.enumeration);</span>
+<span class="nc" id="L45">			}</span>
+     	}
+<span class="nc" id="L47">    }</span>
+	
+	private static void printList(List&lt;Token&gt; list) {
+<span class="nc bnc" id="L50" title="All 2 branches missed.">		if (list.size() &lt; MAX_TOKENS_TO_PRINT) {</span>
+<span class="nc bnc" id="L51" title="All 2 branches missed.">			for (Token item : list) { // get the overall Mccabe Complexity Factor</span>
+<span class="nc" id="L52">				System.out.println(&quot;Token: &quot; + item.enumeration);</span>
+<span class="nc" id="L53">			}</span>
+     	}
+<span class="nc" id="L55">    }</span>
+	
+	/** 
+	 * No output if everything is OK.
+	 * 
+	 * @param options the options to check against.
+	 */
+	private static void compareToFirstCall(Options options) {
+<span class="nc bnc" id="L63" title="All 2 branches missed.">		if (directoryOrFilename == null) {</span>
+<span class="nc" id="L64">			useExceptions = options.getUseExceptions();</span>
+<span class="nc" id="L65">			oneFilename = Options.isComputeOnlyOneMethod();</span>
+<span class="nc" id="L66">			methodName = Options.getMethodName();</span>
+<span class="nc" id="L67">			directoryOrFilename = options.getMcCabeDirectory();</span>
+		}
+		else {
+<span class="nc bnc" id="L70" title="All 2 branches missed.">			if (useExceptions != options.getUseExceptions() ||</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">				oneFilename != Options.isComputeOnlyOneMethod() ||</span>
+<span class="nc bnc" id="L72" title="All 2 branches missed.">				!methodName.equals(Options.getMethodName()) ||</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">				!directoryOrFilename.equals(options.getMcCabeDirectory()) </span>
+			   ) {
+<span class="nc" id="L75">					System.err.println(&quot;Debug found that options are different.&quot;);</span>
+			}
+//			else {
+//				System.out.println(&quot;Debug found that the options are the same&quot;);
+//			}
+		}
+<span class="nc" id="L81">	}</span>
+	
+	private static boolean isEnabled(String category) {
+<span class="pc bpc" id="L84" title="1 of 2 branches missed.">		return System.getProperty(&quot;debug.&quot; + category.toLowerCase()) != null;</span>
+	}
+	
+	public static void println(Categories category, String message) {
+<span class="pc bpc" id="L88" title="1 of 2 branches missed.">		if (isEnabled(category.toString())) {</span>
+<span class="nc" id="L89">			System.out.println(message);</span>
+		}
+<span class="fc" id="L91">	}</span>
+	
+	public static void println(Categories category, Options options, String message) {
+<span class="pc bpc" id="L94" title="1 of 2 branches missed.">		if (isEnabled(category.toString())) {</span>
+<span class="nc bnc" id="L95" title="All 2 branches missed.">			if (category.equals(Categories.OPTIONS))</span>
+<span class="nc" id="L96">				compareToFirstCall(options);</span>
+			else
+<span class="nc" id="L98">				System.out.println(message);</span>
+		}
+<span class="fc" id="L100">	}</span>
+	
+	public static void println(Categories category, String methodName, List&lt;Token&gt; tokenList, String message) {
+<span class="pc bpc" id="L103" title="1 of 2 branches missed.">		if (isEnabled(category.toString())) {</span>
+<span class="nc bnc" id="L104" title="All 2 branches missed.">			if (category.equals(Categories.TOKENS))</span>
+<span class="nc" id="L105">				printList(methodName, tokenList);</span>
+			else
+<span class="nc" id="L107">				System.out.println(message);</span>
+		}
+<span class="fc" id="L109">	}</span>
+	public static void println(Categories category, List&lt;Token&gt; tokenList, String message) {
+<span class="pc bpc" id="L111" title="1 of 2 branches missed.">		if (isEnabled(category.toString())) {</span>
+<span class="nc bnc" id="L112" title="All 2 branches missed.">			if (category.equals(Categories.TOKENS))</span>
+<span class="nc" id="L113">				printList(tokenList);</span>
+			else
+<span class="nc" id="L115">				System.out.println(message);</span>
+		}
+<span class="fc" id="L117">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

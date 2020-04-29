@@ -1,3 +1,11 @@
+//
+// File:    Main.java
+// Created: 4/28/2020
+// Author:  Douglas Sweeney
+//
+// History: 
+//           v1.0     4/28/2020        Douglas Sweeney 
+//
 package main.java.main;
 
 import java.io.File;
@@ -17,10 +25,24 @@ import main.java.scanner.Scanner;
 import main.java.scanner.Token;
 import main.java.scanner.TokenEnum;
 
+/**
+ * Defines the main entry point and starts to process the command line options.
+ *  
+ * @author dks
+ * @since  1.0
+ *
+ */
 public class Main {
 	TokenList tokenList = new TokenList();
 	Metrics metrics = new Metrics(); 
 
+	/**
+	 * Create the scanner.
+	 * 
+	 * @param directoryAndFilename the input file for the scanner
+	 * 
+	 * @return the scanner that was created
+	 */
 	private Scanner createScanner(String directoryAndFilename) {
 	    Scanner scanner = null;
 	    
@@ -33,6 +55,11 @@ public class Main {
 		return scanner;
 	}
 	
+	/**
+	 * Build a list of all the tokens.
+	 * 
+	 * @param scanner get the next token from the scanner
+	 */
 	private void buildTokenList(Scanner scanner) {
 		Token token;
 		
@@ -41,9 +68,13 @@ public class Main {
 	    	token = scanner.getNextToken();
 	    	tokenList.add(token);;
 	    }
-
 	}
 	
+	/**
+	 * Builds the scanner and gets a list of the tokens.
+	 * 
+	 * @param directoryAndFilename
+	 */
     private void getTokensFromFile(String directoryAndFilename) {
 		
 	    Scanner scanner = null;
@@ -55,7 +86,12 @@ public class Main {
 	    //tokenList.print(tokenList.getList());
 	}
 
-   
+    /**
+     * Process the list of tokens.
+     * 
+     * @param filename for debugging
+     * @param options  the user options of the program
+     */
     private void processTokens(String filename, Options options) {    	
     	Debug.println(Categories.OPTIONS, options, Main.class.getCanonicalName() + " " + 
 			      "processTokens()");
@@ -64,6 +100,11 @@ public class Main {
 		metrics.compute(filename, tokenList.clone(), options);
     }
     
+    /**
+     * A single .java file was passed in.
+     * 
+     * @param options the user options of the program
+     */
     private void runOneFile(Options options) {
     	Debug.println(Categories.OPTIONS, options, Main.class.getCanonicalName() + " " + 
     			"runOneFile()");
@@ -83,6 +124,13 @@ public class Main {
 	
     }
     
+    
+    /**
+     * A directory of .java files was passed in.
+     * 
+     * @param PRINT_JUST_FILENAME debugging; prints the filenames versus processing the file.
+     * @param options the user options of the program
+     */
     private void runDirectory(boolean PRINT_JUST_FILENAME, Options options) {
        	Debug.println(Categories.OPTIONS, options, Main.class.getCanonicalName() + " " + 
 			      "runDirectory()");
@@ -127,6 +175,12 @@ public class Main {
 		}    	
     }
     
+    /** 
+     * Process a single .java file or a directory of .java files.
+     * 
+     * @param PRINT_JUST_FILENAME debugging; prints the filenames versus processing the file
+     * @param options the user specified options on the command line
+     */
     public void run(boolean PRINT_JUST_FILENAME, Options options) {
  		
     	if (options.getMcCabeDirectory().endsWith(".java")) {
@@ -137,7 +191,14 @@ public class Main {
 		}    	
     }
     
+    /**
+     * The main entry point of the McCabe application program.
+     * 
+     * @param args what the user has specified on the command line
+     */
  	public static void main(String[] args) {
+// 		System.out.println(System.getProperty("sun.java.command"));
+ 		
  		Debug.setProperties();
  		
  		Main main = new Main();

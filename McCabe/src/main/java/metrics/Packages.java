@@ -1,3 +1,11 @@
+//
+// File:    Packages.java
+// Created: 4/28/2020
+// Author:  Douglas Sweeney
+//
+// History: 
+//           v1.0     4/28/2020        Douglas Sweeney 
+//
 package main.java.metrics;
 
 import java.io.FileNotFoundException;
@@ -20,6 +28,12 @@ import main.java.scanner.Scanner;
 import main.java.scanner.Token;
 import main.java.scanner.TokenEnum;
 
+/**
+ * Keep track of the packages for the file(s)..
+ * 
+ * @author dks
+ * @since 1.0
+ */
 public class Packages extends TokenList {
 
 	static List<String> packageList = new ArrayList();
@@ -29,6 +43,11 @@ public class Packages extends TokenList {
 			                      "constructor: packageList = null";
 	}
 	
+	/**
+	 * Track the "package" keyword.
+	 * 
+	 * @param list Scan thru the list looking for the package keyword
+	 */
 	public void compute(List<Token> list) {
     	Debug.println(Categories.INTERNAL_METHODS, Packages.class.getCanonicalName() + " " + 
 			      "compute()");
@@ -70,6 +89,9 @@ public class Packages extends TokenList {
 		}
 	}
 
+	/**
+	 * Print the the individual package(s)
+	 */
 	public void debugging_print() {
 		
 		packageList.sort(Comparator.naturalOrder());
@@ -78,10 +100,18 @@ public class Packages extends TokenList {
 		}
 	}
 	
+	/**
+	 * Print out just the number of packages
+	 */
 	public void print() {
 	    System.out.println("Packages: " + packageList.size());
 	}
 	
+	/**
+	 * Test out this class
+	 * 
+	 * @param args the arguments to main()
+	 */
 	public static void main(String[] args) {
 		Packages packages = new Packages();
 	
@@ -91,7 +121,7 @@ public class Packages extends TokenList {
 	
 		Stream<Path> walk = null;
 		try {
-			walk = Files.walk(Paths.get("/home/dks/git/McCabe_v1/McCabe/src/source"));
+			walk = Files.walk(Paths.get("/home/dks/git/McCabe_v1/McCabe/src/main"));
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}

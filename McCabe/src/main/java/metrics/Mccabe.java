@@ -1,3 +1,11 @@
+//
+// File:    Mccabe.java
+// Created: 4/28/2020
+// Author:  Douglas Sweeney
+//
+// History: 
+//           v1.0     4/28/2020        Douglas Sweeney 
+//
 package main.java.metrics;
 
 import java.io.FileNotFoundException;
@@ -13,13 +21,22 @@ import main.java.scanner.Scanner;
 import main.java.scanner.Token;
 import main.java.scanner.TokenEnum;
 
+/**
+ * Compute the McCabe complexity factor.
+ * 
+ * @author dks
+ * @since 1.0
+ */
 public class Mccabe extends TokenList {
 	List<String> classList = new ArrayList();
 	static List<MccabeNode> methods = new ArrayList();
-    Integer          mccabeComplexityFactor;
-	Utils            utils = new Utils();
-String      previousMethodName = "";
+    Integer mccabeComplexityFactor;
+	Utils utils = new Utils();
+    String previousMethodName = "";
 
+    /**
+     * The constructor - checks that some class variables were initialized.
+     */
 	public Mccabe() {
 		assert classList != null : Mccabe.class.getCanonicalName() +
                 "constructor: classList = null";
@@ -27,6 +44,16 @@ String      previousMethodName = "";
 				                "constructor: method = null";
 	}
 	
+	/**
+	 * Count the braces.
+	 * 
+	 * @param methodName keeps the output smaller when debugging
+	 * @param token the current token
+	 * @param braces the current count of the braces
+	 * @param list debugging - the list of tokens
+	 * 
+	 * @return the current count of the braces
+	 */
 	private Integer countBraces(String methodName, Token token, Integer braces, List<Token> list) {
 		if (token.enumeration != TokenEnum.LBRACE &&
 			token.enumeration != TokenEnum.RBRACE)
@@ -59,6 +86,12 @@ String      previousMethodName = "";
 		return braces;
 	}
 	
+	/**
+	 * Counts each "return" as 1 except if the "return" is on the last line.
+	 * 
+	 * @param methodName debugging
+	 * @param procedureList a list of tokens just for the method
+	 */
     private void returns(String methodName, List<Token> procedureList) {
     	Integer procedureTokenIndex = 0;
     	Token token = procedureList.get(procedureTokenIndex);
@@ -93,11 +126,16 @@ String      previousMethodName = "";
         		braces--;
         		if (braces == 1)
         			mccabeComplexityFactor++;
-        		
         	}
     	}
     }
     
+	/**
+	 * Counts each if/else/case/default statements as 1.
+	 * 
+	 * @param methodName debugging
+	 * @param procedureList a list of tokens just for the method
+	 */
     private void selections(String methodName, List<Token> procedureList) {
     	Debug.println(Categories.INTERNAL_METHODS, Mccabe.class.getCanonicalName() + " " + 
 			      "selections()");
@@ -117,12 +155,23 @@ String      previousMethodName = "";
     	}
     }
        
+    /** 
+     * Increment the McCabe complexity factor.
+     * 
+     * @param size the number of times to increment it
+     */
     private void incrementComplexityFactor(Integer size) {
 		for (int i=0; i<size; i++) {
    			mccabeComplexityFactor++;	
 		}
     }
     
+	/**
+	 * Counts each for/break/continue/do-while statements as 1.
+	 * 
+	 * @param methodName debugging
+	 * @param procedureList a list of tokens just for the method
+	 */
     private void loops(String methodName, List<Token> procedureList) {
     	Debug.println(Categories.INTERNAL_METHODS, Mccabe.class.getCanonicalName() + " " + 
 			      "loops()");
@@ -168,6 +217,12 @@ String      previousMethodName = "";
    		}
    	}
     
+	/**
+	 * Counts each &&/||/? and possibly count the colon statements as 1.
+	 * 
+	 * @param methodName debugging
+	 * @param procedureList a list of tokens just for the method
+	 */
     private void operators(String methodName, List<Token> procedureList) {
     	Debug.println(Categories.INTERNAL_METHODS, Mccabe.class.getCanonicalName() + " " + 
 			      "operators()");
@@ -206,6 +261,12 @@ String      previousMethodName = "";
        	}
     }
     
+	/**
+	 * Counts each catch/finally/throw statements as 1.
+	 * 
+	 * @param methodName debugging
+	 * @param procedureList a list of tokens just for the method
+	 */
     private void exceptions(String methodName, List<Token> procedureList) {
     	Debug.println(Categories.INTERNAL_METHODS, Mccabe.class.getCanonicalName() + " " + 
 			      "exceptions()");
@@ -224,7 +285,17 @@ String      previousMethodName = "";
     	}
     }
     
-    private void computeMcCabeComplexityFactor(String methodName, List<Token> procedureList, boolean useExceptions) {
+	/**
+	 * Counts some statements for the McCabe complexity Factor. The exceptions is a 
+	 * special case - one train of thought is that its good programming style to have
+	 * exception tests in your code.
+	 * 
+	 * @param methodName debugging
+	 * @param procedureList a list of tokens just for the method
+	 * @param useExceptions count the exception keywords towards the complexity factor
+	 */
+    private void computeMcCabeComplexityFactor(String methodName, List<Token> procedureList, 
+    		                                   boolean useExceptions) {
 	    Debug.println(Categories.INPUT_METHODS, Mccabe.class.getCanonicalName() + " " + 
 			      "computeMcCabeComplexityFactor() methodName: " + methodName + "()");
         returns(methodName, procedureList);
@@ -236,6 +307,14 @@ String      previousMethodName = "";
         
     }
 
+    /**
+     * Compute the new index into the file token list. Believe this isn't used.
+     * 
+     * @param currentTokenIndex the current value of the index
+     * @param procedureList the list for a single method
+     * 
+     * @return the new value of the index
+     */
     private Integer computeCurrentTokenIndex(Integer currentTokenIndex,
     		                                 List<Token> procedureList) {
         currentTokenIndex += procedureList.size();
@@ -243,6 +322,16 @@ String      previousMethodName = "";
         return currentTokenIndex;
     }
     
+    /**
+     * Determine the methodName and the complexity factor of each method.
+     * 
+     * @param filename debugging
+     * @param list the token list of the file
+     * @param currentTokenIndex the index into the list
+     * @param className the class of the file
+     * @param classNumber the number of classes in the file
+     * @param useExceptions count the exceptions towards the McCabe complexity factor
+     */
 	private void findMethodsAndComplexityFactor(String filename, List<Token> list, 
 			                                    Integer currentTokenIndex,
 			                                    String className, Integer classNumber,
@@ -354,6 +443,14 @@ String      previousMethodName = "";
     	
 		return total;
 	}
+	
+	/**
+	 * Determine the complexity factor for a class.
+	 * 
+	 * @param filename debugging
+	 * @param list the file list of tokens
+	 * @param options arguments specified on the command line
+	 */
     public void compute(String filename, List<Token> list, Options options) {
        	Debug.println(Categories.OPTIONS, options, Mccabe.class.getCanonicalName() + " " + 
 			      "compute()");
@@ -391,6 +488,9 @@ String      previousMethodName = "";
 
     }
     
+    /** 
+     * Print out information about the file. 
+     */
     public void debugging_print() {
     	double total = 0;
     	double mccabeComplexityFactor = 0;
@@ -415,6 +515,9 @@ String      previousMethodName = "";
 	    System.out.println("McCabe Complexity Factor: " + mccabeComplexityFactor);   	
     }
     
+    /**
+     * Print out non-verbose information about the file
+     */
     public void print() {
     	double complexityFactor;
     	double total = 0;
@@ -428,6 +531,11 @@ String      previousMethodName = "";
 	    System.out.println("Number of methods: " + methods.size());
 	}
     
+    /**
+     * Determine the file McCabe complexity factor.
+     * 
+     * @return the McCabe complexity factor of the file
+     */
     public double getOverallComplexityFactor() {
     	double complexityFactor;
     	double total = 0;
@@ -440,6 +548,13 @@ String      previousMethodName = "";
   	 	return complexityFactor;
 	}
     
+    /** 
+     * Get the McCabe complexity factor for a method.
+     * 
+     * @param method the method 
+     * 
+     * @return the complexity factor
+     */
     public Integer getMethodComplexityFactor(String method) {
     	Integer complexityFactor;
     	
@@ -453,10 +568,22 @@ String      previousMethodName = "";
   	 	return complexityFactor;
 	}
     
+    /**
+     * Get the number of methods
+     * 
+     * @return the number of methods
+     */
     public Integer getNumberOfMethods() {
    	 	return methods.size();
     }
     
+    /**
+     * Get the McCabe complexity factor of a method.
+     * 
+     * @param methodIndex the index into the methods list
+     * 
+     * @return the complexity factor
+     */
     public Integer getMethodComplexityFactor(int methodIndex) {
     	MccabeNode item;
     	
@@ -468,6 +595,13 @@ String      previousMethodName = "";
     		return 0;
 	}
     
+    /**
+     * Determine the method name.
+     * 
+     * @param methodIndex the index into the methods list
+     * 
+     * @return the method name
+     */
     public String getMethodName(int methodIndex) {
     	MccabeNode item;
     	
@@ -479,6 +613,11 @@ String      previousMethodName = "";
     		return "";
 	}
     
+    /**
+     * Set some options to test out this class
+     * 
+     * @return the arguments to be tested
+     */
     private static Options setOptions() {
 		String[] args = new String[4];
 		args[0] = "-exceptions";
@@ -490,6 +629,13 @@ String      previousMethodName = "";
     	return options;
     }
     
+    /**
+     * Create a scanner.
+     * 
+     * @param options for the directory of java files
+     * 
+     * @return the scanner
+     */
     private static Scanner createScanner(Options options) {
     	Scanner scanner = null;
     	
@@ -502,6 +648,13 @@ String      previousMethodName = "";
     	return scanner;
     }
     
+    /**
+     * Read a file of tokens.
+     * 
+     * @param scanner the scanner to use to get the tokens
+     * 
+     * @return a list of tokens
+     */
     private static TokenList readTokens(Scanner scanner) {
 	   	Token token = null;
     	TokenList tokenList = new TokenList();
@@ -517,6 +670,11 @@ String      previousMethodName = "";
 		return tokenList;
     }
     
+    /**
+     * Prints out the methods to the console
+     * 
+     * @param mcCabe the methods that were computed
+     */
     private static void printMethods(Mccabe mcCabe) {
 		Integer size = mcCabe.getNumberOfMethods();
 		for (int i=0; i<size; i++) {
@@ -527,6 +685,11 @@ String      previousMethodName = "";
 		} 	
     }
     
+    /**
+     * The main() routine to test out this file.
+     * 
+     * @param args22222 are not used
+     */
 	public static void main(String[] args22222) {
 		Debug.setProperties();
  		

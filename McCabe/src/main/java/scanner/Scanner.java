@@ -1,3 +1,11 @@
+//
+// File:    Scanner.java
+// Created: 4/28/2020
+// Author:  Douglas Sweeney
+//
+// History: 
+//           v1.0     4/28/2020        Douglas Sweeney modifications to a file found online.
+//
 package main.java.scanner;
 
 import java.io.FileNotFoundException;
@@ -5,6 +13,12 @@ import java.util.Hashtable;
 
 import main.java.main.TokenList;
 
+/**
+ * Convert a file to tokens.
+ * 
+ * @author dks
+ * @since 1.0
+ */
 public class Scanner {
 
     /** End of file character. */

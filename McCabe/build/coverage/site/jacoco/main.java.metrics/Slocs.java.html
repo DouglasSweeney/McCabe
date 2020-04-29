@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Slocs.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">McCabe project</a> &gt; <a href="index.source.html" class="el_package">main.java.metrics</a> &gt; <span class="el_source">Slocs.java</span></div><h1>Slocs.java</h1><pre class="source lang-java linenums">package main.java.metrics;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import main.java.debug.Categories;
+import main.java.debug.Debug;
+import main.java.main.Options;
+import main.java.main.TokenList;
+import main.java.scanner.Scanner;
+import main.java.scanner.Token;
+import main.java.scanner.TokenEnum;
+
+<span class="nc bnc" id="L22" title="All 2 branches missed.">public class Slocs extends TokenList {</span>
+<span class="nc" id="L23">	static TokenList tokenList = new TokenList();</span>
+	
+	public class SlocNode {
+<span class="nc" id="L26">		public String filename = &quot;&quot;;</span>
+<span class="nc" id="L27">		public Integer lineNumber = 0;</span>
+			
+<span class="nc" id="L29">		public SlocNode(String filename, Integer lineNumber) {</span>
+<span class="nc" id="L30">			this.filename = filename;</span>
+<span class="nc" id="L31">			this.lineNumber = lineNumber;</span>
+<span class="nc" id="L32">		}</span>
+	}
+<span class="nc" id="L34"> 	static List&lt;SlocNode&gt; slocList = new ArrayList();;</span>
+	
+<span class="nc" id="L36">	public Slocs() {</span>
+<span class="nc bnc" id="L37" title="All 4 branches missed.">		assert tokenList != null : Slocs.class.getCanonicalName() + </span>
+                &quot;constructor: tokenList = null&quot;;
+<span class="nc bnc" id="L39" title="All 4 branches missed.">		assert slocList != null : Slocs.class.getCanonicalName() + </span>
+                &quot;constructor: slocList = null&quot;;
+<span class="nc" id="L41">	}</span>
+	
+	public void compute(String filename, List&lt;Token&gt; list) {
+<span class="nc" id="L44">    	Debug.println(Categories.INTERNAL_METHODS, Slocs.class.getCanonicalName() + &quot; &quot; + </span>
+			      &quot;compute()&quot;);
+<span class="nc" id="L46">		boolean found = false;;</span>
+<span class="nc" id="L47">		Integer currentTokenIndex = 0;</span>
+		
+<span class="nc bnc" id="L49" title="All 2 branches missed.">		if (list != null) {</span>
+<span class="nc" id="L50">			Token token = list.get(currentTokenIndex);		</span>
+<span class="nc bnc" id="L51" title="All 2 branches missed.">			while (token.enumeration != TokenEnum.EOF) {</span>
+<span class="nc" id="L52">				found = false;</span>
+<span class="nc bnc" id="L53" title="All 4 branches missed.">				for (int i=0; i&lt;slocList.size() &amp;&amp; !found; i++) {</span>
+<span class="nc" id="L54">					SlocNode item = slocList.get(i);</span>
+                
+<span class="nc bnc" id="L56" title="All 2 branches missed.">					if ((item.filename.equals(filename)) &amp;&amp; </span>
+<span class="nc bnc" id="L57" title="All 2 branches missed.">						(item.lineNumber.intValue() == token.lineNumber.intValue())) {</span>
+<span class="nc" id="L58">						found = true;</span>
+<span class="nc" id="L59">						break;</span>
+					}
+				}
+				
+<span class="nc bnc" id="L63" title="All 2 branches missed.">				if (!found) {</span>
+<span class="nc" id="L64">					SlocNode slocNode = new SlocNode(filename, token.lineNumber);</span>
+				
+<span class="nc" id="L66">					slocList.add(slocNode);</span>
+				}
+				
+<span class="nc" id="L69">				currentTokenIndex = currentTokenIndex + 1;</span>
+<span class="nc" id="L70">				token = list.get(currentTokenIndex);</span>
+			}
+<span class="nc" id="L72">		}</span>
+		else {
+<span class="nc" id="L74">			System.err.println(Slocs.class.getCanonicalName() + </span>
+					           &quot;The list is null.&quot;);
+		}
+<span class="nc" id="L77">	}</span>
+	
+	public void debugging_print() {
+<span class="nc" id="L80">		Integer counter = 0;</span>
+		
+<span class="nc bnc" id="L82" title="All 2 branches missed.">		for (SlocNode sloc : slocList) {</span>
+<span class="nc" id="L83">			File file = new File(sloc.filename);</span>
+<span class="nc" id="L84">			System.out.println(&quot;slocList(&quot; + counter + &quot;)&quot; + file.getName() + &quot; &quot; + sloc.lineNumber);</span>
+<span class="nc" id="L85">			counter++;</span>
+<span class="nc" id="L86">		}</span>
+<span class="nc" id="L87">		System.out.println(&quot;slocList.size (SB 2031): &quot; + slocList.size());</span>
+<span class="nc" id="L88">	}</span>
+	
+	public void print() {
+<span class="nc" id="L91">	    System.out.println(&quot;Source Lines of Code: &quot; + slocList.size());   	</span>
+<span class="nc" id="L92">	}</span>
+	
+    private void getTokensFromFile(String directoryAndFilename) {
+		
+<span class="nc" id="L96">	    Scanner scanner = null;</span>
+<span class="nc" id="L97">        Token token = null;</span>
+	    
+ 		try {
+<span class="nc" id="L100">			scanner = new Scanner(directoryAndFilename);</span>
+<span class="nc" id="L101">		} catch (FileNotFoundException e) {</span>
+<span class="nc" id="L102">			e.printStackTrace();</span>
+<span class="nc" id="L103">		}</span>
+  			
+<span class="nc" id="L105"> 		token = new Token(TokenEnum.NONE, 0);</span>
+<span class="nc bnc" id="L106" title="All 2 branches missed."> 		while  (token.enumeration != TokenEnum.EOF) {</span>
+<span class="nc" id="L107"> 			token = scanner.getNextToken();</span>
+<span class="nc" id="L108"> 			tokenList.add(token);</span>
+ 		}
+// 		tokenList.print(tokenList.getList());
+<span class="nc" id="L111">    }</span>
+   
+    private void processTokens(String filename, boolean processExceptions) {
+<span class="nc" id="L114">		compute(filename, tokenList.getList());</span>
+<span class="nc" id="L115">    }</span>
+    
+	public static void main(String[] args) {
+<span class="nc" id="L118">    	Slocs slocs = new Slocs();</span>
+    	
+<span class="nc" id="L120">		final boolean PRINT_JUST_FILENAME = false;</span>
+<span class="nc" id="L121">		Options options = new Options(args);</span>
+//	       System.out.println(&quot;useExceptions: &quot; + options.getUseExceptions());
+//	        System.out.println(&quot;Last parameter: &quot;+ args[args.length-1]);
+//	        options.setMcCabeDirectory(args[args.length-1]);
+	 		
+		// Pass in just one file
+<span class="nc bnc" id="L127" title="All 2 branches missed.">    	if (args[0].endsWith(&quot;.java&quot;)) {</span>
+<span class="nc" id="L128">			System.out.println(args[0]);</span>
+<span class="nc" id="L129">    		slocs.getTokensFromFile(args[0]);</span>
+<span class="nc" id="L130">    		slocs.processTokens(args[0], false);</span>
+    	}
+    	else { // else pass in a directory
+ 		    try {
+<span class="nc" id="L134"> 		    	Stream&lt;Path&gt; walk = Files.walk(Paths.get(args[0]));</span>
+
+<span class="nc" id="L136"> 		    	List&lt;String&gt; result = walk.filter(Files::isRegularFile)</span>
+<span class="nc" id="L137"> 		    				.map(x -&gt; x.toString()).collect(Collectors.toList());</span>
+
+<span class="nc bnc" id="L139" title="All 2 branches missed."> 		    	for (String filename : result) {</span>
+ 		    		if (PRINT_JUST_FILENAME) {
+  		    			System.out.println(filename);
+ 		    		}
+ 		    		else {
+<span class="nc bnc" id="L144" title="All 2 branches missed."> 		    			if (filename.endsWith(&quot;.java&quot;)) { // make sure its a .java file;</span>
+// 		    				System.out.println(filename); // &amp;
+<span class="nc" id="L146"> 		    				slocs.getTokensFromFile(filename);  // not .c/.txt etc</span>
+<span class="nc" id="L147"> 		    				slocs.processTokens(filename, false);</span>
+<span class="nc" id="L148"> 		    				tokenList.clear();</span>
+ 		    			}
+		    		}
+<span class="nc" id="L151"> 		    	}</span>
+<span class="nc" id="L152">			} catch (IOException e) {</span>
+<span class="nc" id="L153">				e.printStackTrace();</span>
+<span class="nc" id="L154">			}</span>
+		}
+    	
+    	if (!PRINT_JUST_FILENAME) {
+<span class="nc" id="L158">    		slocs.debugging_print();</span>
+    	}
+<span class="nc" id="L160">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

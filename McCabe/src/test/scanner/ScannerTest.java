@@ -1,18 +1,18 @@
 package test.scanner;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
 
 import java.io.FileNotFoundException;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import main.java.scanner.Scanner;
 import main.java.scanner.Token;
 import main.java.scanner.TokenEnum;
 
-class ScannerTest {
+public class ScannerTest {
 
-	private static final String DIRECTORY = "test/scanner/inputs/";
+	private static final String DIRECTORY = "/home/dks/git/McCabe_v1/McCabe/src/test/scanner/inputs/";
 	
    	private Token token = null;
    	private Scanner scanner = null;
@@ -32,8 +32,8 @@ class ScannerTest {
 	
 // Java example of the tokens - writes them to standard out
 	@Test
-	void testInput() {
-		getScanner("test/metrics/TestInput.java");
+	public void testInput() {
+		getScanner("/home/dks/git/McCabe_v1/McCabe/src/test/TestInput.java");
     	token = scanner.getNextToken();
     	do {
         	System.out.println(token.string+ ": " + token.enumeration );
@@ -42,7 +42,7 @@ class ScannerTest {
 	}
 
 	@Test
-	void tilde() {
+	public void tilde() {
 		getScanner(DIRECTORY + "tilde.txt");
 
 	    token = scanner.getNextToken();
@@ -50,7 +50,7 @@ class ScannerTest {
 	}
 
 	@Test
-	void lParen() {
+	public void lParen() {
 		getScanner(DIRECTORY + "lparen.txt");
 
 	    token = scanner.getNextToken();
@@ -58,7 +58,7 @@ class ScannerTest {
 	}
 
 	@Test
-	void rParen() {
+	public void rParen() {
 		getScanner(DIRECTORY + "rparen.txt");
 
 	    token = scanner.getNextToken();
@@ -66,7 +66,7 @@ class ScannerTest {
 	}
 
 	@Test
-	void lBrace() {
+	public void lBrace() {
 		getScanner(DIRECTORY + "lbrace.txt");
 
 	    token = scanner.getNextToken();
@@ -74,7 +74,7 @@ class ScannerTest {
 	}
 	
 	@Test
-	void rBrace() {
+	public void rBrace() {
 		getScanner(DIRECTORY + "rbrace.txt");
 
 		token = scanner.getNextToken();
@@ -82,7 +82,7 @@ class ScannerTest {
 	}
 
 	@Test
-	void lBracket() {
+	public void lBracket() {
 		getScanner(DIRECTORY + "lbracket.txt");
 
 	    token = scanner.getNextToken();
@@ -90,7 +90,7 @@ class ScannerTest {
 	}
 	
 	@Test
-	void rBracket() {
+	public void rBracket() {
 		getScanner(DIRECTORY + "rbracket.txt");
 
 		token = scanner.getNextToken();
@@ -98,7 +98,7 @@ class ScannerTest {
 	}
 	
 	@Test
-	void semiColon() {
+	public void semiColon() {
 		getScanner(DIRECTORY + "semicolon.txt");
 
 		token = scanner.getNextToken();
@@ -106,7 +106,7 @@ class ScannerTest {
 	}
 	
 	@Test
-	void comma() {
+	public void comma() {
 		getScanner(DIRECTORY + "comma.txt");
 
 		token = scanner.getNextToken();
@@ -114,7 +114,7 @@ class ScannerTest {
 	}
 
 	@Test
-	void period() {
+	public void period() {
 		getScanner(DIRECTORY + "period.txt");
 
 		token = scanner.getNextToken();
@@ -122,7 +122,7 @@ class ScannerTest {
 	}
 
 	@Test
-	void questionmark() {
+	public void questionmark() {
 		getScanner(DIRECTORY + "questionmark.txt");
 
 		token = scanner.getNextToken();
@@ -130,7 +130,7 @@ class ScannerTest {
 	}
 
 	@Test
-	void colon() {
+	public void colon() {
 		getScanner(DIRECTORY + "colon.txt");
 
 		token = scanner.getNextToken();
@@ -138,7 +138,7 @@ class ScannerTest {
 	}
 	
 	@Test
-	void equalequal() {
+	public void equalequal() {
 		getScanner(DIRECTORY + "equalequal.txt");
 
 		token = scanner.getNextToken();
@@ -146,7 +146,7 @@ class ScannerTest {
 	}
 
 	@Test
-	void equals() {
+	public void equals() {
 		getScanner(DIRECTORY + "equals.txt");
 
 		token = scanner.getNextToken();
@@ -154,7 +154,7 @@ class ScannerTest {
 	}
 
 	@Test
-	void notequals() {
+	public void notequals() {
 		getScanner(DIRECTORY + "notequals.txt");
 
 		token = scanner.getNextToken();
@@ -162,7 +162,7 @@ class ScannerTest {
 	}
 
 	@Test
-	void not() {
+	public void not() {
 		getScanner(DIRECTORY + "not.txt");
 
 		token = scanner.getNextToken();
@@ -170,7 +170,7 @@ class ScannerTest {
 	}
 
 	@Test
-	void orequals() {
+	public void orequals() {
 		getScanner(DIRECTORY + "orequals.txt");
 
 		token = scanner.getNextToken();
@@ -178,7 +178,7 @@ class ScannerTest {
 	}
 
 	@Test
-	void or() {
+	public void or() {
 		getScanner(DIRECTORY + "or.txt");
 
 		token = scanner.getNextToken();
@@ -186,7 +186,7 @@ class ScannerTest {
 	}
 
 	@Test
-	void oror() {
+	public void oror() {
 		getScanner(DIRECTORY + "oror.txt");
 
 		token = scanner.getNextToken();
@@ -194,7 +194,7 @@ class ScannerTest {
 	}
 
 	@Test
-	void caretequals() {
+	public void caretequals() {
 		getScanner(DIRECTORY + "caretequals.txt");
 
 		token = scanner.getNextToken();
@@ -202,7 +202,7 @@ class ScannerTest {
 	}
 
 	@Test
-	void caret() {
+	public void caret() {
 		getScanner(DIRECTORY + "caret.txt");
 
 		token = scanner.getNextToken();
@@ -210,7 +210,7 @@ class ScannerTest {
 	}
 
 	@Test
-	void modequals() {
+	public void modequals() {
 		getScanner(DIRECTORY + "modequals.txt");
 
 		token = scanner.getNextToken();
@@ -218,7 +218,7 @@ class ScannerTest {
 	}
 
 	@Test
-	void mod() {
+	public void mod() {
 		getScanner(DIRECTORY + "mod.txt");
 
 		token = scanner.getNextToken();
@@ -226,7 +226,7 @@ class ScannerTest {
 	}
 	
 	@Test
-	void multiplyequals() {
+	public void multiplyequals() {
 		getScanner(DIRECTORY + "multiplyequals.txt");
 
 		token = scanner.getNextToken();
@@ -234,7 +234,7 @@ class ScannerTest {
 	}
 
 	@Test
-	void asterisk() {
+	public void asterisk() {
 		getScanner(DIRECTORY + "asterisk.txt");
 
 		token = scanner.getNextToken();
@@ -242,7 +242,7 @@ class ScannerTest {
 	}
 	
 	@Test
-	void divideequals() {
+	public void divideequals() {
 		getScanner(DIRECTORY + "divideequals.txt");
 
 		token = scanner.getNextToken();
@@ -250,7 +250,7 @@ class ScannerTest {
 	}
 
 	@Test
-	void divide() {
+	public void divide() {
 		getScanner(DIRECTORY + "divide.txt");
 
 		token = scanner.getNextToken();
@@ -258,7 +258,7 @@ class ScannerTest {
 	}
 
 	@Test
-	void plusequals() {
+	public void plusequals() {
 		getScanner(DIRECTORY + "plusequals.txt");
 
 		token = scanner.getNextToken();
@@ -266,7 +266,7 @@ class ScannerTest {
 	}
 
 	@Test
-	void increment() {
+	public void increment() {
 		getScanner(DIRECTORY + "increment.txt");
 
 		token = scanner.getNextToken();
@@ -274,7 +274,7 @@ class ScannerTest {
 	}
 	
 	@Test
-	void plus() {
+	public void plus() {
 		getScanner(DIRECTORY + "plus.txt");
 
 		token = scanner.getNextToken();
@@ -282,7 +282,7 @@ class ScannerTest {
 	}
 
 	@Test
-	void decrement() {
+	public void decrement() {
 		getScanner(DIRECTORY + "decrement.txt");
 
 		token = scanner.getNextToken();
@@ -290,7 +290,7 @@ class ScannerTest {
 	}
 	
 	@Test
-	void minus() {
+	public void minus() {
 		getScanner(DIRECTORY + "minus.txt");
 
 		token = scanner.getNextToken();
@@ -298,7 +298,7 @@ class ScannerTest {
 	}
 	
 	@Test
-	void ampersandampersand() {
+	public void ampersandampersand() {
 		getScanner(DIRECTORY + "ampersandampersand.txt");
 
 		token = scanner.getNextToken();
@@ -306,7 +306,7 @@ class ScannerTest {
 	}
 
 	@Test
-	void ampersand() {
+	public void ampersand() {
 		getScanner(DIRECTORY + "ampersand.txt");
 
 		token = scanner.getNextToken();
@@ -314,7 +314,7 @@ class ScannerTest {
 	}
 
 	@Test
-	void gtequals() {
+	public void gtequals() {
 		getScanner(DIRECTORY + "gtequals.txt");
 
 		token = scanner.getNextToken();
@@ -322,7 +322,7 @@ class ScannerTest {
 	}
 
 	@Test
-	void unsignedshiftright() {
+	public void unsignedshiftright() {
 		getScanner(DIRECTORY + "unsignedshiftright.txt");
 
 		token = scanner.getNextToken();
@@ -330,7 +330,7 @@ class ScannerTest {
 	}
 
 	@Test
-	void unsignedshiftrightequals() {
+	public void unsignedshiftrightequals() {
 		getScanner(DIRECTORY + "unsignedshiftrightequals.txt");
 
 		token = scanner.getNextToken();
@@ -338,7 +338,7 @@ class ScannerTest {
 	}
 
 	@Test
-	void shiftright() {
+	public void shiftright() {
 		getScanner(DIRECTORY + "shiftright.txt");
 
 		token = scanner.getNextToken();
@@ -346,7 +346,7 @@ class ScannerTest {
 	}
 	
 	@Test
-	void shiftrightequals() {
+	public void shiftrightequals() {
 		getScanner(DIRECTORY + "shiftrightequals.txt");
 
 		token = scanner.getNextToken();
@@ -354,7 +354,7 @@ class ScannerTest {
 	}
 	
 	@Test
-	void gt() {
+	public void gt() {
 		getScanner(DIRECTORY + "gt.txt");
 
 		token = scanner.getNextToken();
@@ -362,7 +362,7 @@ class ScannerTest {
 	}
 	
 	@Test
-	void lessequals() {
+	public void lessequals() {
 		getScanner(DIRECTORY + "lessequals.txt");
 
 		token = scanner.getNextToken();
@@ -370,7 +370,7 @@ class ScannerTest {
 	}
 	
 	@Test
-	void shiftleft() {
+	public void shiftleft() {
 		getScanner(DIRECTORY + "shiftleft.txt");
 
 		token = scanner.getNextToken();
@@ -378,7 +378,7 @@ class ScannerTest {
 	}
 	
 	@Test
-	void shiftleftequals() {
+	public void shiftleftequals() {
 		getScanner(DIRECTORY + "shiftleftequals.txt");
 
 		token = scanner.getNextToken();
@@ -386,7 +386,7 @@ class ScannerTest {
 	}
 	
 	@Test
-	void less() {
+	public void less() {
 		getScanner(DIRECTORY + "less.txt");
 
 		token = scanner.getNextToken();
@@ -394,7 +394,7 @@ class ScannerTest {
 	}
 	
 	@Test
-	void stringliteral() {
+	public void stringliteral() {
 		getScanner(DIRECTORY + "stringliteral.txt");
 
 		token = scanner.getNextToken();
@@ -402,7 +402,7 @@ class ScannerTest {
 	}
 	
 	@Test
-	void eof() {
+	public void eof() {
 		getScanner(DIRECTORY + "eof.txt");
 
 		token = scanner.getNextToken();
@@ -410,7 +410,7 @@ class ScannerTest {
 	}
 	
 	@Test
-	void base16integer() {
+	public void base16integer() {
 		getScanner(DIRECTORY + "base16integer.txt");
 
 		token = scanner.getNextToken();
@@ -418,7 +418,7 @@ class ScannerTest {
 	}
 	
 	@Test
-	void base2integer() {
+	public void base2integer() {
 		getScanner(DIRECTORY + "base2integer.txt");
 
 		token = scanner.getNextToken();
@@ -426,7 +426,7 @@ class ScannerTest {
 	}
 	
 	@Test
-	void base8integer() {
+	public void base8integer() {
 		getScanner(DIRECTORY + "base8integer.txt");
 
 		token = scanner.getNextToken();
@@ -434,7 +434,7 @@ class ScannerTest {
 	}
 	
 	@Test
-	void longLiteral() {
+	public void longLiteral() {
 		getScanner(DIRECTORY + "longliteral.txt");
 
 		token = scanner.getNextToken();
@@ -442,7 +442,7 @@ class ScannerTest {
 	}
 	
 	@Test
-	void identifier() {
+	public void identifier() {
 		getScanner(DIRECTORY + "identifier.txt");
 
 		token = scanner.getNextToken();

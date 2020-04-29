@@ -1,11 +1,11 @@
 package test.metrics;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
 
 import java.io.FileNotFoundException;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
 import main.java.main.Options;
 import main.java.main.TokenList;
@@ -14,18 +14,18 @@ import main.java.scanner.Scanner;
 import main.java.scanner.Token;
 import main.java.scanner.TokenEnum;
 
-class McCabeTest {
+public class McCabeTest {
 
-	private static final String DIRECTORY = "test/metrics";
+	private static final String DIRECTORY = "/home/dks/git/McCabe_v1/McCabe/src/test";
 	
    	private static Token token = null;
-	private static Scanner scanner = null;
+	private Scanner scanner = null;
 	private static TokenList tokenList = new TokenList();
 
 	private static Mccabe mcCabe = new Mccabe();
    	
-	@BeforeAll
-	public static void beforeClass() {
+	@Before
+	public void beforeClass() {
     	String filename = "TestInput.java";
     	String[] args = new String[4];
     	args[0] = "-exceptions";
@@ -52,174 +52,172 @@ class McCabeTest {
 	}
 
 	@Test
-	void checkMcCabeTestInputMethod() {
+	public void checkMcCabeTestInputMethod() {
 		assertEquals((Integer)3, mcCabe.getMethodComplexityFactor("TestInput"));
 	}
 
 	@Test
-	void checkMcCabeForStatementMethod() {
+	public void checkMcCabeForStatementMethod() {
 		assertEquals((Integer)6, mcCabe.getMethodComplexityFactor("forStatement"));
 	}
 
 	@Test
-	void checkMcCabeBooleanStatementMethod() {
+	public void checkMcCabeBooleanStatementMethod() {
 		assertEquals((Integer)1, mcCabe.getMethodComplexityFactor("booleanStatement"));
 	}
 
 	@Test
-	void checkMcCabeCharMethodMethod() {
+	public void checkMcCabeCharMethodMethod() {
 		assertEquals((Integer)1, mcCabe.getMethodComplexityFactor("charMethod"));
 	}
 
 	@Test
-	void checkMcCabeIfStatementMethod() {
+	public void checkMcCabeIfStatementMethod() {
 		assertEquals((Integer)10, mcCabe.getMethodComplexityFactor("ifStatement"));
 	}
 	
 	@Test
-	void checkMcCabeWhileStatementMethod() {
+	public void checkMcCabeWhileStatementMethod() {
 		assertEquals((Integer)4, mcCabe.getMethodComplexityFactor("whileStatement"));
 	}
 	
 	@Test
-	void checkMcCabeOperatorsMethod() {
+	public void checkMcCabeOperatorsMethod() {
 		assertEquals((Integer)6, mcCabe.getMethodComplexityFactor("operators"));
 	}
 	
 	@Test
-	void checkMcCabeCharLiteralMethod() {
+	public void checkMcCabeCharLiteralMethod() {
 		assertEquals((Integer)1, mcCabe.getMethodComplexityFactor("charLiteral"));
 	}
 	
 	@Test
-	void checkMcCabeStringLiteralMethod() {
+	public void checkMcCabeStringLiteralMethod() {
 		assertEquals((Integer)1, mcCabe.getMethodComplexityFactor("stringLiteral"));
 	}
 	
 	@Test
-	void checkMcCabeBase2IntegerMethod() {
+	public void checkMcCabeBase2IntegerMethod() {
 		assertEquals((Integer)1, mcCabe.getMethodComplexityFactor("base2_Integer"));
 	}
 	
 	@Test
-	void checkMcCabeBase8IntegerMethod() {
+	public void checkMcCabeBase8IntegerMethod() {
 		assertEquals((Integer)1, mcCabe.getMethodComplexityFactor("base8_Integer"));
 	}
 	
 	@Test
-	void checkMcCabeBase10IntegerMethod() {
+	public void checkMcCabeBase10IntegerMethod() {
 		assertEquals((Integer)1, mcCabe.getMethodComplexityFactor("base10_Integer"));
 	}
 	
 	@Test
-	void checkMcCabeBase16IntegerMethod() {
+	public void checkMcCabeBase16IntegerMethod() {
 		assertEquals((Integer)1, mcCabe.getMethodComplexityFactor("base16_Integer"));
 	}
 	
 	@Test
-	void checkMcCabeLongsMethod() {
+	public void checkMcCabeLongsMethod() {
 		assertEquals((Integer)1, mcCabe.getMethodComplexityFactor("longs"));
 	}
 	
 	@Test
-	void checkMcCabeFloatLiteralMethod() {
+	public void checkMcCabeFloatLiteralMethod() {
 		assertEquals((Integer)1, mcCabe.getMethodComplexityFactor("floatLiteral"));
 	}
 	
 	@Test
-	void checkMcCabeDoubleLiteralMethod() {
+	public void checkMcCabeDoubleLiteralMethod() {
 		assertEquals((Integer)1, mcCabe.getMethodComplexityFactor("doubleLiteral"));
 	}
 	
 	@Test
-	void checkMcCabeCommaMethod() {
+	public void checkMcCabeCommaMethod() {
 		assertEquals((Integer)1, mcCabe.getMethodComplexityFactor("comma"));
 	}
 	
 	@Test
-	void checkMcCabeArraysMethod() {
+	public void checkMcCabeArraysMethod() {
 		assertEquals((Integer)1, mcCabe.getMethodComplexityFactor("arrays"));
 	}
 	
 	@Test
-	void checkMcCabeAnalyzeMethod() {
+	public void checkMcCabeAnalyzeMethod() {
 		assertEquals((Integer)1, mcCabe.getMethodComplexityFactor("analyze"));
 	}
 	
 	@Test
-	void checkMcCabeCommentsMethod() {
+	public void checkMcCabeCommentsMethod() {
 		assertEquals((Integer)1, mcCabe.getMethodComplexityFactor("comments"));
 	}
 	
 	@Test
-	void checkMcCabeTildeMethod() {
+	public void checkMcCabeTildeMethod() {
 		assertEquals((Integer)1, mcCabe.getMethodComplexityFactor("tilde"));
 	}
 	
 	@Test
-	void checkMcCabeShiftsMethod() {
+	public void checkMcCabeShiftsMethod() {
 		assertEquals((Integer)1, mcCabe.getMethodComplexityFactor("shifts"));
 	}
 	
 	@Test
-	void checkMcCabeOtherMethod() {
+	public void checkMcCabeOtherMethod() {
 		assertEquals((Integer)3, mcCabe.getMethodComplexityFactor("other"));
 	}
 	
 	@Test
-	void checkMcCabeOther2Method() {
+	public void checkMcCabeOther2Method() {
 		assertEquals((Integer)7, mcCabe.getMethodComplexityFactor("other2"));
 	}
 	
 	@Test
-	void checkMcCabeOther3Method() {
+	public void checkMcCabeOther3Method() {
 		assertEquals((Integer)6, mcCabe.getMethodComplexityFactor("other3"));
 	}
 	
 	@Test
-	void checkMcCabeOther4Method() {
+	public void checkMcCabeOther4Method() {
 		assertEquals((Integer)6, mcCabe.getMethodComplexityFactor("other4"));
 	}
 	
 	@Test
-	void checkMcCabeHelloWorldMethod() {
+	public void checkMcCabeHelloWorldMethod() {
 		assertEquals((Integer)1, mcCabe.getMethodComplexityFactor("helloWorld"));
 	}
 	
 	@Test
-	void checkMcCabeFocusGainedMethod() {
+	public void checkMcCabeFocusGainedMethod() {
 		assertEquals((Integer)1, mcCabe.getMethodComplexityFactor("focusGained"));
 	}
 	
 	@Test
-	void checkMcCabeFocusLostMethod() {
+	public void checkMcCabeFocusLostMethod() {
 		assertEquals((Integer)1, mcCabe.getMethodComplexityFactor("focusLost"));
 	}
 	
 	@Test
-	void checkMcCabeAbstractClassMethod() {
+	public void checkMcCabeAbstractClassMethod() {
 		assertEquals((Integer)1, mcCabe.getMethodComplexityFactor("AbstractClass"));
 	}
 	
 	@Test
-	void checkMcCabeSubProcedureMethod() {
+	public void checkMcCabeSubProcedureMethod() {
 		assertEquals((Integer)5, mcCabe.getMethodComplexityFactor("subProcedure"));
 	}
 	
 	@Test
-	void checkMcCabeMainMethod() {
+	public void checkMcCabeMainMethod() {
 		assertEquals((Integer)10, mcCabe.getMethodComplexityFactor("main"));
 	}
 	
 	@Test
-	void checkMcCabeMain2Method() {
+	public void checkMcCabeMain2Method() {
 		assertEquals((Integer)4, mcCabe.getMethodComplexityFactor("main2"));
 	}
 	
 	@Test
-	void checkMcCabeMain3Method() {
+	public void checkMcCabeMain3Method() {
 		assertEquals((Integer)5, mcCabe.getMethodComplexityFactor("main3"));
 	}
 }
-
-

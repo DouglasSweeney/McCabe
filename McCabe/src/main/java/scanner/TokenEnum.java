@@ -1,5 +1,19 @@
+//
+// File:    Scanner.java
+// Created: 4/28/2020
+// Author:  Douglas Sweeney
+//
+// History: 
+//           v1.0     4/28/2020        Douglas Sweeney
+//
 package main.java.scanner;
 
+/**
+ * Keep track of the enumeration of the tokens representing the keywords/identifiers.
+ * 
+ * @author dks
+ * @since 1.0
+ */
 public enum TokenEnum {
 	NONE,
 	TILDE,
@@ -53,7 +67,6 @@ public enum TokenEnum {
     BASE8_INTEGER,
     LONG_LITERAL,
     IDENTIFIER,
-    
     ABSTRACT,
     ASSERT,
     BOOLEAN,
@@ -64,7 +77,6 @@ public enum TokenEnum {
     CHAR,
     CLASS,
     CONST,
-    
     CONTINUE,
     DEFAULT,
     DO,
@@ -76,7 +88,6 @@ public enum TokenEnum {
     FINAL,
     FINALLY,
     FLOAT,
-    
     FOR,
     IF,
     GOTO,
@@ -87,7 +98,6 @@ public enum TokenEnum {
     INTERFACE,
     LONG,
     NATIVE,
-    
     NEW,
     NULL,
     PACKAGE,
@@ -99,7 +109,6 @@ public enum TokenEnum {
     STATIC,
     STRICTFP,
     SUPER,
-    
     SWITCH,
     SYNCHRONIZED,
     THIS,
@@ -111,9 +120,7 @@ public enum TokenEnum {
     VOID,
     VOLATILE,
     WHILE,
-	
 	OVERRIDE_ANNOTATION,
 	DEPRECATED_ANNOTATION,
 	SUPPRESSWARNINGS_ANNOTATION;
-	
 }

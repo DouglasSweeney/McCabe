@@ -1,3 +1,11 @@
+//
+// File:    Debug.java
+// Created: 4/28/2020
+// Author:  Douglas Sweeney
+//
+// History: 
+//           v1.0     4/28/2020        Douglas Sweeney 
+//
 package main.java.debug;
 
 import java.util.List;
@@ -8,9 +16,12 @@ import main.java.scanner.Token;
 /**
  * To use this class.
  * Set the define in the "java -Ddebug.options -jar filename.jar".
+ *      The [options] is an enumerated type in Categories.java
+ *      
  * Calling function is "Debug.println(category, message);".
  *  
  * @author dks
+ * @since  1.0
  *
  */
 public class Debug {
@@ -23,7 +34,7 @@ public class Debug {
 	
 	/**
 	 * Set some properties.
-	 * The properties coorespond to those in the Categories.java file
+	 * The properties correspond to those in the Categories.java file
 	 * 
 	 */
 	public static void setProperties() {
@@ -46,6 +57,11 @@ public class Debug {
      	}
     }
 	
+	/** 
+	 * Prints the list that is passed in of tokens.
+	 * 
+	 * @param list the list to print
+	 */
 	private static void printList(List<Token> list) {
 		if (list.size() < MAX_TOKENS_TO_PRINT) {
 			for (Token item : list) { // get the overall Mccabe Complexity Factor
@@ -80,6 +96,7 @@ public class Debug {
 		}
 	}
 	
+	
 	private static boolean isEnabled(String category) {
 		return System.getProperty("debug." + category.toLowerCase()) != null;
 	}
@@ -107,6 +124,7 @@ public class Debug {
 				System.out.println(message);
 		}
 	}
+	
 	public static void println(Categories category, List<Token> tokenList, String message) {
 		if (isEnabled(category.toString())) {
 			if (category.equals(Categories.TOKENS))

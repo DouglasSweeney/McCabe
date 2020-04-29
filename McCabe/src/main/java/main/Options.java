@@ -1,14 +1,34 @@
+//
+// File:    Metrics.java
+// Created: 4/28/2020
+// Author:  Douglas Sweeney
+//
+// History: 
+//           v1.0     4/28/2020        Douglas Sweeney 
+//
 package main.java.main;
 
 import gnu.getopt.Getopt;
 import gnu.getopt.LongOpt;
 
+/**
+ * Place the user specified arguments on the command line in this class.
+ * 
+ * @author dks
+ * @since 1.0
+ */
 public class Options {
+
 	private boolean useExceptions = false;
 	private static boolean computeOnlyOneMethod = false;
 	private static String  methodName = "";
 	private String  mcCabeDirectory = "";
 	
+	/**
+	 * The constructor - parse the user specified command line arguments
+	 * 
+	 * @param argv the arguments
+	 */
 	public Options(String[] argv) {
 		 int c;
 		 String arg;
@@ -66,6 +86,9 @@ public class Options {
 	    }
 	}
 	
+	/** 
+	 * Print out to the user the use of this program.
+	 */
 	private void usage() {
      	System.out.println("McCabe");
 		System.out.println("");
@@ -81,36 +104,74 @@ public class Options {
 	}
 	
 	/**
+	 * A getter.
+	 * 
 	 * @return the useExceptions variable
 	 */
 	public boolean getUseExceptions() {
 		return useExceptions;
 	}	
 
+	/**
+	 * Another getter.
+	 * 
+	 * @return the directory of .java files or the path and filename
+	 */
 	public String getMcCabeDirectory() {
 		return mcCabeDirectory;		
 	}
 
+	/**
+	 * A setter of the path or path and filename.
+	 * 
+	 * @param string the path of a directory and possibly the filename
+	 */
 	public void setMcCabeDirectory(String string) {
 		mcCabeDirectory = string;	
 	}
 	
+	/** 
+	 * Another getter.
+	 * 
+	 * @return if the user specified a method on the command line
+	 */
 	public static boolean isComputeOnlyOneMethod() {
 		return computeOnlyOneMethod;
 	}
 
+	/**
+	 * Another setter.
+	 * 
+	 * @param computeOnlyOneMethod the user specified argument (-m of --method)
+	 */
 	public static void setComputeOnlyOneMethod(boolean computeOnlyOneMethod) {
 		Options.computeOnlyOneMethod = computeOnlyOneMethod;
 	}
 
+	/**
+	 * Another getter
+	 * 
+	 * @return the method specified on the command line
+	 */
 	public static String getMethodName() {
 		return methodName;
 	}
+	
+	/** 
+	 * Another setter.
+	 * 
+	 * @param methodName the method specified on the command line.
+	 */
 
 	public static void setMethodName(String methodName) {
 		Options.methodName = methodName;
 	}
 
+	/**
+	 * The main() entry point to test this file.\
+	 * 
+	 * @param args22222 a dummy name; need to specify a arguments array.
+	 */
 	public static void main(String[] args22222) {
 //		String[] args = new String[0]; // to call usage()
 		String[] args = new String[4];

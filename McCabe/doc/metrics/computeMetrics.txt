@@ -106,21 +106,16 @@ grep "@Test" */*.java | wc -l
 grep "@Test" */*/*.java | wc -l
 532 (v2)
 
-Test Coverage (of app)
-======================
-Preferences->Java->Code Coverage
-include application/main/*:
-        application/model/*:
-        application/system/*:
-        application/view/inputs/*:
-        application/view/outputs/*:
-exclude test/system/main/*:
-        test/system/model/*:
-        test/system/view/inputs/*:
-        test/system/view/outputs/*:
+Test Coverage (of src/main only)
+    Placed jacocoant.jar & junjit-4-13.jar into /usr/share/ant/lib (for the "ant" command)
+==========================================================================================
+cd ~/git/McCabe_v1/McCabe/build/ant
+$ ant -v
+cd ~git/McCabe_v1/McCabe/build/coverage/site/jacoco
+Open the "index.html" with FireFox
 
-Select project & Coverage As "Junit Test"
 32.8% (v2) (from coverage.ods)
+67% (from "Total" - "Missed Instructions Cov.")
 
 Number of test files
 ====================

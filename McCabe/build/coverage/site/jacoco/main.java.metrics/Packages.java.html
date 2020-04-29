@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Packages.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">McCabe project</a> &gt; <a href="index.source.html" class="el_package">main.java.metrics</a> &gt; <span class="el_source">Packages.java</span></div><h1>Packages.java</h1><pre class="source lang-java linenums">package main.java.metrics;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import main.java.debug.Categories;
+import main.java.debug.Debug;
+import main.java.main.Metrics;
+import main.java.main.TokenList;
+import main.java.scanner.Scanner;
+import main.java.scanner.Token;
+import main.java.scanner.TokenEnum;
+
+<span class="nc bnc" id="L23" title="All 2 branches missed.">public class Packages extends TokenList {</span>
+
+<span class="nc" id="L25">	static List&lt;String&gt; packageList = new ArrayList();</span>
+	
+<span class="nc" id="L27">	public Packages() {</span>
+<span class="nc bnc" id="L28" title="All 4 branches missed.">		assert packageList != null : Packages.class.getCanonicalName() + </span>
+			                      &quot;constructor: packageList = null&quot;;
+<span class="nc" id="L30">	}</span>
+	
+	public void compute(List&lt;Token&gt; list) {
+<span class="nc" id="L33">    	Debug.println(Categories.INTERNAL_METHODS, Packages.class.getCanonicalName() + &quot; &quot; + </span>
+			      &quot;compute()&quot;);
+<span class="nc" id="L35">		Integer index = 0;</span>
+		boolean found;
+<span class="nc" id="L37">    	StringBuffer buffer = new StringBuffer();</span>
+		
+<span class="nc" id="L39">		Token token = list.get(index);</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">		while (token.enumeration != TokenEnum.EOF) {</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">			if (token.enumeration == TokenEnum.PACKAGE) {</span>
+<span class="nc" id="L42">				index = index + 1;</span>
+<span class="nc" id="L43">				token = list.get(index);</span>
+<span class="nc bnc" id="L44" title="All 4 branches missed.">				while (token.enumeration == TokenEnum.PERIOD || </span>
+		    	   token.enumeration == TokenEnum.IDENTIFIER) {
+<span class="nc bnc" id="L46" title="All 2 branches missed.">					if (token.enumeration == TokenEnum.PERIOD)</span>
+<span class="nc" id="L47">						buffer.append(&quot;.&quot;);</span>
+					else
+<span class="nc" id="L49">						buffer.append(token.string);</span>
+<span class="nc" id="L50">					index = index + 1;</span>
+<span class="nc" id="L51">					token = list.get(index);</span>
+				}
+				
+<span class="nc" id="L54">				found = false;</span>
+<span class="nc" id="L55">				String string = buffer.toString();</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">				for (int i=0; i&lt;packageList.size(); i++) {</span>
+<span class="nc" id="L57">					String item = packageList.get(i);</span>
+<span class="nc bnc" id="L58" title="All 2 branches missed.">					if (item.equals(string))</span>
+<span class="nc" id="L59">						found = true;</span>
+				}
+				
+<span class="nc bnc" id="L62" title="All 2 branches missed.">				if (!found) {</span>
+<span class="nc" id="L63">					packageList.add(string);</span>
+			    }
+<span class="nc" id="L65">		    }</span>
+			else {
+<span class="nc" id="L67">				index = index + 1;</span>
+<span class="nc" id="L68">				token = list.get(index);</span>
+			}
+		}
+<span class="nc" id="L71">	}</span>
+
+	public void debugging_print() {
+		
+<span class="nc" id="L75">		packageList.sort(Comparator.naturalOrder());</span>
+<span class="nc bnc" id="L76" title="All 2 branches missed.">		for (String packageName : packageList) {</span>
+<span class="nc" id="L77">			System.out.println(&quot;package: &quot; + packageName);</span>
+<span class="nc" id="L78">		}</span>
+<span class="nc" id="L79">	}</span>
+	
+	public void print() {
+<span class="nc" id="L82">	    System.out.println(&quot;Packages: &quot; + packageList.size());</span>
+<span class="nc" id="L83">	}</span>
+	
+	public static void main(String[] args) {
+<span class="nc" id="L86">		Packages packages = new Packages();</span>
+	
+<span class="nc" id="L88">		Token token = null;</span>
+<span class="nc" id="L89">		Scanner scanner = null;</span>
+<span class="nc" id="L90">		TokenList tokenList = new TokenList();</span>
+	
+<span class="nc" id="L92">		Stream&lt;Path&gt; walk = null;</span>
+		try {
+<span class="nc" id="L94">			walk = Files.walk(Paths.get(&quot;/home/dks/git/McCabe_v1/McCabe/src/source&quot;));</span>
+<span class="nc" id="L95">		} catch (IOException e1) {</span>
+<span class="nc" id="L96">			e1.printStackTrace();</span>
+<span class="nc" id="L97">		}</span>
+
+<span class="nc" id="L99">		List&lt;String&gt; result = walk.filter(Files::isRegularFile)</span>
+<span class="nc" id="L100">    				.map(x -&gt; x.toString()).collect(Collectors.toList());</span>
+
+<span class="nc bnc" id="L102" title="All 2 branches missed.">		for (String filename : result) {</span>
+<span class="nc" id="L103">			System.out.println(filename);</span>
+			try {
+<span class="nc" id="L105">				scanner = new Scanner(filename);</span>
+<span class="nc" id="L106">			} catch (FileNotFoundException e) {</span>
+<span class="nc" id="L107">				e.printStackTrace();</span>
+<span class="nc" id="L108">			}</span>
+<span class="nc" id="L109">			token = scanner.getNextToken();</span>
+<span class="nc bnc" id="L110" title="All 2 branches missed.">			while  (token.enumeration != TokenEnum.EOF) {</span>
+<span class="nc" id="L111">   	   			System.out.println(token.string + &quot;: &quot; + token.enumeration + &quot;(&quot; + token.lineNumber + &quot;)&quot;);</span>
+<span class="nc" id="L112">   	   			tokenList.add(token);</span>
+<span class="nc" id="L113">   	   			token = scanner.getNextToken();</span>
+			}
+<span class="nc" id="L115">			tokenList.add(token);</span>
+		 	
+<span class="nc" id="L117">			packages.compute(tokenList.getList());</span>
+<span class="nc" id="L118">			packages.debugging_print();</span>
+<span class="nc" id="L119">			packages.print();</span>
+<span class="nc" id="L120">		}</span>
+<span class="nc" id="L121">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

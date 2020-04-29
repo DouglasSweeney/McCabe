@@ -1,12 +1,13 @@
 package test.main;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import main.java.main.Options;
 
 public class OptionsTest {
+	
 	@Test
 	public void checkOptionExceptions() {
 		String[] args = new String[1];

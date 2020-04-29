@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Utils.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">McCabe project</a> &gt; <a href="index.source.html" class="el_package">main.java.main</a> &gt; <span class="el_source">Utils.java</span></div><h1>Utils.java</h1><pre class="source lang-java linenums">package main.java.main;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import main.java.scanner.Token;
+import main.java.scanner.TokenEnum;
+
+<span class="fc" id="L9">public class Utils {</span>
+
+	public static boolean throwsToken;
+	
+	public List&lt;Token&gt; getProcedureTokens(List&lt;Token&gt; fileList, Integer currentTokenIndex) {
+<span class="fc" id="L14">		List&lt;Token&gt; procedureList = new ArrayList&lt;Token&gt;();</span>
+<span class="fc" id="L15">		Token token = null;;</span>
+<span class="fc" id="L16">		Integer braces = 0;</span>
+		
+<span class="fc" id="L18">		token = fileList.get(currentTokenIndex);</span>
+<span class="pc bpc" id="L19" title="3 of 4 branches missed.">		while (token.enumeration != TokenEnum.LPAREN &amp;&amp; // Get to beginning of parameters</span>
+			   token.enumeration != TokenEnum.EOF) {
+<span class="nc" id="L21">			currentTokenIndex++;</span>
+<span class="nc" id="L22">     		token = fileList.get(currentTokenIndex);</span>
+		}
+<span class="pc bpc" id="L24" title="1 of 4 branches missed.">		while (token.enumeration != TokenEnum.RPAREN &amp;&amp; // Get to end of parameters</span>
+			   token.enumeration != TokenEnum.EOF) {
+<span class="fc" id="L26">			currentTokenIndex++;</span>
+<span class="fc" id="L27">	     	token = fileList.get(currentTokenIndex);</span>
+		}
+<span class="fc" id="L29">		throwsToken = false;</span>
+<span class="pc bpc" id="L30" title="1 of 4 branches missed.">		while (token.enumeration != TokenEnum.LBRACE &amp;&amp; // Goto beginning of procedure</span>
+			token.enumeration != TokenEnum.EOF) {
+<span class="fc bfc" id="L32" title="All 2 branches covered.">			if (token.enumeration == TokenEnum.THROWS )</span>
+<span class="fc" id="L33">				throwsToken = true;</span>
+			
+<span class="fc" id="L35">			currentTokenIndex++;</span>
+<span class="fc" id="L36">		    token = fileList.get(currentTokenIndex);</span>
+		}
+
+		do {
+<span class="fc bfc" id="L40" title="All 2 branches covered.">			if (token.enumeration == TokenEnum.LBRACE)</span>
+<span class="fc" id="L41">				braces++;</span>
+<span class="fc bfc" id="L42" title="All 2 branches covered.">			if (token.enumeration == TokenEnum.RBRACE)</span>
+<span class="fc" id="L43">				braces--;</span>
+			
+<span class="fc" id="L45">			procedureList.add(token);</span>
+			
+<span class="fc" id="L47">			currentTokenIndex = currentTokenIndex + 1;</span>
+<span class="pc bpc" id="L48" title="1 of 2 branches missed.">			if (currentTokenIndex &lt; fileList.size())</span>
+<span class="fc" id="L49">			    token = fileList.get(currentTokenIndex);</span>
+<span class="pc bpc" id="L50" title="1 of 4 branches missed.">		} while (braces &gt; 0 &amp;&amp; token.enumeration != TokenEnum.EOF);</span>
+
+<span class="fc" id="L52">		return procedureList;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

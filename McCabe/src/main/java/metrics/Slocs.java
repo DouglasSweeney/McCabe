@@ -1,3 +1,11 @@
+//
+// File:    Slocs.java
+// Created: 4/28/2020
+// Author:  Douglas Sweeney
+//
+// History: 
+//           v1.0     4/28/2020        Douglas Sweeney 
+//
 package main.java.metrics;
 
 import java.io.File;
@@ -18,10 +26,23 @@ import main.java.main.TokenList;
 import main.java.scanner.Scanner;
 import main.java.scanner.Token;
 import main.java.scanner.TokenEnum;
+import sun.awt.windows.ThemeReader;
 
+/**
+ * Keep track of the source lines of code (SLOC) for the file(s).
+ * 
+ * @author dks
+ * @since 1.0
+ */
 public class Slocs extends TokenList {
 	static TokenList tokenList = new TokenList();
 	
+	/** 
+	 * The class of the node.
+	 * 
+	 * @author dks
+	 *
+	 */
 	public class SlocNode {
 		public String filename = "";
 		public Integer lineNumber = 0;
@@ -31,8 +52,12 @@ public class Slocs extends TokenList {
 			this.lineNumber = lineNumber;
 		}
 	}
+	
  	static List<SlocNode> slocList = new ArrayList();;
 	
+ 	/**
+ 	 * The constructor.
+ 	 */
 	public Slocs() {
 		assert tokenList != null : Slocs.class.getCanonicalName() + 
                 "constructor: tokenList = null";
@@ -40,6 +65,12 @@ public class Slocs extends TokenList {
                 "constructor: slocList = null";
 	}
 	
+	/**
+	 * Keep track of the SLOCs - watch for duplicates
+	 * 
+	 * @param filename the filename of the processed file
+	 * @param list the token list of the file
+	 */
 	public void compute(String filename, List<Token> list) {
     	Debug.println(Categories.INTERNAL_METHODS, Slocs.class.getCanonicalName() + " " + 
 			      "compute()");
@@ -76,6 +107,9 @@ public class Slocs extends TokenList {
 		}
 	}
 	
+	/**
+	 * Print verbosely information about the SLOCs
+	 */
 	public void debugging_print() {
 		Integer counter = 0;
 		
@@ -87,10 +121,18 @@ public class Slocs extends TokenList {
 		System.out.println("slocList.size (SB 2031): " + slocList.size());
 	}
 	
+	/**
+	 * Print just number of SLOCs.
+	 */
 	public void print() {
 	    System.out.println("Source Lines of Code: " + slocList.size());   	
 	}
 	
+	/** 
+	 * Loop thru the file getting all the tokens
+	 * 
+	 * @param directoryAndFilename the path and filename to be processed
+	 */
     private void getTokensFromFile(String directoryAndFilename) {
 		
 	    Scanner scanner = null;
@@ -110,10 +152,21 @@ public class Slocs extends TokenList {
 // 		tokenList.print(tokenList.getList());
     }
    
+    /**
+     * Process each token for metrics.
+     * 
+     * @param filename that is being processed
+     * @param processExceptions compute exception keywords
+     */
     private void processTokens(String filename, boolean processExceptions) {
 		compute(filename, tokenList.getList());
     }
     
+    /** 
+     * Test out the class.
+     * 
+     * @param args The supplied arguments to this routine.
+     */
 	public static void main(String[] args) {
     	Slocs slocs = new Slocs();
     	
