@@ -66,24 +66,22 @@ import main.java.scanner.TokenEnum;
 			
 		}
 		
-//		if (!methodName.equals(&quot;&quot;)) {
-<span class="fc bfc" id="L70" title="All 2 branches covered.">			if (token.enumeration == TokenEnum.LBRACE) {</span>
-<span class="fc" id="L71">				braces++;</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">			if (token.enumeration == TokenEnum.LBRACE) {</span>
+<span class="fc" id="L70">				braces++;</span>
 			}
 			else {
-<span class="pc bpc" id="L74" title="1 of 2 branches missed.">				if (token.enumeration == TokenEnum.RBRACE) {</span>
-<span class="fc" id="L75">					braces--;</span>
+<span class="pc bpc" id="L73" title="1 of 2 branches missed.">				if (token.enumeration == TokenEnum.RBRACE) {</span>
+<span class="fc" id="L74">					braces--;</span>
 				}
 			}
-//		}
 
-<span class="fc bfc" id="L80" title="All 2 branches covered.">		if (braces &lt; 0) {</span>
-<span class="fc" id="L81">			Debug.println(Categories.BRACES, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
-<span class="fc" id="L82">						  &quot;methodName: &lt;&quot; + methodName + &quot;&gt; countBraces() &quot; + braces.toString());</span>
-<span class="fc" id="L83">	    	Debug.println(Categories.TOKENS, list, Mccabe.class.getCanonicalName() + &quot; &quot;);</span>
+<span class="fc bfc" id="L78" title="All 2 branches covered.">		if (braces &lt; 0) {</span>
+<span class="fc" id="L79">			Debug.println(Categories.BRACES, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
+<span class="fc" id="L80">						  &quot;methodName: &lt;&quot; + methodName + &quot;&gt; countBraces() &quot; + braces.toString());</span>
+<span class="fc" id="L81">	    	Debug.println(Categories.TOKENS, list, Mccabe.class.getCanonicalName() + &quot; &quot;);</span>
 	 	}
 		
-<span class="fc" id="L86">		return braces;</span>
+<span class="fc" id="L84">		return braces;</span>
 	}
 	
 	/**
@@ -93,42 +91,42 @@ import main.java.scanner.TokenEnum;
 	 * @param procedureList a list of tokens just for the method
 	 */
     private void returns(String methodName, List&lt;Token&gt; procedureList) {
-<span class="fc" id="L96">    	Integer procedureTokenIndex = 0;</span>
-<span class="fc" id="L97">    	Token token = procedureList.get(procedureTokenIndex);</span>
-<span class="fc" id="L98">    	Integer braces = 1;</span>
-<span class="fc" id="L99">    	Debug.println(Categories.INTERNAL_METHODS, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
+<span class="fc" id="L94">    	Integer procedureTokenIndex = 0;</span>
+<span class="fc" id="L95">    	Token token = procedureList.get(procedureTokenIndex);</span>
+<span class="fc" id="L96">    	Integer braces = 1;</span>
+<span class="fc" id="L97">    	Debug.println(Categories.INTERNAL_METHODS, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
 			      &quot;returns()&quot;);
-<span class="fc" id="L101">    	Debug.println(Categories.TOKENS, procedureList, Mccabe.class.getCanonicalName() + &quot; &quot; );</span>
-<span class="fc" id="L102">	    Debug.println(Categories.INPUT_METHODS, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
+<span class="fc" id="L99">    	Debug.println(Categories.TOKENS, procedureList, Mccabe.class.getCanonicalName() + &quot; &quot; );</span>
+<span class="fc" id="L100">	    Debug.println(Categories.INPUT_METHODS, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
 			      &quot;returns() methodName: &quot; + methodName + &quot;()&quot;);
 
-<span class="fc bfc" id="L105" title="All 2 branches covered.">    	while (token.enumeration != TokenEnum.RETURN &amp;&amp;</span>
-<span class="fc bfc" id="L106" title="All 2 branches covered.">    		   procedureTokenIndex &lt; procedureList.size()-1) {</span>
+<span class="fc bfc" id="L103" title="All 2 branches covered.">    	while (token.enumeration != TokenEnum.RETURN &amp;&amp;</span>
+<span class="fc bfc" id="L104" title="All 2 branches covered.">    		   procedureTokenIndex &lt; procedureList.size()-1) {</span>
     		
-<span class="fc" id="L108">			braces = countBraces(methodName, token, braces, procedureList);</span>
+<span class="fc" id="L106">			braces = countBraces(methodName, token, braces, procedureList);</span>
 			
-<span class="pc bpc" id="L110" title="1 of 2 branches missed."> 		    if (procedureTokenIndex &lt; procedureList.size()-1) {</span>
-<span class="fc" id="L111">   		       procedureTokenIndex++;   </span>
-<span class="fc" id="L112">   		       token = procedureList.get(procedureTokenIndex);</span>
+<span class="pc bpc" id="L108" title="1 of 2 branches missed."> 		    if (procedureTokenIndex &lt; procedureList.size()-1) {</span>
+<span class="fc" id="L109">   		       procedureTokenIndex++;   </span>
+<span class="fc" id="L110">   		       token = procedureList.get(procedureTokenIndex);</span>
  		    }
     	}
     		
-<span class="fc bfc" id="L116" title="All 2 branches covered.">    	if (token.enumeration == TokenEnum.RETURN) {</span>
-<span class="pc bpc" id="L117" title="1 of 4 branches missed.">        	while (token.enumeration != TokenEnum.SEMICOLON &amp;&amp; </span>
+<span class="fc bfc" id="L114" title="All 2 branches covered.">    	if (token.enumeration == TokenEnum.RETURN) {</span>
+<span class="pc bpc" id="L115" title="1 of 4 branches missed.">        	while (token.enumeration != TokenEnum.SEMICOLON &amp;&amp; </span>
         		   token.enumeration != TokenEnum.EOF) {
-<span class="fc" id="L119">        		procedureTokenIndex++;</span>
-<span class="fc" id="L120">        	    token = procedureList.get(procedureTokenIndex);</span>
+<span class="fc" id="L117">        		procedureTokenIndex++;</span>
+<span class="fc" id="L118">        	    token = procedureList.get(procedureTokenIndex);</span>
         	}
         	
-<span class="fc" id="L123">    		procedureTokenIndex++;</span>
-<span class="fc" id="L124">    	    token = procedureList.get(procedureTokenIndex);</span>
-<span class="fc bfc" id="L125" title="All 2 branches covered.">        	if (token.enumeration != TokenEnum.RBRACE) {</span>
-<span class="fc" id="L126">        		braces--;</span>
-<span class="fc bfc" id="L127" title="All 2 branches covered.">        		if (braces == 1)</span>
-<span class="fc" id="L128">        			mccabeComplexityFactor++;</span>
+<span class="fc" id="L121">    		procedureTokenIndex++;</span>
+<span class="fc" id="L122">    	    token = procedureList.get(procedureTokenIndex);</span>
+<span class="fc bfc" id="L123" title="All 2 branches covered.">        	if (token.enumeration != TokenEnum.RBRACE) {</span>
+<span class="fc" id="L124">        		braces--;</span>
+<span class="fc bfc" id="L125" title="All 2 branches covered.">        		if (braces == 1)</span>
+<span class="fc" id="L126">        			mccabeComplexityFactor++;</span>
         	}
     	}
-<span class="fc" id="L131">    }</span>
+<span class="fc" id="L129">    }</span>
     
 	/**
 	 * Counts each if/else/case/default statements as 1.
@@ -137,23 +135,23 @@ import main.java.scanner.TokenEnum;
 	 * @param procedureList a list of tokens just for the method
 	 */
     private void selections(String methodName, List&lt;Token&gt; procedureList) {
-<span class="fc" id="L140">    	Debug.println(Categories.INTERNAL_METHODS, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
+<span class="fc" id="L138">    	Debug.println(Categories.INTERNAL_METHODS, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
 			      &quot;selections()&quot;);
-<span class="fc" id="L142">    	Debug.println(Categories.TOKENS, procedureList, Mccabe.class.getCanonicalName() + &quot; &quot;);</span>
-<span class="fc" id="L143">	    Debug.println(Categories.INPUT_METHODS, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
+<span class="fc" id="L140">    	Debug.println(Categories.TOKENS, procedureList, Mccabe.class.getCanonicalName() + &quot; &quot;);</span>
+<span class="fc" id="L141">	    Debug.println(Categories.INPUT_METHODS, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
 			      &quot;selections() methodName: &quot; + methodName + &quot;()&quot;);
-<span class="fc" id="L145">    	Token token = null;</span>
+<span class="fc" id="L143">    	Token token = null;</span>
     	
-<span class="fc bfc" id="L147" title="All 2 branches covered.">    	for (int i=0;i &lt; procedureList.size(); i++) {</span>
-<span class="fc" id="L148">    		token = procedureList.get(i);</span>
-<span class="fc bfc" id="L149" title="All 8 branches covered.">    		if (token.enumeration == TokenEnum.IF ||</span>
+<span class="fc bfc" id="L145" title="All 2 branches covered.">    	for (int i=0;i &lt; procedureList.size(); i++) {</span>
+<span class="fc" id="L146">    		token = procedureList.get(i);</span>
+<span class="fc bfc" id="L147" title="All 8 branches covered.">    		if (token.enumeration == TokenEnum.IF ||</span>
     			token.enumeration == TokenEnum.ELSE ||
     			token.enumeration == TokenEnum.CASE ||
     			token.enumeration == TokenEnum.DEFAULT) {
-<span class="fc" id="L153">    		   mccabeComplexityFactor++;</span>
+<span class="fc" id="L151">    		   mccabeComplexityFactor++;</span>
     		}
     	}
-<span class="fc" id="L156">    }</span>
+<span class="fc" id="L154">    }</span>
        
     /** 
      * Increment the McCabe complexity factor.
@@ -161,10 +159,10 @@ import main.java.scanner.TokenEnum;
      * @param size the number of times to increment it
      */
     private void incrementComplexityFactor(Integer size) {
-<span class="fc bfc" id="L164" title="All 2 branches covered.">		for (int i=0; i&lt;size; i++) {</span>
-<span class="fc" id="L165">   			mccabeComplexityFactor++;	</span>
+<span class="fc bfc" id="L162" title="All 2 branches covered.">		for (int i=0; i&lt;size; i++) {</span>
+<span class="fc" id="L163">   			mccabeComplexityFactor++;	</span>
 		}
-<span class="fc" id="L167">    }</span>
+<span class="fc" id="L165">    }</span>
     
 	/**
 	 * Counts each for/break/continue/do-while statements as 1.
@@ -173,49 +171,49 @@ import main.java.scanner.TokenEnum;
 	 * @param procedureList a list of tokens just for the method
 	 */
     private void loops(String methodName, List&lt;Token&gt; procedureList) {
-<span class="fc" id="L176">    	Debug.println(Categories.INTERNAL_METHODS, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
+<span class="fc" id="L174">    	Debug.println(Categories.INTERNAL_METHODS, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
 			      &quot;loops()&quot;);
-<span class="fc" id="L178">    	Debug.println(Categories.TOKENS, procedureList, Mccabe.class.getCanonicalName() + &quot; &quot;);</span>
-<span class="fc" id="L179">	    Debug.println(Categories.INPUT_METHODS, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
+<span class="fc" id="L176">    	Debug.println(Categories.TOKENS, procedureList, Mccabe.class.getCanonicalName() + &quot; &quot;);</span>
+<span class="fc" id="L177">	    Debug.println(Categories.INPUT_METHODS, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
 			      &quot;loops() methodName: &quot; + methodName + &quot;()&quot;);
     	
-<span class="fc" id="L182">    	Token token = null;</span>
-<span class="fc" id="L183">    	Integer braces = 0;</span>
-<span class="fc" id="L184">    	Integer doStatements = 0;</span>
-<span class="fc" id="L185">    	Integer whileStatements = 0;</span>
-<span class="fc" id="L186">    	Integer doWhileStatements = 0;</span>
-<span class="fc" id="L187">    	List&lt;Integer&gt; whileLineNumbers = new ArrayList&lt;Integer&gt;();</span>
+<span class="fc" id="L180">    	Token token = null;</span>
+<span class="fc" id="L181">    	Integer braces = 0;</span>
+<span class="fc" id="L182">    	Integer doStatements = 0;</span>
+<span class="fc" id="L183">    	Integer whileStatements = 0;</span>
+<span class="fc" id="L184">    	Integer doWhileStatements = 0;</span>
+<span class="fc" id="L185">    	List&lt;Integer&gt; whileLineNumbers = new ArrayList&lt;Integer&gt;();</span>
     	
-<span class="fc bfc" id="L189" title="All 2 branches covered.">    	for (int i=0;i &lt; procedureList.size(); i++) {</span>
-<span class="fc" id="L190">    		token = procedureList.get(i);</span>
+<span class="fc bfc" id="L187" title="All 2 branches covered.">    	for (int i=0;i &lt; procedureList.size(); i++) {</span>
+<span class="fc" id="L188">    		token = procedureList.get(i);</span>
     		
-<span class="fc" id="L192">    		braces = countBraces(methodName, token, braces, procedureList);</span>
+<span class="fc" id="L190">    		braces = countBraces(methodName, token, braces, procedureList);</span>
     		
-<span class="fc bfc" id="L194" title="All 6 branches covered.">    		if (token.enumeration == TokenEnum.FOR ||</span>
+<span class="fc bfc" id="L192" title="All 6 branches covered.">    		if (token.enumeration == TokenEnum.FOR ||</span>
     			token.enumeration == TokenEnum.BREAK ||
     			token.enumeration == TokenEnum.CONTINUE) {
-<span class="fc" id="L197">    		    mccabeComplexityFactor++;</span>
+<span class="fc" id="L195">    		    mccabeComplexityFactor++;</span>
     		}
     		
-<span class="fc bfc" id="L200" title="All 2 branches covered.">   			if (token.enumeration == TokenEnum.WHILE) {</span>
-<span class="fc" id="L201">   				whileLineNumbers.add(token.lineNumber);</span>
+<span class="fc bfc" id="L198" title="All 2 branches covered.">   			if (token.enumeration == TokenEnum.WHILE) {</span>
+<span class="fc" id="L199">   				whileLineNumbers.add(token.lineNumber);</span>
    			}
    		
-<span class="fc bfc" id="L204" title="All 2 branches covered.">   			if (token.enumeration == TokenEnum.DO) {</span>
-<span class="fc" id="L205">   				doStatements++;</span>
+<span class="fc bfc" id="L202" title="All 2 branches covered.">   			if (token.enumeration == TokenEnum.DO) {</span>
+<span class="fc" id="L203">   				doStatements++;</span>
    			}
     	}
     
-<span class="fc bfc" id="L209" title="All 2 branches covered.">   		if (doStatements &gt;= 1) {</span>
-<span class="fc" id="L210">   			doWhileStatements = doStatements;</span>
-<span class="fc" id="L211">  			incrementComplexityFactor(doWhileStatements);</span>
-<span class="fc" id="L212">  			whileStatements = whileLineNumbers.size()-doStatements;</span>
-<span class="fc" id="L213">  			incrementComplexityFactor(whileStatements);</span>
+<span class="fc bfc" id="L207" title="All 2 branches covered.">   		if (doStatements &gt;= 1) {</span>
+<span class="fc" id="L208">   			doWhileStatements = doStatements;</span>
+<span class="fc" id="L209">  			incrementComplexityFactor(doWhileStatements);</span>
+<span class="fc" id="L210">  			whileStatements = whileLineNumbers.size()-doStatements;</span>
+<span class="fc" id="L211">  			incrementComplexityFactor(whileStatements);</span>
    		}   		
    		else {
-<span class="fc" id="L216">   			incrementComplexityFactor(whileLineNumbers.size());</span>
+<span class="fc" id="L214">   			incrementComplexityFactor(whileLineNumbers.size());</span>
    		}
-<span class="fc" id="L218">   	}</span>
+<span class="fc" id="L216">   	}</span>
     
 	/**
 	 * Counts each &amp;&amp;/||/? and possibly count the colon statement as 1.
@@ -224,42 +222,42 @@ import main.java.scanner.TokenEnum;
 	 * @param procedureList a list of tokens just for the method
 	 */
     private void operators(String methodName, List&lt;Token&gt; procedureList) {
-<span class="fc" id="L227">    	Debug.println(Categories.INTERNAL_METHODS, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
+<span class="fc" id="L225">    	Debug.println(Categories.INTERNAL_METHODS, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
 			      &quot;operators()&quot;);
-<span class="fc" id="L229">	    Debug.println(Categories.INPUT_METHODS, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
+<span class="fc" id="L227">	    Debug.println(Categories.INPUT_METHODS, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
 			      &quot;operators() methodName: &quot; + methodName + &quot;()&quot;);
-<span class="fc" id="L231">    	Debug.println(Categories.TOKENS, procedureList, Mccabe.class.getCanonicalName() + &quot; &quot;);</span>
-<span class="fc" id="L232">    	Token token = null;</span>
-<span class="fc" id="L233">    	Token token2 = null;</span>
+<span class="fc" id="L229">    	Debug.println(Categories.TOKENS, procedureList, Mccabe.class.getCanonicalName() + &quot; &quot;);</span>
+<span class="fc" id="L230">    	Token token = null;</span>
+<span class="fc" id="L231">    	Token token2 = null;</span>
     	
-<span class="fc bfc" id="L235" title="All 2 branches covered.">    	if (methodName.equals(&quot;main&quot;)) {</span>
-<span class="fc" id="L236">    	    Debug.println(Categories.INPUT_METHODS, &quot;**********************&quot; + Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
+<span class="fc bfc" id="L233" title="All 2 branches covered.">    	if (methodName.equals(&quot;main&quot;)) {</span>
+<span class="fc" id="L234">    	    Debug.println(Categories.INPUT_METHODS, &quot;**********************&quot; + Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
   			      &quot;operators() methodName: &quot; + &quot;main FOUND&quot; + &quot;()&quot;);
-<span class="fc" id="L238">    	    Debug.println(Categories.BRACES, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
+<span class="fc" id="L236">    	    Debug.println(Categories.BRACES, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
 				  &quot;methodName: &lt;&quot; + methodName + &quot;&gt;&quot;);
     	}
     		
-<span class="fc bfc" id="L242" title="All 2 branches covered.">       	for (int i=0;i &lt; procedureList.size(); i++) {</span>
-<span class="fc" id="L243">    		token = procedureList.get(i);</span>
-<span class="fc bfc" id="L244" title="All 4 branches covered.">       		if (token.enumeration == TokenEnum.AMPERSAND_AMPERSAND ||</span>
+<span class="fc bfc" id="L240" title="All 2 branches covered.">       	for (int i=0;i &lt; procedureList.size(); i++) {</span>
+<span class="fc" id="L241">    		token = procedureList.get(i);</span>
+<span class="fc bfc" id="L242" title="All 4 branches covered.">       		if (token.enumeration == TokenEnum.AMPERSAND_AMPERSAND ||</span>
         		token.enumeration == TokenEnum.OROR) {
-<span class="fc" id="L246">        		   mccabeComplexityFactor++;</span>
+<span class="fc" id="L244">        		   mccabeComplexityFactor++;</span>
        		}
          	
-<span class="fc bfc" id="L249" title="All 2 branches covered.">   			if (token.enumeration == TokenEnum.QUESTION_MARK) {</span>
-<span class="fc" id="L250">     		   mccabeComplexityFactor++;</span>
+<span class="fc bfc" id="L247" title="All 2 branches covered.">   			if (token.enumeration == TokenEnum.QUESTION_MARK) {</span>
+<span class="fc" id="L248">     		   mccabeComplexityFactor++;</span>
    			}
    			
-<span class="fc bfc" id="L253" title="All 2 branches covered.">       		if (token.enumeration == TokenEnum.COLON ) {</span>
-<span class="fc" id="L254">        		token = procedureList.get(i-1);</span>
-<span class="fc" id="L255">        		token2 = procedureList.get(i-2);</span>
-<span class="fc bfc" id="L256" title="All 4 branches covered.">          		if (token.enumeration != TokenEnum.DEFAULT &amp;&amp;</span>
+<span class="fc bfc" id="L251" title="All 2 branches covered.">       		if (token.enumeration == TokenEnum.COLON ) {</span>
+<span class="fc" id="L252">        		token = procedureList.get(i-1);</span>
+<span class="fc" id="L253">        		token2 = procedureList.get(i-2);</span>
+<span class="fc bfc" id="L254" title="All 4 branches covered.">          		if (token.enumeration != TokenEnum.DEFAULT &amp;&amp;</span>
                     token2.enumeration != TokenEnum.CASE ) {
-<span class="fc" id="L258">    				mccabeComplexityFactor++;</span>
+<span class="fc" id="L256">    				mccabeComplexityFactor++;</span>
            		}
        		}
        	}
-<span class="fc" id="L262">    }</span>
+<span class="fc" id="L260">    }</span>
     
 	/**
 	 * Counts each catch/finally/throw statements as 1.
@@ -268,22 +266,22 @@ import main.java.scanner.TokenEnum;
 	 * @param procedureList a list of tokens just for the method
 	 */
     private void exceptions(String methodName, List&lt;Token&gt; procedureList) {
-<span class="fc" id="L271">    	Debug.println(Categories.INTERNAL_METHODS, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
+<span class="fc" id="L269">    	Debug.println(Categories.INTERNAL_METHODS, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
 			      &quot;exceptions()&quot;);
-<span class="fc" id="L273">    	Debug.println(Categories.TOKENS, procedureList, Mccabe.class.getCanonicalName() + &quot; &quot;);</span>
-<span class="fc" id="L274">	    Debug.println(Categories.INPUT_METHODS, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
+<span class="fc" id="L271">    	Debug.println(Categories.TOKENS, procedureList, Mccabe.class.getCanonicalName() + &quot; &quot;);</span>
+<span class="fc" id="L272">	    Debug.println(Categories.INPUT_METHODS, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
 			      &quot;operators() methodName: &quot; + methodName + &quot;()&quot;);
-<span class="fc" id="L276">    	Token token = null;</span>
+<span class="fc" id="L274">    	Token token = null;</span>
     	
-<span class="fc bfc" id="L278" title="All 2 branches covered.">    	for (int i=0;i &lt; procedureList.size(); i++) {</span>
-<span class="fc" id="L279">    		token = procedureList.get(i);</span>
-<span class="fc bfc" id="L280" title="All 6 branches covered.">    		if (token.enumeration == TokenEnum.CATCH ||</span>
+<span class="fc bfc" id="L276" title="All 2 branches covered.">    	for (int i=0;i &lt; procedureList.size(); i++) {</span>
+<span class="fc" id="L277">    		token = procedureList.get(i);</span>
+<span class="fc bfc" id="L278" title="All 6 branches covered.">    		if (token.enumeration == TokenEnum.CATCH ||</span>
     			token.enumeration == TokenEnum.FINALLY ||
     			token.enumeration == TokenEnum.THROW) {
-<span class="fc" id="L283">    		   mccabeComplexityFactor++;</span>
+<span class="fc" id="L281">    		   mccabeComplexityFactor++;</span>
     		}
     	}
-<span class="fc" id="L286">    }</span>
+<span class="fc" id="L284">    }</span>
     
 	/**
 	 * Counts some statements for the McCabe complexity Factor. The exceptions is a 
@@ -296,16 +294,16 @@ import main.java.scanner.TokenEnum;
 	 */
     private void computeMcCabeComplexityFactor(String methodName, List&lt;Token&gt; procedureList, 
     		                                   boolean useExceptions) {
-<span class="fc" id="L299">	    Debug.println(Categories.INPUT_METHODS, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
+<span class="fc" id="L297">	    Debug.println(Categories.INPUT_METHODS, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
 			      &quot;computeMcCabeComplexityFactor() methodName: &quot; + methodName + &quot;()&quot;);
-<span class="fc" id="L301">        returns(methodName, procedureList);</span>
-<span class="fc" id="L302">        selections(methodName, procedureList);</span>
-<span class="fc" id="L303">        loops(methodName, procedureList);</span>
-<span class="fc" id="L304">        operators(methodName, procedureList);</span>
-<span class="fc bfc" id="L305" title="All 2 branches covered.">        if (useExceptions)</span>
-<span class="fc" id="L306">        	exceptions(methodName, procedureList);</span>
+<span class="fc" id="L299">        returns(methodName, procedureList);</span>
+<span class="fc" id="L300">        selections(methodName, procedureList);</span>
+<span class="fc" id="L301">        loops(methodName, procedureList);</span>
+<span class="fc" id="L302">        operators(methodName, procedureList);</span>
+<span class="fc bfc" id="L303" title="All 2 branches covered.">        if (useExceptions)</span>
+<span class="fc" id="L304">        	exceptions(methodName, procedureList);</span>
         
-<span class="fc" id="L308">    }</span>
+<span class="fc" id="L306">    }</span>
 
     /**
      * Compute the new index into the file token list. Believe this isn't used.
@@ -317,9 +315,9 @@ import main.java.scanner.TokenEnum;
      */
     private Integer computeCurrentTokenIndex(Integer currentTokenIndex,
     		                                 List&lt;Token&gt; procedureList) {
-<span class="nc" id="L320">        currentTokenIndex += procedureList.size();</span>
+<span class="nc" id="L318">        currentTokenIndex += procedureList.size();</span>
         
-<span class="nc" id="L322">        return currentTokenIndex;</span>
+<span class="nc" id="L320">        return currentTokenIndex;</span>
     }
     
     /**
@@ -336,30 +334,30 @@ import main.java.scanner.TokenEnum;
 			                                    Integer currentTokenIndex,
 			                                    String className, Integer classNumber,
 			                                    boolean useExceptions) {
-<span class="fc" id="L339">		List&lt;Token&gt; procedureList = new ArrayList();</span>
-<span class="fc" id="L340">		Token token = list.get(currentTokenIndex);</span>
-<span class="fc" id="L341">		String methodName = &quot;&quot;;</span>
-<span class="fc" id="L342">		Token token2 = null;</span>
-<span class="fc" id="L343">		Token token3 = null;</span>
-<span class="fc" id="L344">		Integer braces = 0;</span>
+<span class="fc" id="L337">		List&lt;Token&gt; procedureList = new ArrayList();</span>
+<span class="fc" id="L338">		Token token = list.get(currentTokenIndex);</span>
+<span class="fc" id="L339">		String methodName = &quot;&quot;;</span>
+<span class="fc" id="L340">		Token token2 = null;</span>
+<span class="fc" id="L341">		Token token3 = null;</span>
+<span class="fc" id="L342">		Integer braces = 0;</span>
 		
-<span class="fc bfc" id="L346" title="All 2 branches covered.">		while (token.enumeration != TokenEnum.EOF) {</span>
+<span class="fc bfc" id="L344" title="All 2 branches covered.">		while (token.enumeration != TokenEnum.EOF) {</span>
 			
-<span class="fc" id="L348">			braces = countBraces(methodName, token, braces, list);</span>
+<span class="fc" id="L346">			braces = countBraces(methodName, token, braces, list);</span>
 			
 
   			// look for class inside a class
-<span class="fc bfc" id="L352" title="All 2 branches covered.">			if (token.enumeration == TokenEnum.CLASS) {</span>
-<span class="fc" id="L353">     		    token = list.get(currentTokenIndex + 1);</span>
-<span class="pc bpc" id="L354" title="1 of 4 branches missed.">				if (token.enumeration == TokenEnum.IDENTIFIER &amp;&amp; </span>
+<span class="fc bfc" id="L350" title="All 2 branches covered.">			if (token.enumeration == TokenEnum.CLASS) {</span>
+<span class="fc" id="L351">     		    token = list.get(currentTokenIndex + 1);</span>
+<span class="pc bpc" id="L352" title="1 of 4 branches missed.">				if (token.enumeration == TokenEnum.IDENTIFIER &amp;&amp; </span>
 				   token.enumeration != TokenEnum.EOF &amp;&amp;
-<span class="fc bfc" id="L356" title="All 2 branches covered.">				   braces % 2 == 0) {</span>
-<span class="fc" id="L357">					className = token.string;</span>
+<span class="fc bfc" id="L354" title="All 2 branches covered.">				   braces % 2 == 0) {</span>
+<span class="fc" id="L355">					className = token.string;</span>
 //					classList.add(className);
-<span class="fc" id="L359">					currentTokenIndex++;</span>
+<span class="fc" id="L357">					currentTokenIndex++;</span>
 //currentTokenIndex++;
-<span class="fc" id="L361">					findMethodsAndComplexityFactor(filename, list, currentTokenIndex, </span>
-<span class="fc" id="L362">							                       token.string, classNumber++, useExceptions);</span>
+<span class="fc" id="L359">					findMethodsAndComplexityFactor(filename, list, currentTokenIndex, </span>
+<span class="fc" id="L360">							                       token.string, classNumber++, useExceptions);</span>
 					// Optimization - readjust the token pointer for each input procedure. Rather 
 //	                than allow the while() loop to process extra tokens.
 //currentTokenIndex = computeCurrentTokenIndex(currentTokenIndex, procedureList);
@@ -367,17 +365,17 @@ import main.java.scanner.TokenEnum;
 			}
 			
 			// look for '(' inside a class
-<span class="fc bfc" id="L370" title="All 2 branches covered.">			if (token.enumeration == TokenEnum.LPAREN &amp;&amp; </span>
-<span class="pc bpc" id="L371" title="1 of 2 branches missed.">					classNumber &gt;= 1 &amp;&amp; </span>
-<span class="fc bfc" id="L372" title="All 2 branches covered.">					braces == 1) {</span>
+<span class="fc bfc" id="L368" title="All 2 branches covered.">			if (token.enumeration == TokenEnum.LPAREN &amp;&amp; </span>
+<span class="pc bpc" id="L369" title="1 of 2 branches missed.">					classNumber &gt;= 1 &amp;&amp; </span>
+<span class="fc bfc" id="L370" title="All 2 branches covered.">					braces == 1) {</span>
 				
 				// remember the procedure name
-<span class="fc" id="L375">     			token2 = list.get(currentTokenIndex - 1);</span>
-<span class="fc bfc" id="L376" title="All 2 branches covered.">				if (token2.enumeration == TokenEnum.IDENTIFIER) {</span>
-<span class="fc" id="L377">					methodName = token2.string;</span>
+<span class="fc" id="L373">     			token2 = list.get(currentTokenIndex - 1);</span>
+<span class="fc bfc" id="L374" title="All 2 branches covered.">				if (token2.enumeration == TokenEnum.IDENTIFIER) {</span>
+<span class="fc" id="L375">					methodName = token2.string;</span>
 					// look for type
-<span class="fc" id="L379">	     			token = list.get(currentTokenIndex - 2);</span>
-<span class="pc bpc" id="L380" title="3 of 24 branches missed.">					if (token.enumeration == TokenEnum.GT || // return type of a procedure: i.e.List&lt;Token&gt;</span>
+<span class="fc" id="L377">	     			token = list.get(currentTokenIndex - 2);</span>
+<span class="pc bpc" id="L378" title="3 of 24 branches missed.">					if (token.enumeration == TokenEnum.GT || // return type of a procedure: i.e.List&lt;Token&gt;</span>
 						token.enumeration == TokenEnum.IDENTIFIER ||
 					    token.enumeration == TokenEnum.BYTE ||
 						token.enumeration == TokenEnum.CHAR ||
@@ -397,51 +395,51 @@ import main.java.scanner.TokenEnum;
 //								methodName = token2.string;
 								
 			     				// Set the mcCabe Complexity Factor to 1 for a new method
-<span class="fc" id="L400">					        	mccabeComplexityFactor = 1;</span>
-<span class="fc" id="L401">					        	procedureList = utils.getProcedureTokens(list, currentTokenIndex);</span>
-<span class="fc" id="L402">					        	Debug.println(Categories.INPUT_METHODS, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
+<span class="fc" id="L398">					        	mccabeComplexityFactor = 1;</span>
+<span class="fc" id="L399">					        	procedureList = utils.getProcedureTokens(list, currentTokenIndex);</span>
+<span class="fc" id="L400">					        	Debug.println(Categories.INPUT_METHODS, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
 					        			&quot;findMethodsAndComplexityFactor() &quot;
 					        			+ &quot;methodName: &quot; + methodName + &quot;()&quot;);
-<span class="fc" id="L405">					        	Debug.println(Categories.TOKENS, methodName, procedureList, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
+<span class="fc" id="L403">					        	Debug.println(Categories.TOKENS, methodName, procedureList, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
 					        			&quot;findMethodsAndComplexityFactor()&quot;);
-<span class="fc bfc" id="L407" title="All 2 branches covered.">					        	if (Utils.throwsToken)</span>
-<span class="fc bfc" id="L408" title="All 2 branches covered.">					        		if (useExceptions)</span>
-<span class="fc" id="L409">					        			mccabeComplexityFactor++;</span>
+<span class="fc bfc" id="L405" title="All 2 branches covered.">					        	if (Utils.throwsToken)</span>
+<span class="fc bfc" id="L406" title="All 2 branches covered.">					        		if (useExceptions)</span>
+<span class="fc" id="L407">					        			mccabeComplexityFactor++;</span>
 	
 					        	// compute the McCabe Complexity Factor
-<span class="fc" id="L412">					        	computeMcCabeComplexityFactor(methodName, procedureList, useExceptions);</span>
+<span class="fc" id="L410">					        	computeMcCabeComplexityFactor(methodName, procedureList, useExceptions);</span>
 
 					        	// Optimization - readjust the token pointer for each input procedure. Rather 
 					        	//                than allow the while() loop to process extra tokens.
 //					        	currentTokenIndex = computeCurrentTokenIndex(currentTokenIndex, procedureList);
 
-<span class="fc" id="L418">					        	MccabeNode mccabeNode = new MccabeNode(filename, </span>
+<span class="fc" id="L416">					        	MccabeNode mccabeNode = new MccabeNode(filename, </span>
 					        								  className,
  						                                      methodName, 
  							                                  token2.lineNumber, 
  							                                  mccabeComplexityFactor);
-<span class="fc" id="L423">					        	methods.add(mccabeNode);</span>
+<span class="fc" id="L421">					        	methods.add(mccabeNode);</span>
 //					        }
 //					    }
 					}
 				}
 			}
 			
-<span class="fc" id="L430">			currentTokenIndex = currentTokenIndex + 1;</span>
-<span class="fc" id="L431">			token = list.get(currentTokenIndex);</span>
+<span class="fc" id="L428">			currentTokenIndex = currentTokenIndex + 1;</span>
+<span class="fc" id="L429">			token = list.get(currentTokenIndex);</span>
 		}
-<span class="fc" id="L433">	}</span>
+<span class="fc" id="L431">	}</span>
 	
-	private Integer getTotalComplexity(String filename) {
-<span class="fc" id="L436">		Integer total = 0;</span>
+	private double getTotalComplexity(String filename) {
+<span class="fc" id="L434">		double total = 0;</span>
 		
-<span class="fc bfc" id="L438" title="All 2 branches covered.">    	for (MccabeNode item : methods) { // get the file Mccabe Complexity Factor</span>
-<span class="fc bfc" id="L439" title="All 2 branches covered.">    		if (item.getFilename().equals(filename)) {</span>
-<span class="fc" id="L440">    			total += item.getMccabeComplexityFactor();</span>
+<span class="fc bfc" id="L436" title="All 2 branches covered.">    	for (MccabeNode item : methods) { // get the file Mccabe Complexity Factor</span>
+<span class="fc bfc" id="L437" title="All 2 branches covered.">    		if (item.getFilename().equals(filename)) {</span>
+<span class="fc" id="L438">    			total += item.getMccabeComplexityFactor();</span>
     		}
-<span class="fc" id="L442">   	    }</span>
+<span class="fc" id="L440">   	    }</span>
     	
-<span class="fc" id="L444">		return total;</span>
+<span class="fc" id="L442">		return total;</span>
 	}
 	
 	/**
@@ -452,90 +450,91 @@ import main.java.scanner.TokenEnum;
 	 * @param options arguments specified on the command line
 	 */
     public void compute(String filename, List&lt;Token&gt; list, Options options) {
-<span class="fc" id="L455">       	Debug.println(Categories.OPTIONS, options, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
+<span class="fc" id="L453">       	Debug.println(Categories.OPTIONS, options, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
 			      &quot;compute()&quot;);
-<span class="fc" id="L457">    	Debug.println(Categories.INTERNAL_METHODS, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
+<span class="fc" id="L455">    	Debug.println(Categories.INTERNAL_METHODS, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
 			      &quot;compute()&quot;);
-<span class="fc" id="L459">    	Integer currentTokenIndex = 0;</span>
-<span class="fc" id="L460">    	Integer classNumber = 0;</span>
-<span class="fc" id="L461">    	String  className = &quot;&quot;;</span>
-<span class="fc" id="L462">    	boolean useExceptions = options.getUseExceptions();</span>
+<span class="fc" id="L457">    	Integer currentTokenIndex = 0;</span>
+<span class="fc" id="L458">    	Integer classNumber = 0;</span>
+<span class="fc" id="L459">    	String  className = &quot;&quot;;</span>
+<span class="fc" id="L460">    	boolean useExceptions = options.getUseExceptions();</span>
     	
-<span class="fc" id="L464">    	Token token = list.get(currentTokenIndex);</span>
-<span class="fc bfc" id="L465" title="All 2 branches covered.">    	while (token.enumeration != TokenEnum.EOF) {</span>
-<span class="fc" id="L466">    		currentTokenIndex++;</span>
-<span class="fc" id="L467">    	    token = list.get(currentTokenIndex);</span>
+<span class="fc" id="L462">    	Token token = list.get(currentTokenIndex);</span>
+<span class="fc bfc" id="L463" title="All 2 branches covered.">    	while (token.enumeration != TokenEnum.EOF) {</span>
+<span class="fc" id="L464">    		currentTokenIndex++;</span>
+<span class="fc" id="L465">    	    token = list.get(currentTokenIndex);</span>
     	
-<span class="fc bfc" id="L469" title="All 2 branches covered.">    	    if (token.enumeration == TokenEnum.CLASS) {</span>
-<span class="fc" id="L470">    	    	classNumber = 1;</span>
-<span class="fc" id="L471">    	    	currentTokenIndex++;</span>
-<span class="fc" id="L472">    	    	className = list.get(currentTokenIndex).string; // get the class name</span>
-<span class="fc" id="L473">    	    	classList.add(className);</span>
-<span class="fc" id="L474">    	    	currentTokenIndex++;</span>
-<span class="fc" id="L475">    	    	findMethodsAndComplexityFactor(filename, list, currentTokenIndex, className, </span>
+<span class="fc bfc" id="L467" title="All 2 branches covered.">    	    if (token.enumeration == TokenEnum.CLASS) {</span>
+<span class="fc" id="L468">    	    	classNumber = 1;</span>
+<span class="fc" id="L469">    	    	currentTokenIndex++;</span>
+<span class="fc" id="L470">    	    	className = list.get(currentTokenIndex).string; // get the class name</span>
+<span class="fc" id="L471">    	    	classList.add(className);</span>
+<span class="fc" id="L472">    	    	currentTokenIndex++;</span>
+<span class="fc" id="L473">    	    	findMethodsAndComplexityFactor(filename, list, currentTokenIndex, className, </span>
     	    								   classNumber, useExceptions);
     	    }
     	}
 
-<span class="pc bpc" id="L480" title="1 of 2 branches missed.">    	if (Options.isComputeOnlyOneMethod()) {    		</span>
-<span class="fc" id="L481">    		String targetName = Options.getMethodName();</span>
-<span class="fc" id="L482">          	System.out.print(&quot;method: &lt;&quot; + targetName + &quot;&gt;  &quot;);</span>
-<span class="fc" id="L483">          	System.out.println(&quot;Complexity Factor: &quot; + getMethodComplexityFactor(targetName));</span>
-    	}
+//    	if (Options.isComputeOnlyOneMethod()) {    		
+//    		String targetName = Options.getMethodName();
+//          	System.out.print(&quot;method: &lt;&quot; + targetName + &quot;&gt;  &quot;);
+//          	System.out.println(&quot;Complexity Factor: &quot; + getMethodComplexityFactor(targetName));
+//    	}
     	
-<span class="fc" id="L486">    	Debug.println(Categories.MCCABE, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
-<span class="fc" id="L487">			      &quot;compute() &quot; + &quot;McCabe total: &quot; + getTotalComplexity(filename));</span>
+<span class="fc" id="L484">    	Debug.println(Categories.MCCABE, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
+<span class="fc" id="L485">			      &quot;compute() &quot; + &quot;McCabe total: &quot; + getTotalComplexity(filename));</span>
 
-<span class="fc" id="L489">    }</span>
+<span class="fc" id="L487">    }</span>
     
     /** 
      * Print out information about the file. 
      */
     public void debugging_print() {
-<span class="nc" id="L495">    	double total = 0;</span>
-<span class="nc" id="L496">    	double mccabeComplexityFactor = 0;</span>
+<span class="fc" id="L493">    	double total = 0;</span>
+<span class="fc" id="L494">    	double mccabeComplexityFactor = 0;</span>
     	
-<span class="nc" id="L498">     	System.out.println(&quot;Number of classes: &quot; + classList.size());</span>
+<span class="fc" id="L496">     	System.out.println(&quot;Number of classes: &quot; + classList.size());</span>
      	
-<span class="nc bnc" id="L500" title="All 2 branches missed.">     	for (String item : classList) { // get the overall Mccabe Complexity Factor</span>
-<span class="nc" id="L501">     		System.out.println(&quot;classname: &quot; + item + &quot; &quot;);</span>
-<span class="nc" id="L502">     	}</span>
+<span class="pc bpc" id="L498" title="1 of 2 branches missed.">     	for (String item : classList) { // get the overall Mccabe Complexity Factor</span>
+<span class="nc" id="L499">     		System.out.println(&quot;classname: &quot; + item + &quot; &quot;);</span>
+<span class="nc" id="L500">     	}</span>
      	
-<span class="nc" id="L504">     	System.out.println(&quot;Number of methods: &quot; + methods.size());</span>
-<span class="nc bnc" id="L505" title="All 2 branches missed.">      	for (MccabeNode item2 : methods) { // get the method Mccabe Complexity Factor</span>
-<span class="nc" id="L506">     		System.out.print(&quot;classname: &quot; + item2.getClassName() + &quot; &quot;);</span>
-<span class="nc" id="L507">     		System.out.print(&quot;methodName: &quot; + item2.getMethodName() + &quot;(&quot; + item2.getLineNumber() + &quot;) &quot;);</span>
-<span class="nc" id="L508">    		System.out.println(&quot; mcCabeComplexityFactor: &quot; + item2.getMccabeComplexityFactor());</span>
-<span class="nc" id="L509">    	}    	</span>
+<span class="fc" id="L502">     	System.out.println(&quot;Number of methods: &quot; + methods.size());</span>
+<span class="fc bfc" id="L503" title="All 2 branches covered.">      	for (MccabeNode item2 : methods) { // get the method Mccabe Complexity Factor</span>
+<span class="fc" id="L504">     		System.out.print(&quot;classname: &quot; + item2.getClassName() + &quot; &quot;);</span>
+<span class="fc" id="L505">     		System.out.print(&quot;methodName: &quot; + item2.getMethodName() + &quot;(&quot; + item2.getLineNumber() + &quot;) &quot;);</span>
+<span class="fc" id="L506">    		System.out.println(&quot; mcCabeComplexityFactor: &quot; + item2.getMccabeComplexityFactor());</span>
+<span class="fc" id="L507">    	}    	</span>
    
-<span class="nc bnc" id="L511" title="All 2 branches missed.">   	    for (MccabeNode item2 : methods) { // get the overall Mccabe Complexity Factor</span>
-<span class="nc" id="L512">   			total += item2.getMccabeComplexityFactor();</span>
-<span class="nc" id="L513">   	    }</span>
-<span class="nc bnc" id="L514" title="All 2 branches missed.">   	    if (methods.size() &gt; 0) {</span>
-<span class="nc" id="L515">   	    	mccabeComplexityFactor = total/methods.size();</span>
-<span class="nc" id="L516">   	    	System.out.println(&quot;McCabe Complexity Factor: &quot; + mccabeComplexityFactor);</span>
+<span class="fc bfc" id="L509" title="All 2 branches covered.">   	    for (MccabeNode item2 : methods) { // get the overall Mccabe Complexity Factor</span>
+<span class="fc" id="L510">   			total += item2.getMccabeComplexityFactor();</span>
+<span class="fc" id="L511">   	    }</span>
+   	    
+<span class="pc bpc" id="L513" title="1 of 2 branches missed.">   	    if (methods.size() &gt; 0) {</span>
+<span class="fc" id="L514">   	    	mccabeComplexityFactor = total/methods.size();</span>
+<span class="fc" id="L515">   	    	System.out.println(&quot;McCabe Complexity Factor: &quot; + mccabeComplexityFactor);</span>
    	    }
-<span class="nc" id="L518">    }</span>
+<span class="fc" id="L517">    }</span>
     
     /**
      * Print out non-verbose information about the file
      */
     public void print() {
     	double complexityFactor;
-<span class="fc" id="L525">    	double total = 0;</span>
+<span class="fc" id="L524">    	double total = 0;</span>
     	
-<span class="fc bfc" id="L527" title="All 2 branches covered.">    	for (MccabeNode item : methods) { // get the overall Mccabe Complexity Factor</span>
-<span class="fc" id="L528">   			total += item.getMccabeComplexityFactor();</span>
-<span class="fc" id="L529">   	    }</span>
+<span class="fc bfc" id="L526" title="All 2 branches covered.">    	for (MccabeNode item : methods) { // get the overall Mccabe Complexity Factor</span>
+<span class="fc" id="L527">   			total += item.getMccabeComplexityFactor();</span>
+<span class="fc" id="L528">   	    }</span>
     	
-<span class="pc bpc" id="L531" title="1 of 2 branches missed.">    	if (methods.size() &gt; 0) {</span>
-<span class="fc" id="L532">    		complexityFactor = (double)(total/methods.size());</span>
-<span class="fc" id="L533">    		System.out.println(&quot;McCabe Complexity Factor: &quot; + complexityFactor);</span>
+<span class="pc bpc" id="L530" title="1 of 2 branches missed.">    	if (methods.size() &gt; 0) {</span>
+<span class="fc" id="L531">    		complexityFactor = (double)(total/methods.size());</span>
+<span class="fc" id="L532">    		System.out.println(&quot;McCabe Complexity Factor: &quot; + complexityFactor);</span>
     	}
     	
-<span class="fc" id="L536">	    System.out.println(&quot;Number of classes: &quot; + classList.size());</span>
-<span class="fc" id="L537">	    System.out.println(&quot;Number of methods: &quot; + methods.size());</span>
-<span class="fc" id="L538">	}</span>
+<span class="fc" id="L535">	    System.out.println(&quot;Number of classes: &quot; + classList.size());</span>
+<span class="fc" id="L536">	    System.out.println(&quot;Number of methods: &quot; + methods.size());</span>
+<span class="fc" id="L537">	}</span>
     
     /**
      * Determine the file McCabe complexity factor.
@@ -544,14 +543,14 @@ import main.java.scanner.TokenEnum;
      */
     public double getOverallComplexityFactor() {
     	double complexityFactor;
-<span class="fc" id="L547">    	double total = 0;</span>
+<span class="fc" id="L546">    	double total = 0;</span>
     	
-<span class="fc bfc" id="L549" title="All 2 branches covered.">    	for (MccabeNode item : methods) { // get the overall Mccabe Complexity Factor</span>
-<span class="fc" id="L550">   			total += item.getMccabeComplexityFactor();</span>
-<span class="fc" id="L551">   	    }</span>
-<span class="fc" id="L552">  	 	complexityFactor = (double)(total/methods.size());</span>
+<span class="fc bfc" id="L548" title="All 2 branches covered.">    	for (MccabeNode item : methods) { // get the overall Mccabe Complexity Factor</span>
+<span class="fc" id="L549">   			total += item.getMccabeComplexityFactor();</span>
+<span class="fc" id="L550">   	    }</span>
+<span class="fc" id="L551">  	 	complexityFactor = (double)(total/methods.size());</span>
   	 	
-<span class="fc" id="L554">  	 	return complexityFactor;</span>
+<span class="fc" id="L553">  	 	return complexityFactor;</span>
 	}
     
     /** 
@@ -564,14 +563,13 @@ import main.java.scanner.TokenEnum;
     public Integer getMethodComplexityFactor(String method) {
     	Integer complexityFactor;
     	
-//		debugging_print();
-<span class="fc" id="L568">		complexityFactor = 0;</span>
-<span class="fc bfc" id="L569" title="All 2 branches covered.">    	for (MccabeNode item : methods) { // get the overall Mccabe Complexity Factor</span>
-<span class="fc bfc" id="L570" title="All 2 branches covered.">    		if (item.getMethodName().equals(method))</span>
-<span class="fc" id="L571">    			complexityFactor = item.getMccabeComplexityFactor();</span>
-<span class="fc" id="L572">   	    }</span>
+<span class="fc" id="L566">		complexityFactor = 0;</span>
+<span class="fc bfc" id="L567" title="All 2 branches covered.">    	for (MccabeNode item : methods) { // get the overall Mccabe Complexity Factor</span>
+<span class="fc bfc" id="L568" title="All 2 branches covered.">    		if (item.getMethodName().equals(method))</span>
+<span class="fc" id="L569">    			complexityFactor = item.getMccabeComplexityFactor();</span>
+<span class="fc" id="L570">   	    }</span>
   	 	
-<span class="fc" id="L574">  	 	return complexityFactor;</span>
+<span class="fc" id="L572">  	 	return complexityFactor;</span>
 	}
     
     /**
@@ -579,8 +577,17 @@ import main.java.scanner.TokenEnum;
      * 
      * @return the number of methods
      */
+    public Integer getNumberOfClasses() {
+<span class="fc" id="L581">   	 	return classList.size();</span>
+    }
+    
+    /**
+     * Get the number of methods
+     * 
+     * @return the number of methods
+     */
     public Integer getNumberOfMethods() {
-<span class="nc" id="L583">   	 	return methods.size();</span>
+<span class="nc" id="L590">   	 	return methods.size();</span>
     }
     
     /**
@@ -593,12 +600,12 @@ import main.java.scanner.TokenEnum;
     public Integer getMethodComplexityFactor(int methodIndex) {
     	MccabeNode item;
     	
-<span class="nc bnc" id="L596" title="All 2 branches missed.">    	if (methodIndex &lt; getNumberOfMethods()) {</span>
-<span class="nc" id="L597">    		item = methods.get(methodIndex);</span>
-<span class="nc" id="L598">    		return item.getMccabeComplexityFactor();</span>
+<span class="nc bnc" id="L603" title="All 2 branches missed.">    	if (methodIndex &lt; getNumberOfMethods()) {</span>
+<span class="nc" id="L604">    		item = methods.get(methodIndex);</span>
+<span class="nc" id="L605">    		return item.getMccabeComplexityFactor();</span>
     	}
     	else
-<span class="nc" id="L601">    		return 0;</span>
+<span class="nc" id="L608">    		return 0;</span>
 	}
     
     /**
@@ -611,12 +618,12 @@ import main.java.scanner.TokenEnum;
     public String getMethodName(int methodIndex) {
     	MccabeNode item;
     	
-<span class="nc bnc" id="L614" title="All 2 branches missed.">    	if (methodIndex &lt; getNumberOfMethods()) {</span>
-<span class="nc" id="L615">    		item = methods.get(methodIndex);</span>
-<span class="nc" id="L616">    		return item.getMethodName();</span>
+<span class="nc bnc" id="L621" title="All 2 branches missed.">    	if (methodIndex &lt; getNumberOfMethods()) {</span>
+<span class="nc" id="L622">    		item = methods.get(methodIndex);</span>
+<span class="nc" id="L623">    		return item.getMethodName();</span>
     	}
     	else
-<span class="nc" id="L619">    		return &quot;&quot;;</span>
+<span class="nc" id="L626">    		return &quot;&quot;;</span>
 	}
     
     /**
@@ -625,14 +632,14 @@ import main.java.scanner.TokenEnum;
      * @return the arguments to be tested
      */
     private static Options setOptions() {
-<span class="nc" id="L628">		String[] args = new String[4];</span>
-<span class="nc" id="L629">		args[0] = &quot;-exceptions&quot;;</span>
-<span class="nc" id="L630">		args[1] = &quot;-m&quot;;</span>
-<span class="nc" id="L631">		args[2] = &quot;temp.dat&quot;;</span>
-<span class="nc" id="L632">		args[3] = &quot;/home/dks/git/McCabe_v1/McCabe/src/test/source/metrics/TestInput.java&quot;;</span>
-<span class="nc" id="L633">    	Options options = new Options(args);</span>
+<span class="nc" id="L635">		String[] args = new String[4];</span>
+<span class="nc" id="L636">		args[0] = &quot;-exceptions&quot;;</span>
+<span class="nc" id="L637">		args[1] = &quot;-m&quot;;</span>
+<span class="nc" id="L638">		args[2] = &quot;temp.dat&quot;;</span>
+<span class="nc" id="L639">		args[3] = &quot;/home/dks/git/McCabe_v1/McCabe/src/test/source/metrics/TestInput.java&quot;;</span>
+<span class="nc" id="L640">    	Options options = new Options(args);</span>
 
-<span class="nc" id="L635">    	return options;</span>
+<span class="nc" id="L642">    	return options;</span>
     }
     
     /**
@@ -643,15 +650,15 @@ import main.java.scanner.TokenEnum;
      * @return the scanner
      */
     private static Scanner createScanner(Options options) {
-<span class="nc" id="L646">    	Scanner scanner = null;</span>
+<span class="nc" id="L653">    	Scanner scanner = null;</span>
     	
 		try {
-<span class="nc" id="L649">			scanner = new Scanner(options.getMcCabeDirectory());</span>
-<span class="nc" id="L650">		} catch (FileNotFoundException e) {</span>
-<span class="nc" id="L651">			e.printStackTrace();</span>
-<span class="nc" id="L652">		}</span>
+<span class="nc" id="L656">			scanner = new Scanner(options.getMcCabeDirectory());</span>
+<span class="nc" id="L657">		} catch (FileNotFoundException e) {</span>
+<span class="nc" id="L658">			e.printStackTrace();</span>
+<span class="nc" id="L659">		}</span>
 		
-<span class="nc" id="L654">    	return scanner;</span>
+<span class="nc" id="L661">    	return scanner;</span>
     }
     
     /**
@@ -662,18 +669,18 @@ import main.java.scanner.TokenEnum;
      * @return a list of tokens
      */
     private static TokenList readTokens(Scanner scanner) {
-<span class="nc" id="L665">	   	Token token = null;</span>
-<span class="nc" id="L666">    	TokenList tokenList = new TokenList();</span>
+<span class="nc" id="L672">	   	Token token = null;</span>
+<span class="nc" id="L673">    	TokenList tokenList = new TokenList();</span>
 	   	
-<span class="nc" id="L668">		token = scanner.getNextToken();</span>
-<span class="nc bnc" id="L669" title="All 2 branches missed.">		while  (token.enumeration != TokenEnum.EOF) {</span>
-<span class="nc" id="L670">   	   		System.out.println(token.string + &quot;: &quot; + token.enumeration + &quot;(&quot; + token.lineNumber + &quot;)&quot;);</span>
-<span class="nc" id="L671">   	   		tokenList.add(token);</span>
-<span class="nc" id="L672">   	   		token = scanner.getNextToken();</span>
+<span class="nc" id="L675">		token = scanner.getNextToken();</span>
+<span class="nc bnc" id="L676" title="All 2 branches missed.">		while  (token.enumeration != TokenEnum.EOF) {</span>
+<span class="nc" id="L677">   	   		System.out.println(token.string + &quot;: &quot; + token.enumeration + &quot;(&quot; + token.lineNumber + &quot;)&quot;);</span>
+<span class="nc" id="L678">   	   		tokenList.add(token);</span>
+<span class="nc" id="L679">   	   		token = scanner.getNextToken();</span>
 		}
-<span class="nc" id="L674">		tokenList.add(token);</span>
+<span class="nc" id="L681">		tokenList.add(token);</span>
 		
-<span class="nc" id="L676">		return tokenList;</span>
+<span class="nc" id="L683">		return tokenList;</span>
     }
     
     /**
@@ -682,14 +689,14 @@ import main.java.scanner.TokenEnum;
      * @param mcCabe the methods that were computed
      */
     private static void printMethods(Mccabe mcCabe) {
-<span class="nc" id="L685">		Integer size = mcCabe.getNumberOfMethods();</span>
-<span class="nc bnc" id="L686" title="All 2 branches missed.">		for (int i=0; i&lt;size; i++) {</span>
-<span class="nc" id="L687">			System.out.println(&quot;Class Name: &quot; + (methods.get(i)).getClassName() +</span>
-<span class="nc" id="L688">					           &quot; Method Name: &quot; + mcCabe.getMethodName(i) + </span>
+<span class="nc" id="L692">		Integer size = mcCabe.getNumberOfMethods();</span>
+<span class="nc bnc" id="L693" title="All 2 branches missed.">		for (int i=0; i&lt;size; i++) {</span>
+<span class="nc" id="L694">			System.out.println(&quot;Class Name: &quot; + (methods.get(i)).getClassName() +</span>
+<span class="nc" id="L695">					           &quot; Method Name: &quot; + mcCabe.getMethodName(i) + </span>
 					           &quot; Mccabe Complexity Factor: &quot; + 
-<span class="nc" id="L690">					                         mcCabe.getMethodComplexityFactor(i));</span>
+<span class="nc" id="L697">					                         mcCabe.getMethodComplexityFactor(i));</span>
 		} 	
-<span class="nc" id="L692">    }</span>
+<span class="nc" id="L699">    }</span>
     
     /**
      * The main() routine to test out this file.
@@ -697,29 +704,29 @@ import main.java.scanner.TokenEnum;
      * @param args22222 are not used
      */
 	public static void main(String[] args22222) {
-<span class="nc" id="L700">		Debug.setProperties();</span>
+<span class="nc" id="L707">		Debug.setProperties();</span>
  		
-<span class="nc" id="L702">		Mccabe mcCabe = new Mccabe();</span>
-<span class="nc" id="L703">    	TokenList tokenList = new TokenList();</span>
-<span class="nc" id="L704">    	Scanner scanner = null;</span>
+<span class="nc" id="L709">		Mccabe mcCabe = new Mccabe();</span>
+<span class="nc" id="L710">    	TokenList tokenList = new TokenList();</span>
+<span class="nc" id="L711">    	Scanner scanner = null;</span>
 	
-<span class="nc" id="L706">		Options options = setOptions();</span>
+<span class="nc" id="L713">		Options options = setOptions();</span>
 		
-<span class="nc" id="L708">		scanner = createScanner(options);</span>
-<span class="nc bnc" id="L709" title="All 2 branches missed.">		if (scanner != null) {</span>
+<span class="nc" id="L715">		scanner = createScanner(options);</span>
+<span class="nc bnc" id="L716" title="All 2 branches missed.">		if (scanner != null) {</span>
   		 	
-<span class="nc" id="L711">			tokenList = readTokens(scanner);</span>
+<span class="nc" id="L718">			tokenList = readTokens(scanner);</span>
 			
-<span class="nc" id="L713">			mcCabe.compute(&quot;TestInput.java&quot;, tokenList.getList(), options);</span>
-<span class="nc" id="L714">			mcCabe.debugging_print();</span>
-<span class="nc" id="L715">			mcCabe.print();</span>
+<span class="nc" id="L720">			mcCabe.compute(&quot;TestInput.java&quot;, tokenList.getList(), options);</span>
+<span class="nc" id="L721">			mcCabe.debugging_print();</span>
+<span class="nc" id="L722">			mcCabe.print();</span>
 		
-<span class="nc" id="L717">            printMethods(mcCabe);</span>
+<span class="nc" id="L724">            printMethods(mcCabe);</span>
             
-<span class="nc" id="L719">			System.out.println(&quot;Method Name: &quot; + &quot;main&quot; + </span>
+<span class="nc" id="L726">			System.out.println(&quot;Method Name: &quot; + &quot;main&quot; + </span>
 		                   &quot; Mccabe Complexity Factor (SB 10): &quot; + 
-<span class="nc" id="L721">				            mcCabe.getMethodComplexityFactor(&quot;main&quot;));</span>
+<span class="nc" id="L728">				            mcCabe.getMethodComplexityFactor(&quot;main&quot;));</span>
 		}	
-<span class="nc" id="L723">	}</span>
+<span class="nc" id="L730">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

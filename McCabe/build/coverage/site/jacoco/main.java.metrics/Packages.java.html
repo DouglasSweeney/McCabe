@@ -94,25 +94,31 @@ import main.java.scanner.TokenEnum;
 	 */
 	public void debugging_print() {
 		
-<span class="nc" id="L97">		packageList.sort(Comparator.naturalOrder());</span>
-<span class="nc bnc" id="L98" title="All 2 branches missed.">		for (String packageName : packageList) {</span>
-<span class="nc" id="L99">			System.out.println(&quot;package: &quot; + packageName);</span>
-<span class="nc" id="L100">		}</span>
-<span class="nc" id="L101">	}</span>
+<span class="fc" id="L97">		packageList.sort(Comparator.naturalOrder());</span>
+<span class="fc bfc" id="L98" title="All 2 branches covered.">		for (String packageName : packageList) {</span>
+<span class="fc" id="L99">			System.out.println(&quot;package: &quot; + packageName);</span>
+<span class="fc" id="L100">		}</span>
+<span class="fc" id="L101">	}</span>
 	/**
 	 * Get the number of packages
 	 */
 	public int size() {
-<span class="nc" id="L106">	    return packageList.size();</span>
+<span class="fc" id="L106">	    return packageList.size();</span>
 	}
-	
-	
+		
 	/**
 	 * Print out just the number of packages
 	 */
 	public void print() {
-<span class="fc" id="L114">	    System.out.println(&quot;Packages: &quot; + packageList.size());</span>
-<span class="fc" id="L115">	}</span>
+<span class="fc" id="L113">	    System.out.println(&quot;Packages: &quot; + packageList.size());</span>
+<span class="fc" id="L114">	}</span>
+	
+	/**
+	 * Debugging
+	 */
+	public void clear() {
+<span class="fc" id="L120">	    packageList.clear();</span>
+<span class="fc" id="L121">	}</span>
 	
 	/**
 	 * Test out this class
@@ -120,41 +126,41 @@ import main.java.scanner.TokenEnum;
 	 * @param args the arguments to main()
 	 */
 	public static void main(String[] args) {
-<span class="nc" id="L123">		Packages packages = new Packages();</span>
+<span class="nc" id="L129">		Packages packages = new Packages();</span>
 	
-<span class="nc" id="L125">		Token token = null;</span>
-<span class="nc" id="L126">		Scanner scanner = null;</span>
-<span class="nc" id="L127">		TokenList tokenList = new TokenList();</span>
+<span class="nc" id="L131">		Token token = null;</span>
+<span class="nc" id="L132">		Scanner scanner = null;</span>
+<span class="nc" id="L133">		TokenList tokenList = new TokenList();</span>
 	
-<span class="nc" id="L129">		Stream&lt;Path&gt; walk = null;</span>
+<span class="nc" id="L135">		Stream&lt;Path&gt; walk = null;</span>
 		try {
-<span class="nc" id="L131">			walk = Files.walk(Paths.get(&quot;/home/dks/git/McCabe_v1/McCabe/src/main&quot;));</span>
-<span class="nc" id="L132">		} catch (IOException e1) {</span>
-<span class="nc" id="L133">			e1.printStackTrace();</span>
-<span class="nc" id="L134">		}</span>
+<span class="nc" id="L137">			walk = Files.walk(Paths.get(&quot;/home/dks/git/McCabe_v1/McCabe/src/main&quot;));</span>
+<span class="nc" id="L138">		} catch (IOException e1) {</span>
+<span class="nc" id="L139">			e1.printStackTrace();</span>
+<span class="nc" id="L140">		}</span>
 
-<span class="nc" id="L136">		List&lt;String&gt; result = walk.filter(Files::isRegularFile)</span>
-<span class="nc" id="L137">    				.map(x -&gt; x.toString()).collect(Collectors.toList());</span>
+<span class="nc" id="L142">		List&lt;String&gt; result = walk.filter(Files::isRegularFile)</span>
+<span class="nc" id="L143">    				.map(x -&gt; x.toString()).collect(Collectors.toList());</span>
 
-<span class="nc bnc" id="L139" title="All 2 branches missed.">		for (String filename : result) {</span>
-<span class="nc" id="L140">			System.out.println(filename);</span>
+<span class="nc bnc" id="L145" title="All 2 branches missed.">		for (String filename : result) {</span>
+<span class="nc" id="L146">			System.out.println(filename);</span>
 			try {
-<span class="nc" id="L142">				scanner = new Scanner(filename);</span>
-<span class="nc" id="L143">			} catch (FileNotFoundException e) {</span>
-<span class="nc" id="L144">				e.printStackTrace();</span>
-<span class="nc" id="L145">			}</span>
-<span class="nc" id="L146">			token = scanner.getNextToken();</span>
-<span class="nc bnc" id="L147" title="All 2 branches missed.">			while  (token.enumeration != TokenEnum.EOF) {</span>
-<span class="nc" id="L148">   	   			System.out.println(token.string + &quot;: &quot; + token.enumeration + &quot;(&quot; + token.lineNumber + &quot;)&quot;);</span>
-<span class="nc" id="L149">   	   			tokenList.add(token);</span>
-<span class="nc" id="L150">   	   			token = scanner.getNextToken();</span>
+<span class="nc" id="L148">				scanner = new Scanner(filename);</span>
+<span class="nc" id="L149">			} catch (FileNotFoundException e) {</span>
+<span class="nc" id="L150">				e.printStackTrace();</span>
+<span class="nc" id="L151">			}</span>
+<span class="nc" id="L152">			token = scanner.getNextToken();</span>
+<span class="nc bnc" id="L153" title="All 2 branches missed.">			while  (token.enumeration != TokenEnum.EOF) {</span>
+<span class="nc" id="L154">   	   			System.out.println(token.string + &quot;: &quot; + token.enumeration + &quot;(&quot; + token.lineNumber + &quot;)&quot;);</span>
+<span class="nc" id="L155">   	   			tokenList.add(token);</span>
+<span class="nc" id="L156">   	   			token = scanner.getNextToken();</span>
 			}
-<span class="nc" id="L152">			tokenList.add(token);</span>
+<span class="nc" id="L158">			tokenList.add(token);</span>
 		 	
-<span class="nc" id="L154">			packages.compute(tokenList.getList());</span>
-<span class="nc" id="L155">			packages.debugging_print();</span>
-<span class="nc" id="L156">			packages.print();</span>
-<span class="nc" id="L157">		}</span>
-<span class="nc" id="L158">    }</span>
+<span class="nc" id="L160">			packages.compute(tokenList.getList());</span>
+<span class="nc" id="L161">			packages.debugging_print();</span>
+<span class="nc" id="L162">			packages.print();</span>
+<span class="nc" id="L163">		}</span>
+<span class="nc" id="L164">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

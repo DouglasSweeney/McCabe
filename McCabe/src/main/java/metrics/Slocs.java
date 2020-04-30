@@ -36,22 +36,6 @@ import main.java.scanner.TokenEnum;
 public class Slocs extends TokenList {
 	static TokenList tokenList = new TokenList();
 	
-	/** 
-	 * The class of the node.
-	 * 
-	 * @author dks
-	 *
-	 */
-	public class SlocNode {
-		public String filename = "";
-		public Integer lineNumber = 0;
-			
-		public SlocNode(String filename, Integer lineNumber) {
-			this.filename = filename;
-			this.lineNumber = lineNumber;
-		}
-	}
-	
  	static List<SlocNode> slocList = new ArrayList<>();;
 	
  	/**
@@ -115,16 +99,18 @@ public class Slocs extends TokenList {
 	public int getNumberOfSlocs(String filename) {
 		int slocs = 0;
 		
-		if (filename.endsWith(".java")) {
-			for (int i=0; i < slocList.size(); i++) {
-				SlocNode item = slocList.get(i);
-				if (item.filename.equals(filename)) {
-					slocs++;
-				} 
-			}
-		} 
-		else {
-			slocs = slocList.size();
+		if (filename != null) { 
+			if (filename.endsWith(".java")) {
+				for (int i=0; i < slocList.size(); i++) {
+					SlocNode item = slocList.get(i);
+					if (item.filename.equals(filename)) {
+						slocs++;
+					} 
+				}
+			} 
+			else {
+				slocs = slocList.size();
+			}	
 		}
 		
 		return slocs;

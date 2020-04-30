@@ -12,8 +12,13 @@ import org.junit.runners.Suite.SuiteClasses;
 	           test.java.main.MetricsTest.class,
 	           test.java.main.OptionsTest.class,
 	           test.java.main.TokenListTest.class,
+	           test.java.main.UtilsTest.class,
 	           
-	           test.java.metrics.McCabeTest.class,
+	           test.java.metrics.MccabeTest.class,
+	           test.java.metrics.MccabeNodeTest.class,
+	           test.java.metrics.PackagesTest.class,
+	           test.java.metrics.SlocNodeTest.class,
+	           test.java.metrics.SlocsTest.class,
 	           
 	           test.java.scanner.ScannerTest.class})
 

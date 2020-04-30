@@ -100,7 +100,6 @@ public class Options {
 		System.out.println("	McCabe /path[/filename.java]");
 		System.out.println("	McCabe -e /path[/filename.java]");
 		System.out.println("	McCabe -e -m methodName /path/filename.java");
-		Runtime.getRuntime().exit(0);
 	}
 	
 	/**

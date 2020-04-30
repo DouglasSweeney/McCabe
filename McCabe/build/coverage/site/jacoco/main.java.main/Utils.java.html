@@ -41,10 +41,10 @@ import main.java.scanner.TokenEnum;
 <span class="fc" id="L41">		Integer braces = 0;</span>
 		
 <span class="fc" id="L43">		token = fileList.get(currentTokenIndex);</span>
-<span class="pc bpc" id="L44" title="3 of 4 branches missed.">		while (token.enumeration != TokenEnum.LPAREN &amp;&amp; // Get to beginning of parameters</span>
+<span class="pc bpc" id="L44" title="1 of 4 branches missed.">		while (token.enumeration != TokenEnum.LPAREN &amp;&amp; // Get to beginning of parameters</span>
 			   token.enumeration != TokenEnum.EOF) {
-<span class="nc" id="L46">			currentTokenIndex++;</span>
-<span class="nc" id="L47">     		token = fileList.get(currentTokenIndex);</span>
+<span class="fc" id="L46">			currentTokenIndex++;</span>
+<span class="fc" id="L47">     		token = fileList.get(currentTokenIndex);</span>
 		}
 <span class="pc bpc" id="L49" title="1 of 4 branches missed.">		while (token.enumeration != TokenEnum.RPAREN &amp;&amp; // Get to end of parameters</span>
 			   token.enumeration != TokenEnum.EOF) {

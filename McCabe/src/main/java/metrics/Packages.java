@@ -105,13 +105,19 @@ public class Packages extends TokenList {
 	public int size() {
 	    return packageList.size();
 	}
-	
-	
+		
 	/**
 	 * Print out just the number of packages
 	 */
 	public void print() {
 	    System.out.println("Packages: " + packageList.size());
+	}
+	
+	/**
+	 * Debugging
+	 */
+	public void clear() {
+	    packageList.clear();
 	}
 	
 	/**

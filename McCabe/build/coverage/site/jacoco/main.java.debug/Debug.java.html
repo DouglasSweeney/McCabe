@@ -95,43 +95,42 @@ import main.java.scanner.Token;
 //			}
 		}
 <span class="fc" id="L97">	}</span>
-	
-	
+		
 	private static boolean isEnabled(String category) {
-<span class="pc bpc" id="L101" title="1 of 2 branches missed.">		return System.getProperty(&quot;debug.&quot; + category.toLowerCase()) != null;</span>
+<span class="pc bpc" id="L100" title="1 of 2 branches missed.">		return System.getProperty(&quot;debug.&quot; + category.toLowerCase()) != null;</span>
 	}
 	
 	public static void println(Categories category, String message) {
-<span class="pc bpc" id="L105" title="1 of 2 branches missed.">		if (isEnabled(category.toString())) {</span>
-<span class="fc" id="L106">			System.out.println(message);</span>
+<span class="pc bpc" id="L104" title="1 of 2 branches missed.">		if (isEnabled(category.toString())) {</span>
+<span class="fc" id="L105">			System.out.println(message);</span>
 		}
-<span class="fc" id="L108">	}</span>
+<span class="fc" id="L107">	}</span>
 	
 	public static void println(Categories category, Options options, String message) {
-<span class="pc bpc" id="L111" title="1 of 2 branches missed.">		if (isEnabled(category.toString())) {</span>
-<span class="pc bpc" id="L112" title="1 of 2 branches missed.">			if (category.equals(Categories.OPTIONS))</span>
-<span class="fc" id="L113">				compareToFirstCall(options);</span>
+<span class="pc bpc" id="L110" title="1 of 2 branches missed.">		if (isEnabled(category.toString())) {</span>
+<span class="pc bpc" id="L111" title="1 of 2 branches missed.">			if (category.equals(Categories.OPTIONS))</span>
+<span class="fc" id="L112">				compareToFirstCall(options);</span>
 			else
-<span class="nc" id="L115">				System.out.println(message);</span>
+<span class="nc" id="L114">				System.out.println(message);</span>
 		}
-<span class="fc" id="L117">	}</span>
+<span class="fc" id="L116">	}</span>
 	
 	public static void println(Categories category, String methodName, List&lt;Token&gt; tokenList, String message) {
-<span class="pc bpc" id="L120" title="1 of 2 branches missed.">		if (isEnabled(category.toString())) {</span>
-<span class="pc bpc" id="L121" title="1 of 2 branches missed.">			if (category.equals(Categories.TOKENS))</span>
-<span class="fc" id="L122">				printList(methodName, tokenList);</span>
+<span class="pc bpc" id="L119" title="1 of 2 branches missed.">		if (isEnabled(category.toString())) {</span>
+<span class="pc bpc" id="L120" title="1 of 2 branches missed.">			if (category.equals(Categories.TOKENS))</span>
+<span class="fc" id="L121">				printList(methodName, tokenList);</span>
 			else
-<span class="nc" id="L124">				System.out.println(message);</span>
+<span class="nc" id="L123">				System.out.println(message);</span>
 		}
-<span class="fc" id="L126">	}</span>
+<span class="fc" id="L125">	}</span>
 	
 	public static void println(Categories category, List&lt;Token&gt; tokenList, String message) {
-<span class="pc bpc" id="L129" title="1 of 2 branches missed.">		if (isEnabled(category.toString())) {</span>
-<span class="pc bpc" id="L130" title="1 of 2 branches missed.">			if (category.equals(Categories.TOKENS))</span>
-<span class="fc" id="L131">				printList(tokenList);</span>
+<span class="pc bpc" id="L128" title="1 of 2 branches missed.">		if (isEnabled(category.toString())) {</span>
+<span class="pc bpc" id="L129" title="1 of 2 branches missed.">			if (category.equals(Categories.TOKENS))</span>
+<span class="fc" id="L130">				printList(tokenList);</span>
 			else
-<span class="nc" id="L133">				System.out.println(message);</span>
+<span class="nc" id="L132">				System.out.println(message);</span>
 		}
-<span class="fc" id="L135">	}</span>
+<span class="fc" id="L134">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

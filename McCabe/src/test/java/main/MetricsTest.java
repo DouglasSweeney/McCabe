@@ -37,11 +37,8 @@ public class MetricsTest {
 		args[0] = "/home/dks/git/McCabe_v1/McCabe/src/test/TestInput.java";
 		Options options = new Options(args);
 		
-//		metrics.clearSlocList();
 		main.run(PRINT_JUST_FILENAME, options);
 
-//		metrics.debugging_print();
-		
 		assertEquals(443, metrics.getNumberOfSlocs(options.getMcCabeDirectory())); 
 	}
 	
@@ -84,7 +81,7 @@ public class MetricsTest {
 		
 		metrics.compute(filename, list, options);
 		
-		metrics.print();
+//		metrics.print();
 		
 		assertEquals(443, metrics.getNumberOfSlocs(filename));
 	}
@@ -98,11 +95,9 @@ public class MetricsTest {
 		args[0] = "/home/dks/git/McCabe_v1/McCabe/src/test/java/debug";
 		Options options = new Options(args);
 		
-//		metrics.clearSlocList();
+		metrics.clearSlocList();
 		main.run(PRINT_JUST_FILENAME, options);
 
-//		metrics.debugging_print();
-		
 		assertEquals(122, metrics.getNumberOfSlocs(options.getMcCabeDirectory())); 
 	}
 }

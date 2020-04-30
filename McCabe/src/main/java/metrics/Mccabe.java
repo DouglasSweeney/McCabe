@@ -66,7 +66,6 @@ public class Mccabe extends TokenList {
 			
 		}
 		
-//		if (!methodName.equals("")) {
 			if (token.enumeration == TokenEnum.LBRACE) {
 				braces++;
 			}
@@ -75,7 +74,6 @@ public class Mccabe extends TokenList {
 					braces--;
 				}
 			}
-//		}
 
 		if (braces < 0) {
 			Debug.println(Categories.BRACES, Mccabe.class.getCanonicalName() + " " + 
@@ -432,8 +430,8 @@ public class Mccabe extends TokenList {
 		}
 	}
 	
-	private Integer getTotalComplexity(String filename) {
-		Integer total = 0;
+	private double getTotalComplexity(String filename) {
+		double total = 0;
 		
     	for (MccabeNode item : methods) { // get the file Mccabe Complexity Factor
     		if (item.getFilename().equals(filename)) {
@@ -477,11 +475,11 @@ public class Mccabe extends TokenList {
     	    }
     	}
 
-    	if (Options.isComputeOnlyOneMethod()) {    		
-    		String targetName = Options.getMethodName();
-          	System.out.print("method: <" + targetName + ">  ");
-          	System.out.println("Complexity Factor: " + getMethodComplexityFactor(targetName));
-    	}
+//    	if (Options.isComputeOnlyOneMethod()) {    		
+//    		String targetName = Options.getMethodName();
+//          	System.out.print("method: <" + targetName + ">  ");
+//          	System.out.println("Complexity Factor: " + getMethodComplexityFactor(targetName));
+//    	}
     	
     	Debug.println(Categories.MCCABE, Mccabe.class.getCanonicalName() + " " + 
 			      "compute() " + "McCabe total: " + getTotalComplexity(filename));
@@ -511,6 +509,7 @@ public class Mccabe extends TokenList {
    	    for (MccabeNode item2 : methods) { // get the overall Mccabe Complexity Factor
    			total += item2.getMccabeComplexityFactor();
    	    }
+   	    
    	    if (methods.size() > 0) {
    	    	mccabeComplexityFactor = total/methods.size();
    	    	System.out.println("McCabe Complexity Factor: " + mccabeComplexityFactor);
@@ -564,7 +563,6 @@ public class Mccabe extends TokenList {
     public Integer getMethodComplexityFactor(String method) {
     	Integer complexityFactor;
     	
-//		debugging_print();
 		complexityFactor = 0;
     	for (MccabeNode item : methods) { // get the overall Mccabe Complexity Factor
     		if (item.getMethodName().equals(method))
@@ -573,6 +571,15 @@ public class Mccabe extends TokenList {
   	 	
   	 	return complexityFactor;
 	}
+    
+    /**
+     * Get the number of methods
+     * 
+     * @return the number of methods
+     */
+    public Integer getNumberOfClasses() {
+   	 	return classList.size();
+    }
     
     /**
      * Get the number of methods

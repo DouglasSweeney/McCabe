@@ -75,12 +75,16 @@ public class OptionsTest {
 		assertEquals("directory", options.getMcCabeDirectory());
 	}
 	
-	/**
-	 * TODO: How to test usage() - a private method
+	@Test
 	public void checkNoArgumentsCommandLine() {
 		String[] args = new String[0];
-		Options options = new Options(args);
-		
+		Options options = new Options(args);	
 	}
-	*/
+	
+	@Test
+	public void checkHelpArgumentCommandLine() {
+		String[] args = new String[1];
+		args[0] = "-h";
+		Options options = new Options(args);
+	}
 }

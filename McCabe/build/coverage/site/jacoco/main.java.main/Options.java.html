@@ -43,7 +43,7 @@ public class Options {
 <span class="fc" id="L43">		 g.setOpterr(false); // We'll do our own error handling</span>
 		 //
 <span class="fc bfc" id="L45" title="All 2 branches covered.">		 while ((c = g.getopt()) != -1) {</span>
-<span class="pc bpc" id="L46" title="1 of 5 branches missed.">	         switch (c) {</span>
+<span class="fc bfc" id="L46" title="All 5 branches covered.">	         switch (c) {</span>
 		        case 0:
 <span class="fc" id="L48">			          arg = g.getOptarg();</span>
 <span class="pc bpc" id="L49" title="1 of 2 branches missed.">			          if ((char)(new Integer(sb.toString())).intValue() == 'h') {</span>
@@ -60,8 +60,8 @@ public class Options {
 			        break;
 			          
 		        case 'h':
-<span class="nc" id="L63">			        usage();</span>
-<span class="nc" id="L64">			    break;</span>
+<span class="fc" id="L63">			        usage();</span>
+<span class="fc" id="L64">			    break;</span>
 			    
 			    case 'e':
 <span class="fc" id="L67">		        	useExceptions = true;;</span>
@@ -78,11 +78,11 @@ public class Options {
 			 }
 		}
 		 
-<span class="pc bpc" id="L81" title="1 of 2 branches missed.">	    if (argv.length &gt; 0) {</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">	    if (argv.length &gt; 0) {</span>
 <span class="fc" id="L82">	    	mcCabeDirectory= argv[argv.length-1];</span>
 	    }
 	    else {
-<span class="nc" id="L85">	    	usage();</span>
+<span class="fc" id="L85">	    	usage();</span>
 	    }
 <span class="fc" id="L87">	}</span>
 	
@@ -90,18 +90,17 @@ public class Options {
 	 * Print out to the user the use of this program.
 	 */
 	private void usage() {
-<span class="nc" id="L93">     	System.out.println(&quot;McCabe&quot;);</span>
-<span class="nc" id="L94">		System.out.println(&quot;&quot;);</span>
-<span class="nc" id="L95">		System.out.println(&quot;-h, -help: prints this screen.&quot;);</span>
-<span class="nc" id="L96">		System.out.println(&quot;-e, -exceptions: Count the try/catch/finally statements.&quot;); </span>
-<span class="nc" id="L97">		System.out.println(&quot;-m, --method &lt;methodName&gt;: print the McCabe complexity factor of the method.&quot;);</span>
-<span class="nc" id="L98">		System.out.println(&quot;&quot;);</span>
-<span class="nc" id="L99">		System.out.println(&quot;Examples:&quot;);</span>
-<span class="nc" id="L100">		System.out.println(&quot;	McCabe /path[/filename.java]&quot;);</span>
-<span class="nc" id="L101">		System.out.println(&quot;	McCabe -e /path[/filename.java]&quot;);</span>
-<span class="nc" id="L102">		System.out.println(&quot;	McCabe -e -m methodName /path/filename.java&quot;);</span>
-<span class="nc" id="L103">		Runtime.getRuntime().exit(0);</span>
-<span class="nc" id="L104">	}</span>
+<span class="fc" id="L93">     	System.out.println(&quot;McCabe&quot;);</span>
+<span class="fc" id="L94">		System.out.println(&quot;&quot;);</span>
+<span class="fc" id="L95">		System.out.println(&quot;-h, -help: prints this screen.&quot;);</span>
+<span class="fc" id="L96">		System.out.println(&quot;-e, -exceptions: Count the try/catch/finally statements.&quot;); </span>
+<span class="fc" id="L97">		System.out.println(&quot;-m, --method &lt;methodName&gt;: print the McCabe complexity factor of the method.&quot;);</span>
+<span class="fc" id="L98">		System.out.println(&quot;&quot;);</span>
+<span class="fc" id="L99">		System.out.println(&quot;Examples:&quot;);</span>
+<span class="fc" id="L100">		System.out.println(&quot;	McCabe /path[/filename.java]&quot;);</span>
+<span class="fc" id="L101">		System.out.println(&quot;	McCabe -e /path[/filename.java]&quot;);</span>
+<span class="fc" id="L102">		System.out.println(&quot;	McCabe -e -m methodName /path/filename.java&quot;);</span>
+<span class="fc" id="L103">	}</span>
 	
 	/**
 	 * A getter.
@@ -109,7 +108,7 @@ public class Options {
 	 * @return the useExceptions variable
 	 */
 	public boolean getUseExceptions() {
-<span class="fc" id="L112">		return useExceptions;</span>
+<span class="fc" id="L111">		return useExceptions;</span>
 	}	
 
 	/**
@@ -118,7 +117,7 @@ public class Options {
 	 * @return the directory of .java files or the path and filename
 	 */
 	public String getMcCabeDirectory() {
-<span class="fc" id="L121">		return mcCabeDirectory;		</span>
+<span class="fc" id="L120">		return mcCabeDirectory;		</span>
 	}
 
 	/**
@@ -127,8 +126,8 @@ public class Options {
 	 * @param string the path of a directory and possibly the filename
 	 */
 	public void setMcCabeDirectory(String string) {
-<span class="fc" id="L130">		mcCabeDirectory = string;	</span>
-<span class="fc" id="L131">	}</span>
+<span class="fc" id="L129">		mcCabeDirectory = string;	</span>
+<span class="fc" id="L130">	}</span>
 	
 	/** 
 	 * Another getter.
@@ -136,7 +135,7 @@ public class Options {
 	 * @return if the user specified a method on the command line
 	 */
 	public static boolean isComputeOnlyOneMethod() {
-<span class="fc" id="L139">		return computeOnlyOneMethod;</span>
+<span class="fc" id="L138">		return computeOnlyOneMethod;</span>
 	}
 
 	/**
@@ -145,8 +144,8 @@ public class Options {
 	 * @param computeOnlyOneMethod the user specified argument (-m of --method)
 	 */
 	public static void setComputeOnlyOneMethod(boolean computeOnlyOneMethod) {
-<span class="fc" id="L148">		Options.computeOnlyOneMethod = computeOnlyOneMethod;</span>
-<span class="fc" id="L149">	}</span>
+<span class="fc" id="L147">		Options.computeOnlyOneMethod = computeOnlyOneMethod;</span>
+<span class="fc" id="L148">	}</span>
 
 	/**
 	 * Another getter
@@ -154,7 +153,7 @@ public class Options {
 	 * @return the method specified on the command line
 	 */
 	public static String getMethodName() {
-<span class="fc" id="L157">		return methodName;</span>
+<span class="fc" id="L156">		return methodName;</span>
 	}
 	
 	/** 
@@ -164,8 +163,8 @@ public class Options {
 	 */
 
 	public static void setMethodName(String methodName) {
-<span class="fc" id="L167">		Options.methodName = methodName;</span>
-<span class="fc" id="L168">	}</span>
+<span class="fc" id="L166">		Options.methodName = methodName;</span>
+<span class="fc" id="L167">	}</span>
 
 	/**
 	 * The main() entry point to test this file.\
@@ -174,18 +173,18 @@ public class Options {
 	 */
 	public static void main(String[] args22222) {
 //		String[] args = new String[0]; // to call usage()
-<span class="nc" id="L177">		String[] args = new String[4];</span>
-<span class="nc" id="L178">		args[0] = &quot;-exceptions&quot;;</span>
-<span class="nc" id="L179">		args[1] = &quot;-m&quot;;</span>
-<span class="nc" id="L180">		args[2] = &quot;temp.dat&quot;;</span>
-<span class="nc" id="L181">		args[3] = &quot;/tmp&quot;;</span>
-<span class="nc" id="L182">		Options options = new Options(args);</span>
+<span class="nc" id="L176">		String[] args = new String[4];</span>
+<span class="nc" id="L177">		args[0] = &quot;-exceptions&quot;;</span>
+<span class="nc" id="L178">		args[1] = &quot;-m&quot;;</span>
+<span class="nc" id="L179">		args[2] = &quot;temp.dat&quot;;</span>
+<span class="nc" id="L180">		args[3] = &quot;/tmp&quot;;</span>
+<span class="nc" id="L181">		Options options = new Options(args);</span>
     
-<span class="nc" id="L184">		System.out.println(&quot;useExceptions: &quot; + options.getUseExceptions());</span>
-<span class="nc" id="L185">		System.out.println(&quot;isComputeOnlyOneMethod: &quot; + Options.isComputeOnlyOneMethod());</span>
-<span class="nc" id="L186">		System.out.println(&quot;getMethodName: &quot; + Options.getMethodName());</span>
-<span class="nc" id="L187">		System.out.println(&quot;Last parameter: &quot;+ args[args.length-1]);</span>
-<span class="nc" id="L188">		options.setMcCabeDirectory(args[args.length-1]);</span>
-<span class="nc" id="L189">    }</span>
+<span class="nc" id="L183">		System.out.println(&quot;useExceptions: &quot; + options.getUseExceptions());</span>
+<span class="nc" id="L184">		System.out.println(&quot;isComputeOnlyOneMethod: &quot; + Options.isComputeOnlyOneMethod());</span>
+<span class="nc" id="L185">		System.out.println(&quot;getMethodName: &quot; + Options.getMethodName());</span>
+<span class="nc" id="L186">		System.out.println(&quot;Last parameter: &quot;+ args[args.length-1]);</span>
+<span class="nc" id="L187">		options.setMcCabeDirectory(args[args.length-1]);</span>
+<span class="nc" id="L188">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
