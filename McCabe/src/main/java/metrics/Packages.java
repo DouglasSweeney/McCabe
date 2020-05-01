@@ -15,14 +15,12 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import main.java.debug.Categories;
 import main.java.debug.Debug;
-import main.java.main.Metrics;
 import main.java.main.TokenList;
 import main.java.scanner.Scanner;
 import main.java.scanner.Token;
@@ -36,7 +34,7 @@ import main.java.scanner.TokenEnum;
  */
 public class Packages extends TokenList {
 
-	static List<String> packageList = new ArrayList();
+	static List<String> packageList = new ArrayList<>();
 	
 	public Packages() {
 		assert packageList != null : Packages.class.getCanonicalName() + 

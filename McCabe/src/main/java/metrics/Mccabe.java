@@ -28,8 +28,8 @@ import main.java.scanner.TokenEnum;
  * @since 1.0
  */
 public class Mccabe extends TokenList {
-	List<String> classList = new ArrayList();
-	static List<MccabeNode> methods = new ArrayList();
+	List<String> classList = new ArrayList<>();
+	static List<MccabeNode> methods = new ArrayList<>();
     Integer mccabeComplexityFactor;
 	Utils utils = new Utils();
     String previousMethodName = "";
@@ -313,12 +313,12 @@ public class Mccabe extends TokenList {
      * 
      * @return the new value of the index
      */
-    private Integer computeCurrentTokenIndex(Integer currentTokenIndex,
-    		                                 List<Token> procedureList) {
-        currentTokenIndex += procedureList.size();
-        
-        return currentTokenIndex;
-    }
+//    private Integer computeCurrentTokenIndex(Integer currentTokenIndex,
+//    		                                 List<Token> procedureList) {
+//        currentTokenIndex += procedureList.size();
+//        
+//        return currentTokenIndex;
+//    }
     
     /**
      * Determine the methodName and the complexity factor of each method.
@@ -334,11 +334,10 @@ public class Mccabe extends TokenList {
 			                                    Integer currentTokenIndex,
 			                                    String className, Integer classNumber,
 			                                    boolean useExceptions) {
-		List<Token> procedureList = new ArrayList();
+		List<Token> procedureList = new ArrayList<>();
 		Token token = list.get(currentTokenIndex);
 		String methodName = "";
 		Token token2 = null;
-		Token token3 = null;
 		Integer braces = 0;
 		
 		while (token.enumeration != TokenEnum.EOF) {
@@ -464,7 +463,8 @@ public class Mccabe extends TokenList {
     		currentTokenIndex++;
     	    token = list.get(currentTokenIndex);
     	
-    	    if (token.enumeration == TokenEnum.CLASS) {
+    	    if (token.enumeration == TokenEnum.CLASS ||
+    	        token.enumeration == TokenEnum.ENUM) {
     	    	classNumber = 1;
     	    	currentTokenIndex++;
     	    	className = list.get(currentTokenIndex).string; // get the class name

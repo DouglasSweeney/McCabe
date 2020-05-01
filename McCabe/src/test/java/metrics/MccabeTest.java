@@ -233,6 +233,6 @@ public class MccabeTest {
 		
 		main.run(PRINT_JUST_FILENAME, options);
 
-		assertEquals((Integer)3, mcCabe.getNumberOfClasses());
+		assertEquals((Integer)4, mcCabe.getNumberOfClasses());
 	}
 }

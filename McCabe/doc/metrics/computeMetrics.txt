@@ -1,22 +1,11 @@
 ======================
-cd build/ant of the eclipse project
-ant all
-// generate javadoc
-   To generate javadoc within Eclipse
-       	Check main
-       	Check main.pdf
-       	Check model
-       	Check system
-       	Check view.inputs
-       	Check view.outputs
-   Select destination under "Use standard doclet"
-       	eclipse-workspace/Retirement/logs/javadoc
-Enable Metrics
-	Properties/Metrics
-Enable PMD
-	Properties/PMD
- v1 - 10/2019
- v2 - 11/2019
+// generate javadoc - "Project" -> "Generate javadoc..."
+      Check "McCabe" project
+      Use standard doclet
+      	location: /home/dks/git/McCabe_v1/McCabe/doc/javadoc
+         
+
+ v4 - 04/30/2020
       	
 SOURCE CODE METRICS
 ===================
@@ -44,17 +33,15 @@ Number of javadocs
 cd ~/eclipse-workspace/<project>/src/application in a "Terminal"
 grep "/\*\*" */*.java | wc -l
 grep "/\*\*" */*/*.java | wc -l
-(514 + 946) = 1460 (v2)
+(514 + 946) = 1460 (v4)
 
-McCabe Cyclomatic Complexity (metrics view) (don't forget to enable Metrics in properties)
-==========================================
-1.429 (v2)
-1.71 (McCabe)
+McCabe Cyclomatic Complexity (McCabe.jar)
+=========================================
+1.71 (v4)
 
-Number of Methods (metrics view)
+Number of Methods (McCabe.jar)
 ===============================
-1361 (v2)
-1563 (Mccabe) = 753  (McCabe - application only) + 808 (McCabe - test only)
+1361 (v4)
 
 Number of Classes
 ===============================
@@ -85,15 +72,6 @@ spotbugs (possible bugs- app & tests) (logs/spotbugs/spotbugs.html - Metrics - T
 cd eclipse-workspace/Retirement/build/ant
 ant spotbugs
 257 (v2) (high are included jar files / (Opened in firefox & looked))
-
-pmd (smells - app & tests) (logs/pmd/index.html)
-==================
-114 (v2)
-
-
-cpd (duplicates - app (v2 included tests)) (logs/cpd/cpd.txt - grep duplication <cpd.txt | wc -l                           )
-==================
-48 (v2)
 
 TESTING METRICS
 ===============

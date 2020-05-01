@@ -21,7 +21,7 @@ import java.util.stream.Stream;
 
 import main.java.debug.Categories;
 import main.java.debug.Debug;
-import main.java.main.Options;
+//import main.java.main.Options;
 import main.java.main.TokenList;
 import main.java.scanner.Scanner;
 import main.java.scanner.Token;
@@ -63,14 +63,12 @@ public class Slocs extends TokenList {
 	public void compute(String filename, List<Token> list) {
     	Debug.println(Categories.INTERNAL_METHODS, Slocs.class.getCanonicalName() + " " + 
 			      "compute()");
-		boolean found = false;;
 		Integer lineNumbers = 0;
 		Integer currentTokenIndex = 0;
 		
 		if (list != null) {
 			Token token = list.get(currentTokenIndex);		
 			while (token.enumeration != TokenEnum.EOF) {
-				found = false;
 				lineNumbers = 0;
 				for (int i=0; i<slocList.size(); i++) {
 					SlocNode item = slocList.get(i);
@@ -180,10 +178,7 @@ public class Slocs extends TokenList {
     	Slocs slocs = new Slocs();
     	
 		final boolean PRINT_JUST_FILENAME = false;
-		Options options = new Options(args);
-//	       System.out.println("useExceptions: " + options.getUseExceptions());
-//	        System.out.println("Last parameter: "+ args[args.length-1]);
-//	        options.setMcCabeDirectory(args[args.length-1]);
+//		Options options = new Options(args);
 	 		
 		// Pass in just one file
     	if (args[0].endsWith(".java")) {
@@ -211,6 +206,7 @@ public class Slocs extends TokenList {
  		    			}
 		    		}
  		    	}
+ 		    	walk.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
