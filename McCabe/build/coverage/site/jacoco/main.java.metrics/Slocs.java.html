@@ -21,7 +21,7 @@ import java.util.stream.Stream;
 
 import main.java.debug.Categories;
 import main.java.debug.Debug;
-import main.java.main.Options;
+//import main.java.main.Options;
 import main.java.main.TokenList;
 import main.java.scanner.Scanner;
 import main.java.scanner.Token;
@@ -63,79 +63,77 @@ import main.java.scanner.TokenEnum;
 	public void compute(String filename, List&lt;Token&gt; list) {
 <span class="fc" id="L64">    	Debug.println(Categories.INTERNAL_METHODS, Slocs.class.getCanonicalName() + &quot; &quot; + </span>
 			      &quot;compute()&quot;);
-<span class="fc" id="L66">		boolean found = false;;</span>
-<span class="fc" id="L67">		Integer lineNumbers = 0;</span>
-<span class="fc" id="L68">		Integer currentTokenIndex = 0;</span>
+<span class="fc" id="L66">		Integer lineNumbers = 0;</span>
+<span class="fc" id="L67">		Integer currentTokenIndex = 0;</span>
 		
-<span class="pc bpc" id="L70" title="1 of 2 branches missed.">		if (list != null) {</span>
-<span class="fc" id="L71">			Token token = list.get(currentTokenIndex);		</span>
-<span class="fc bfc" id="L72" title="All 2 branches covered.">			while (token.enumeration != TokenEnum.EOF) {</span>
-<span class="fc" id="L73">				found = false;</span>
-<span class="fc" id="L74">				lineNumbers = 0;</span>
-<span class="fc bfc" id="L75" title="All 2 branches covered.">				for (int i=0; i&lt;slocList.size(); i++) {</span>
-<span class="fc" id="L76">					SlocNode item = slocList.get(i);</span>
+<span class="pc bpc" id="L69" title="1 of 2 branches missed.">		if (list != null) {</span>
+<span class="fc" id="L70">			Token token = list.get(currentTokenIndex);		</span>
+<span class="fc bfc" id="L71" title="All 2 branches covered.">			while (token.enumeration != TokenEnum.EOF) {</span>
+<span class="fc" id="L72">				lineNumbers = 0;</span>
+<span class="fc bfc" id="L73" title="All 2 branches covered.">				for (int i=0; i&lt;slocList.size(); i++) {</span>
+<span class="fc" id="L74">					SlocNode item = slocList.get(i);</span>
                 
-<span class="fc bfc" id="L78" title="All 2 branches covered.">					if (item.filename.equals(filename)) {</span>
-<span class="fc" id="L79">						lineNumbers++;</span>
+<span class="fc bfc" id="L76" title="All 2 branches covered.">					if (item.filename.equals(filename)) {</span>
+<span class="fc" id="L77">						lineNumbers++;</span>
 				    }
 				}
 				
-<span class="fc bfc" id="L83" title="All 2 branches covered.">				if (token.lineNumber &gt; lineNumbers) {</span>
-<span class="fc" id="L84">					SlocNode slocNode = new SlocNode(filename, token.lineNumber);</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">				if (token.lineNumber &gt; lineNumbers) {</span>
+<span class="fc" id="L82">					SlocNode slocNode = new SlocNode(filename, token.lineNumber);</span>
 				
-<span class="fc" id="L86">					slocList.add(slocNode);</span>
+<span class="fc" id="L84">					slocList.add(slocNode);</span>
 				}
 				
-<span class="fc" id="L89">				currentTokenIndex = currentTokenIndex + 1;</span>
-<span class="fc" id="L90">				token = list.get(currentTokenIndex);</span>
+<span class="fc" id="L87">				currentTokenIndex = currentTokenIndex + 1;</span>
+<span class="fc" id="L88">				token = list.get(currentTokenIndex);</span>
 			}
-<span class="fc" id="L92">		}</span>
+<span class="fc" id="L90">		}</span>
 		else {
-<span class="nc" id="L94">			System.err.println(Slocs.class.getCanonicalName() + </span>
+<span class="nc" id="L92">			System.err.println(Slocs.class.getCanonicalName() + </span>
 					           &quot;The list is null.&quot;);
 		}
-<span class="fc" id="L97">	}</span>
+<span class="fc" id="L95">	}</span>
 	
 	public int getNumberOfSlocs(String filename) {
-<span class="fc" id="L100">		int slocs = 0;</span>
+<span class="fc" id="L98">		int slocs = 0;</span>
 		
-<span class="fc bfc" id="L102" title="All 2 branches covered.">		if (filename != null) { </span>
-<span class="fc bfc" id="L103" title="All 2 branches covered.">			if (filename.endsWith(&quot;.java&quot;)) {</span>
-<span class="fc bfc" id="L104" title="All 2 branches covered.">				for (int i=0; i &lt; slocList.size(); i++) {</span>
-<span class="fc" id="L105">					SlocNode item = slocList.get(i);</span>
-<span class="fc bfc" id="L106" title="All 2 branches covered.">					if (item.filename.equals(filename)) {</span>
-<span class="fc" id="L107">						slocs++;</span>
+<span class="fc bfc" id="L100" title="All 2 branches covered.">		if (filename != null) { </span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">			if (filename.endsWith(&quot;.java&quot;)) {</span>
+<span class="fc bfc" id="L102" title="All 2 branches covered.">				for (int i=0; i &lt; slocList.size(); i++) {</span>
+<span class="fc" id="L103">					SlocNode item = slocList.get(i);</span>
+<span class="fc bfc" id="L104" title="All 2 branches covered.">					if (item.filename.equals(filename)) {</span>
+<span class="fc" id="L105">						slocs++;</span>
 					} 
 				}
 			} 
 			else {
-<span class="fc" id="L112">				slocs = slocList.size();</span>
+<span class="fc" id="L110">				slocs = slocList.size();</span>
 			}	
 		}
 		
-<span class="fc" id="L116">		return slocs;</span>
+<span class="fc" id="L114">		return slocs;</span>
 	}
 
 	/**
 	 * Print verbosely information about the SLOCs
 	 */
 	public void debugging_print() {
-<span class="fc" id="L123">		Integer counter = 0;</span>
+<span class="fc" id="L121">		Integer counter = 0;</span>
 		
-<span class="fc bfc" id="L125" title="All 2 branches covered.">		for (SlocNode sloc : slocList) {</span>
-<span class="fc" id="L126">			File file = new File(sloc.filename);</span>
-<span class="fc" id="L127">			System.out.println(&quot;slocList(&quot; + counter + &quot;)&quot; + file.getName() + &quot; &quot; + sloc.lineNumber);</span>
-<span class="fc" id="L128">			counter++;</span>
-<span class="fc" id="L129">		}</span>
-<span class="fc" id="L130">		System.out.println(&quot;slocList.size(): &quot; + slocList.size());</span>
-<span class="fc" id="L131">	}</span>
+<span class="fc bfc" id="L123" title="All 2 branches covered.">		for (SlocNode sloc : slocList) {</span>
+<span class="fc" id="L124">			File file = new File(sloc.filename);</span>
+<span class="fc" id="L125">			System.out.println(&quot;slocList(&quot; + counter + &quot;)&quot; + file.getName() + &quot; &quot; + sloc.lineNumber);</span>
+<span class="fc" id="L126">			counter++;</span>
+<span class="fc" id="L127">		}</span>
+<span class="fc" id="L128">		System.out.println(&quot;slocList.size(): &quot; + slocList.size());</span>
+<span class="fc" id="L129">	}</span>
 	
 	/**
 	 * Print just number of SLOCs.
 	 */
 	public void print() {
-<span class="fc" id="L137">	    System.out.println(&quot;Source Lines of Code: &quot; + slocList.size());   	</span>
-<span class="fc" id="L138">	}</span>
+<span class="fc" id="L135">	    System.out.println(&quot;Source Lines of Code: &quot; + slocList.size());   	</span>
+<span class="fc" id="L136">	}</span>
 	
 	/** 
 	 * Loop thru the file getting all the tokens
@@ -144,22 +142,22 @@ import main.java.scanner.TokenEnum;
 	 */
     private void getTokensFromFile(String directoryAndFilename) {
 		
-<span class="nc" id="L147">	    Scanner scanner = null;</span>
-<span class="nc" id="L148">        Token token = null;</span>
+<span class="nc" id="L145">	    Scanner scanner = null;</span>
+<span class="nc" id="L146">        Token token = null;</span>
 	    
  		try {
-<span class="nc" id="L151">			scanner = new Scanner(directoryAndFilename);</span>
-<span class="nc" id="L152">		} catch (FileNotFoundException e) {</span>
-<span class="nc" id="L153">			e.printStackTrace();</span>
-<span class="nc" id="L154">		}</span>
+<span class="nc" id="L149">			scanner = new Scanner(directoryAndFilename);</span>
+<span class="nc" id="L150">		} catch (FileNotFoundException e) {</span>
+<span class="nc" id="L151">			e.printStackTrace();</span>
+<span class="nc" id="L152">		}</span>
   			
-<span class="nc" id="L156"> 		token = new Token(TokenEnum.NONE, 0);</span>
-<span class="nc bnc" id="L157" title="All 2 branches missed."> 		while  (token.enumeration != TokenEnum.EOF) {</span>
-<span class="nc" id="L158"> 			token = scanner.getNextToken();</span>
-<span class="nc" id="L159"> 			tokenList.add(token);</span>
+<span class="nc" id="L154"> 		token = new Token(TokenEnum.NONE, 0);</span>
+<span class="nc bnc" id="L155" title="All 2 branches missed."> 		while  (token.enumeration != TokenEnum.EOF) {</span>
+<span class="nc" id="L156"> 			token = scanner.getNextToken();</span>
+<span class="nc" id="L157"> 			tokenList.add(token);</span>
  		}
 // 		tokenList.print(tokenList.getList());
-<span class="nc" id="L162">    }</span>
+<span class="nc" id="L160">    }</span>
    
     /**
      * Process each token for metrics.
@@ -168,8 +166,8 @@ import main.java.scanner.TokenEnum;
      * @param processExceptions compute exception keywords
      */
     private void processTokens(String filename, boolean processExceptions) {
-<span class="nc" id="L171">		compute(filename, tokenList.getList());</span>
-<span class="nc" id="L172">    }</span>
+<span class="nc" id="L169">		compute(filename, tokenList.getList());</span>
+<span class="nc" id="L170">    }</span>
     
     /** 
      * Test out the class.
@@ -177,48 +175,46 @@ import main.java.scanner.TokenEnum;
      * @param args The supplied arguments to this routine.
      */
 	public static void main(String[] args) {
-<span class="nc" id="L180">    	Slocs slocs = new Slocs();</span>
+<span class="nc" id="L178">    	Slocs slocs = new Slocs();</span>
     	
-<span class="nc" id="L182">		final boolean PRINT_JUST_FILENAME = false;</span>
-<span class="nc" id="L183">		Options options = new Options(args);</span>
-//	       System.out.println(&quot;useExceptions: &quot; + options.getUseExceptions());
-//	        System.out.println(&quot;Last parameter: &quot;+ args[args.length-1]);
-//	        options.setMcCabeDirectory(args[args.length-1]);
+<span class="nc" id="L180">		final boolean PRINT_JUST_FILENAME = false;</span>
+//		Options options = new Options(args);
 	 		
 		// Pass in just one file
-<span class="nc bnc" id="L189" title="All 2 branches missed.">    	if (args[0].endsWith(&quot;.java&quot;)) {</span>
-<span class="nc" id="L190">			System.out.println(args[0]);</span>
-<span class="nc" id="L191">    		slocs.getTokensFromFile(args[0]);</span>
-<span class="nc" id="L192">    		slocs.processTokens(args[0], false);</span>
+<span class="nc bnc" id="L184" title="All 2 branches missed.">    	if (args[0].endsWith(&quot;.java&quot;)) {</span>
+<span class="nc" id="L185">			System.out.println(args[0]);</span>
+<span class="nc" id="L186">    		slocs.getTokensFromFile(args[0]);</span>
+<span class="nc" id="L187">    		slocs.processTokens(args[0], false);</span>
     	}
     	else { // else pass in a directory
  		    try {
-<span class="nc" id="L196"> 		    	Stream&lt;Path&gt; walk = Files.walk(Paths.get(args[0]));</span>
+<span class="nc" id="L191"> 		    	Stream&lt;Path&gt; walk = Files.walk(Paths.get(args[0]));</span>
 
-<span class="nc" id="L198"> 		    	List&lt;String&gt; result = walk.filter(Files::isRegularFile)</span>
-<span class="nc" id="L199"> 		    				.map(x -&gt; x.toString()).collect(Collectors.toList());</span>
+<span class="nc" id="L193"> 		    	List&lt;String&gt; result = walk.filter(Files::isRegularFile)</span>
+<span class="nc" id="L194"> 		    				.map(x -&gt; x.toString()).collect(Collectors.toList());</span>
 
-<span class="nc bnc" id="L201" title="All 2 branches missed."> 		    	for (String filename : result) {</span>
+<span class="nc bnc" id="L196" title="All 2 branches missed."> 		    	for (String filename : result) {</span>
  		    		if (PRINT_JUST_FILENAME) {
   		    			System.out.println(filename);
  		    		}
  		    		else {
-<span class="nc bnc" id="L206" title="All 2 branches missed."> 		    			if (filename.endsWith(&quot;.java&quot;)) { // make sure its a .java file;</span>
+<span class="nc bnc" id="L201" title="All 2 branches missed."> 		    			if (filename.endsWith(&quot;.java&quot;)) { // make sure its a .java file;</span>
 // 		    				System.out.println(filename); // &amp;
-<span class="nc" id="L208"> 		    				slocs.getTokensFromFile(filename);  // not .c/.txt etc</span>
-<span class="nc" id="L209"> 		    				slocs.processTokens(filename, false);</span>
-<span class="nc" id="L210"> 		    				tokenList.clear();</span>
+<span class="nc" id="L203"> 		    				slocs.getTokensFromFile(filename);  // not .c/.txt etc</span>
+<span class="nc" id="L204"> 		    				slocs.processTokens(filename, false);</span>
+<span class="nc" id="L205"> 		    				tokenList.clear();</span>
  		    			}
 		    		}
-<span class="nc" id="L213"> 		    	}</span>
-<span class="nc" id="L214">			} catch (IOException e) {</span>
-<span class="nc" id="L215">				e.printStackTrace();</span>
-<span class="nc" id="L216">			}</span>
+<span class="nc" id="L208"> 		    	}</span>
+<span class="nc" id="L209"> 		    	walk.close();</span>
+<span class="nc" id="L210">			} catch (IOException e) {</span>
+<span class="nc" id="L211">				e.printStackTrace();</span>
+<span class="nc" id="L212">			}</span>
 		}
     	
     	if (!PRINT_JUST_FILENAME) {
-<span class="nc" id="L220">    		slocs.debugging_print();</span>
+<span class="nc" id="L216">    		slocs.debugging_print();</span>
     	}
-<span class="nc" id="L222">	}</span>
+<span class="nc" id="L218">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

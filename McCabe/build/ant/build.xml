@@ -12,7 +12,7 @@
       Marc R. Hoffmann - initial API and implementation
 -->
 
-<project name="Example Ant Build with JaCoCo" default="rebuild" xmlns:jacoco="antlib:org.jacoco.ant"
+<project name="Example Ant Build with JaCoCo" default="all" xmlns:jacoco="antlib:org.jacoco.ant"
         basedir="/home/dks/git/McCabe_v1/McCabe">
 
 	<description>
@@ -24,6 +24,8 @@
         <property name="lib.getopt.dir" location="lib/getopt" />
         <property name="lib.hamcrest.dir" location="lib/hamcrest" />
         <property name="lib.junit.dir" location="lib/junit" />
+	<!-- Need for pmd -->
+    <property name="build.dir" value="build" />
 	<property name="result.dir" location="build/coverage" />
     <property name="checkstyle.dir" location="lib/checkstyle" />
 	<property name="result.classes.dir" location="${result.dir}/classes" />
@@ -35,7 +37,7 @@
 		<classpath path="../../../lib/jacocoant.jar" />
 	</taskdef>
 
-        <path id="dependency.path">
+    <path id="dependency.path">
     		<fileset dir="${lib.getopt.dir}" includes="*.jar" />
     		<fileset dir="${lib.hamcrest.dir}" includes="*.jar" />
     		<fileset dir="${lib.junit.dir}" includes="*.jar" />
@@ -48,6 +50,13 @@
 	</fileset>
     </path>
 	
+    <path id="pmd.classpath">
+    	<pathelement location="${basedir}/build"/>
+    		<fileset dir="/opt/pmd-bin-6.6.0/lib/">
+	        <include name="*.jar"/>
+    	</fileset>
+    </path>
+
 	<target name="clean">
 		<delete dir="${result.dir}" />
 	</target>
@@ -170,11 +179,82 @@
 	          style="build/ant/checkstyle/checkstyle-noframes-severity-sorted.xsl"/>
 	</target>
 
+    <target name="pmd">
+    	<taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask" classpathref="pmd.classpath"/>
+
+        <pmd rulesetfiles="../pmd/ruleset.xml" shortFileNames="true">
+              <sourceLanguage name="java" version="1.8" />
+              <formatter type="net.sourceforge.pmd.renderers.HTMLRenderer" toFile="${basedir}/logs/pmd/index.html"/>
+              <fileset dir="${basedir}/src">
+                  <include name="**/*.java"/>
+               	  <exclude name="test/**/*.java"/>
+              </fileset>
+        </pmd>
+	</target>
+	
+    <target name="cpd">
+        <taskdef name="cpd" classname="net.sourceforge.pmd.cpd.CPDTask" classpathref="pmd.classpath"/>
+        <cpd minimumTokenCount="100" outputFile="${basedir}/logs/cpd/cpd.txt">
+           <fileset dir="${basedir}/src">
+              <include name="**/*.java"/>
+           	  <exclude name="test/**/*.java" />
+           </fileset>
+        </cpd>
+    </target>
+	
+	<target name="javadoc" description="Create the javadoc file for this source code.">
+	    <javadoc
+	    	destdir="${basedir}/logs/javadoc"
+	        author="true"
+	        version="true"
+	        use="true"
+	        windowtitle="Application API">
+	           
+	    	<classpath location="${lib.getopt.dir}/java-getopt-1.0.14.jar" />
+	            
+	        <fileset dir="src/main/java" defaultexcludes="yes">
+	                <include name="**"/>
+	        </fileset>
+
+	        <doctitle><![CDATA[<h1>Application</h1>]]></doctitle>
+	        <bottom><![CDATA[<i>Copyright &#169; 2016 DKS All Rights Reserved.</i>]]></bottom>
+<!--	        <tag name="todo" scope="all" description="To do:"/> -->
+	        <link offline="true" href="http://docs.oracle.com/javase/8/docs/api/" packagelistLoc="/tmp"/>
+	        <link href="http://docs.oracle.com/javase/8/docs/api/"/>
+	    </javadoc>
+    </target>
+	
+	<taskdef name="findbugs" classname="edu.umd.cs.findbugs.anttask.FindBugsTask"/>
+	<property name="findbugs.home" value="/opt/findbugs-3.0.1" />
+
+	<target name="jar" description="JARs the project source files">
+	        <delete file="McCabe.jar" failonerror="false" />
+	        <jar destfile="McCabe.jar" basedir="bin">
+	           <zipgroupfileset dir="${lib.getopt.dir}" includes="*.jar" />
+	           <manifest>
+	                <attribute name="Main-Class"
+	                    value="main.java.Main"/>
+	           </manifest>
+	        </jar>
+	</target>
+	
+	<target name="findbugs" depends="jar">
+	    <findbugs home="${findbugs.home}"
+	    	      reportLevel="high"
+	              output="html"
+	              outputFile="${basedir}/logs/findbugs/findbugs.html" >
+	    	<auxClasspath
+	              path="${basedir}/lib/**/*.jar"
+		    />
+	    	<sourcePath path="${basedir}/src/application/**/*.java" />
+	      <class location="${basedir}/McCabe.jar" />
+	    </findbugs>
+	</target>
+
 	<target name="rebuild" depends="clean,compile,test,report" />
     	
     <target name="all" description="Create all the targets for the application." 
-    	                depends="checkstyle" > 
-    	<!--      depends="clean, compile, jar, instrument, test, coverage-report, javadoc, checkstyle, pmd, cpd, spotbugs" > --> 
-    	   </target>
+		      depends="rebuild, javadoc, checkstyle, pmd, cpd, findbugs" > 
+    </target>
 
 </project>

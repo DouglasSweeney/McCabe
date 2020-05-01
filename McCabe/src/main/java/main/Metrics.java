@@ -73,6 +73,8 @@ public class Metrics {
     
     /**
      * Debugging only.
+     * 
+     * @return number of packages
      */
     public int getNumberOfPackages() {
     	return packageIdentifier.size();
@@ -80,6 +82,10 @@ public class Metrics {
 
     /**
      * Debugging only.
+     * 
+     * @param filename get the number of slocs for filename
+     * 
+     * @return the number of slocs
      */
     public int getNumberOfSlocs(String filename) {
     	return slocCounter.getNumberOfSlocs(filename);

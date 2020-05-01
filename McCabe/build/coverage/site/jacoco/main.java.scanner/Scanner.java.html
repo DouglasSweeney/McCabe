@@ -45,81 +45,80 @@ import main.java.main.TokenList;
     /**
      * Construct a Scanner object.
      * 
-     * @param fileName
-     *            the name of the file containing the source.
-     * @exception FileNotFoundException
-     *                when the named file cannot be found.
+     * @param fileName the name of the file containing the source.
+     * 
+     * @throws FileNotFoundException when the named file cannot be found.
      */
-<span class="fc" id="L53">    public Scanner(String fileName) throws FileNotFoundException {</span>
-<span class="fc" id="L54">        this.input = new CharReader(fileName);</span>
-<span class="fc" id="L55">        this.fileName = fileName;</span>
-<span class="fc" id="L56">        isInError = false;</span>
+<span class="fc" id="L52">    public Scanner(String fileName) throws FileNotFoundException {</span>
+<span class="fc" id="L53">        this.input = new CharReader(fileName);</span>
+<span class="fc" id="L54">        this.fileName = fileName;</span>
+<span class="fc" id="L55">        isInError = false;</span>
 
         // Keywords
-<span class="fc" id="L59">        reserved = new Hashtable&lt;String, TokenEnum&gt;();</span>
-<span class="pc bpc" id="L60" title="3 of 4 branches missed.">        assert reserved != null : Scanner.class.getCanonicalName() +</span>
+<span class="fc" id="L58">        reserved = new Hashtable&lt;String, TokenEnum&gt;();</span>
+<span class="pc bpc" id="L59" title="3 of 4 branches missed.">        assert reserved != null : Scanner.class.getCanonicalName() +</span>
         		                  &quot;constructor: reserved == null&quot;;
-<span class="fc" id="L62">        reserved.put(&quot;abstract&quot;, TokenEnum.ABSTRACT);</span>
-<span class="fc" id="L63">        reserved.put(&quot;assert&quot;, TokenEnum.ASSERT);</span>
-<span class="fc" id="L64">        reserved.put(&quot;boolean&quot;, TokenEnum.BOOLEAN);</span>
-<span class="fc" id="L65">        reserved.put(&quot;break&quot;, TokenEnum.BREAK);</span>
-<span class="fc" id="L66">        reserved.put(&quot;byte&quot;, TokenEnum.BYTE);</span>
-<span class="fc" id="L67">        reserved.put(&quot;case&quot;, TokenEnum.CASE);</span>
-<span class="fc" id="L68">        reserved.put(&quot;catch&quot;, TokenEnum.CATCH);</span>
-<span class="fc" id="L69">        reserved.put(&quot;char&quot;, TokenEnum.CHAR);</span>
-<span class="fc" id="L70">        reserved.put(&quot;class&quot;, TokenEnum.CLASS);</span>
-<span class="fc" id="L71">        reserved.put(&quot;const&quot;, TokenEnum.CONST);</span>
-<span class="fc" id="L72">        reserved.put(&quot;continue&quot;, TokenEnum.CONTINUE);</span>
-<span class="fc" id="L73">        reserved.put(&quot;default&quot;, TokenEnum.DEFAULT);</span>
-<span class="fc" id="L74">        reserved.put(&quot;do&quot;, TokenEnum.DO);</span>
-<span class="fc" id="L75">        reserved.put(&quot;double&quot;, TokenEnum.DOUBLE);</span>
-<span class="fc" id="L76">        reserved.put(&quot;else&quot;, TokenEnum.ELSE);</span>
-<span class="fc" id="L77">        reserved.put(&quot;enum&quot;, TokenEnum.ENUM);</span>
-<span class="fc" id="L78">        reserved.put(&quot;extends&quot;, TokenEnum.EXTENDS);</span>
-<span class="fc" id="L79">        reserved.put(&quot;false&quot;, TokenEnum.FALSE);</span>
-<span class="fc" id="L80">        reserved.put(&quot;final&quot;, TokenEnum.FINAL);</span>
-<span class="fc" id="L81">        reserved.put(&quot;finally&quot;, TokenEnum.FINALLY);</span>
-<span class="fc" id="L82">        reserved.put(&quot;float&quot;, TokenEnum.FLOAT);</span>
-<span class="fc" id="L83">        reserved.put(&quot;for&quot;,  TokenEnum.FOR);</span>
-<span class="fc" id="L84">        reserved.put(&quot;if&quot;, TokenEnum.IF);</span>
-<span class="fc" id="L85">        reserved.put(&quot;goto&quot;, TokenEnum.GOTO);</span>
-<span class="fc" id="L86">        reserved.put(&quot;implements&quot;, TokenEnum.IMPLEMENTS);</span>
-<span class="fc" id="L87">        reserved.put(&quot;import&quot;, TokenEnum.IMPORT);</span>
-<span class="fc" id="L88">        reserved.put(&quot;instanceof&quot;, TokenEnum.INSTANCEOF);</span>
-<span class="fc" id="L89">        reserved.put(&quot;int&quot;, TokenEnum.INT);</span>
-<span class="fc" id="L90">        reserved.put(&quot;interface&quot;, TokenEnum.INTERFACE);</span>
-<span class="fc" id="L91">        reserved.put(&quot;long&quot;, TokenEnum.LONG);</span>
-<span class="fc" id="L92">        reserved.put(&quot;native&quot;, TokenEnum.NATIVE);</span>
-<span class="fc" id="L93">        reserved.put(&quot;new&quot;, TokenEnum.NEW);</span>
-<span class="fc" id="L94">        reserved.put(&quot;null&quot;, TokenEnum.NULL);</span>
-<span class="fc" id="L95">        reserved.put(&quot;package&quot;, TokenEnum.PACKAGE);</span>
-<span class="fc" id="L96">        reserved.put(&quot;private&quot;, TokenEnum.PRIVATE);</span>
-<span class="fc" id="L97">        reserved.put(&quot;protected&quot;, TokenEnum.PROTECTED);</span>
-<span class="fc" id="L98">        reserved.put(&quot;public&quot;, TokenEnum.PUBLIC);</span>
-<span class="fc" id="L99">        reserved.put(&quot;return&quot;, TokenEnum.RETURN);</span>
-<span class="fc" id="L100">        reserved.put(&quot;short&quot;, TokenEnum.SHORT);</span>
-<span class="fc" id="L101">        reserved.put(&quot;static&quot;, TokenEnum.STATIC);</span>
-<span class="fc" id="L102">        reserved.put(&quot;strictfp&quot;, TokenEnum.STRICTFP);</span>
-<span class="fc" id="L103">        reserved.put(&quot;super&quot;, TokenEnum.SUPER);</span>
-<span class="fc" id="L104">        reserved.put(&quot;switch&quot;, TokenEnum.SWITCH);</span>
-<span class="fc" id="L105">        reserved.put(&quot;synchronized&quot;, TokenEnum.SYNCHRONIZED);</span>
-<span class="fc" id="L106">        reserved.put(&quot;this&quot;, TokenEnum.THIS);</span>
-<span class="fc" id="L107">        reserved.put(&quot;throw&quot;, TokenEnum.THROW);</span>
-<span class="fc" id="L108">        reserved.put(&quot;throws&quot;, TokenEnum.THROWS);</span>
-<span class="fc" id="L109">        reserved.put(&quot;transient&quot;, TokenEnum.TRANSIENT);</span>
-<span class="fc" id="L110">        reserved.put(&quot;true&quot;, TokenEnum.TRUE);</span>
-<span class="fc" id="L111">        reserved.put(&quot;try&quot;, TokenEnum.TRY);</span>
-<span class="fc" id="L112">        reserved.put(&quot;void&quot;, TokenEnum.VOID);</span>
-<span class="fc" id="L113">        reserved.put(&quot;volatile&quot;, TokenEnum.VOLATILE);</span>
-<span class="fc" id="L114">        reserved.put(&quot;while&quot;, TokenEnum.WHILE);</span>
+<span class="fc" id="L61">        reserved.put(&quot;abstract&quot;, TokenEnum.ABSTRACT);</span>
+<span class="fc" id="L62">        reserved.put(&quot;assert&quot;, TokenEnum.ASSERT);</span>
+<span class="fc" id="L63">        reserved.put(&quot;boolean&quot;, TokenEnum.BOOLEAN);</span>
+<span class="fc" id="L64">        reserved.put(&quot;break&quot;, TokenEnum.BREAK);</span>
+<span class="fc" id="L65">        reserved.put(&quot;byte&quot;, TokenEnum.BYTE);</span>
+<span class="fc" id="L66">        reserved.put(&quot;case&quot;, TokenEnum.CASE);</span>
+<span class="fc" id="L67">        reserved.put(&quot;catch&quot;, TokenEnum.CATCH);</span>
+<span class="fc" id="L68">        reserved.put(&quot;char&quot;, TokenEnum.CHAR);</span>
+<span class="fc" id="L69">        reserved.put(&quot;class&quot;, TokenEnum.CLASS);</span>
+<span class="fc" id="L70">        reserved.put(&quot;const&quot;, TokenEnum.CONST);</span>
+<span class="fc" id="L71">        reserved.put(&quot;continue&quot;, TokenEnum.CONTINUE);</span>
+<span class="fc" id="L72">        reserved.put(&quot;default&quot;, TokenEnum.DEFAULT);</span>
+<span class="fc" id="L73">        reserved.put(&quot;do&quot;, TokenEnum.DO);</span>
+<span class="fc" id="L74">        reserved.put(&quot;double&quot;, TokenEnum.DOUBLE);</span>
+<span class="fc" id="L75">        reserved.put(&quot;else&quot;, TokenEnum.ELSE);</span>
+<span class="fc" id="L76">        reserved.put(&quot;enum&quot;, TokenEnum.ENUM);</span>
+<span class="fc" id="L77">        reserved.put(&quot;extends&quot;, TokenEnum.EXTENDS);</span>
+<span class="fc" id="L78">        reserved.put(&quot;false&quot;, TokenEnum.FALSE);</span>
+<span class="fc" id="L79">        reserved.put(&quot;final&quot;, TokenEnum.FINAL);</span>
+<span class="fc" id="L80">        reserved.put(&quot;finally&quot;, TokenEnum.FINALLY);</span>
+<span class="fc" id="L81">        reserved.put(&quot;float&quot;, TokenEnum.FLOAT);</span>
+<span class="fc" id="L82">        reserved.put(&quot;for&quot;,  TokenEnum.FOR);</span>
+<span class="fc" id="L83">        reserved.put(&quot;if&quot;, TokenEnum.IF);</span>
+<span class="fc" id="L84">        reserved.put(&quot;goto&quot;, TokenEnum.GOTO);</span>
+<span class="fc" id="L85">        reserved.put(&quot;implements&quot;, TokenEnum.IMPLEMENTS);</span>
+<span class="fc" id="L86">        reserved.put(&quot;import&quot;, TokenEnum.IMPORT);</span>
+<span class="fc" id="L87">        reserved.put(&quot;instanceof&quot;, TokenEnum.INSTANCEOF);</span>
+<span class="fc" id="L88">        reserved.put(&quot;int&quot;, TokenEnum.INT);</span>
+<span class="fc" id="L89">        reserved.put(&quot;interface&quot;, TokenEnum.INTERFACE);</span>
+<span class="fc" id="L90">        reserved.put(&quot;long&quot;, TokenEnum.LONG);</span>
+<span class="fc" id="L91">        reserved.put(&quot;native&quot;, TokenEnum.NATIVE);</span>
+<span class="fc" id="L92">        reserved.put(&quot;new&quot;, TokenEnum.NEW);</span>
+<span class="fc" id="L93">        reserved.put(&quot;null&quot;, TokenEnum.NULL);</span>
+<span class="fc" id="L94">        reserved.put(&quot;package&quot;, TokenEnum.PACKAGE);</span>
+<span class="fc" id="L95">        reserved.put(&quot;private&quot;, TokenEnum.PRIVATE);</span>
+<span class="fc" id="L96">        reserved.put(&quot;protected&quot;, TokenEnum.PROTECTED);</span>
+<span class="fc" id="L97">        reserved.put(&quot;public&quot;, TokenEnum.PUBLIC);</span>
+<span class="fc" id="L98">        reserved.put(&quot;return&quot;, TokenEnum.RETURN);</span>
+<span class="fc" id="L99">        reserved.put(&quot;short&quot;, TokenEnum.SHORT);</span>
+<span class="fc" id="L100">        reserved.put(&quot;static&quot;, TokenEnum.STATIC);</span>
+<span class="fc" id="L101">        reserved.put(&quot;strictfp&quot;, TokenEnum.STRICTFP);</span>
+<span class="fc" id="L102">        reserved.put(&quot;super&quot;, TokenEnum.SUPER);</span>
+<span class="fc" id="L103">        reserved.put(&quot;switch&quot;, TokenEnum.SWITCH);</span>
+<span class="fc" id="L104">        reserved.put(&quot;synchronized&quot;, TokenEnum.SYNCHRONIZED);</span>
+<span class="fc" id="L105">        reserved.put(&quot;this&quot;, TokenEnum.THIS);</span>
+<span class="fc" id="L106">        reserved.put(&quot;throw&quot;, TokenEnum.THROW);</span>
+<span class="fc" id="L107">        reserved.put(&quot;throws&quot;, TokenEnum.THROWS);</span>
+<span class="fc" id="L108">        reserved.put(&quot;transient&quot;, TokenEnum.TRANSIENT);</span>
+<span class="fc" id="L109">        reserved.put(&quot;true&quot;, TokenEnum.TRUE);</span>
+<span class="fc" id="L110">        reserved.put(&quot;try&quot;, TokenEnum.TRY);</span>
+<span class="fc" id="L111">        reserved.put(&quot;void&quot;, TokenEnum.VOID);</span>
+<span class="fc" id="L112">        reserved.put(&quot;volatile&quot;, TokenEnum.VOLATILE);</span>
+<span class="fc" id="L113">        reserved.put(&quot;while&quot;, TokenEnum.WHILE);</span>
         
-<span class="fc" id="L116">        reserved.put(&quot;@Override&quot;, TokenEnum.OVERRIDE_ANNOTATION);</span>
-<span class="fc" id="L117">        reserved.put(&quot;@Deprecated&quot;, TokenEnum.DEPRECATED_ANNOTATION);</span>
-<span class="fc" id="L118">        reserved.put(&quot;@SuppressWarnings&quot;, TokenEnum.SUPPRESSWARNINGS_ANNOTATION);</span>
+<span class="fc" id="L115">        reserved.put(&quot;@Override&quot;, TokenEnum.OVERRIDE_ANNOTATION);</span>
+<span class="fc" id="L116">        reserved.put(&quot;@Deprecated&quot;, TokenEnum.DEPRECATED_ANNOTATION);</span>
+<span class="fc" id="L117">        reserved.put(&quot;@SuppressWarnings&quot;, TokenEnum.SUPPRESSWARNINGS_ANNOTATION);</span>
 
         // Prime the pump.
-<span class="fc" id="L121">        nextCh();</span>
-<span class="fc" id="L122">    }</span>
+<span class="fc" id="L120">        nextCh();</span>
+<span class="fc" id="L121">    }</span>
 
     /**
      * Scan the next valid token from input.
@@ -127,13 +126,13 @@ import main.java.main.TokenList;
      * @return the the next scanned valid token.
      */
     public Token getNextToken() {
-<span class="fc" id="L130">    	Token token = new Token(TokenEnum.NONE, &quot;&quot;, lineNumber);</span>
+<span class="fc" id="L129">    	Token token = new Token(TokenEnum.NONE, &quot;&quot;, lineNumber);</span>
 
-<span class="fc bfc" id="L132" title="All 2 branches covered.">    	while (token.enumeration == TokenEnum.NONE) {</span>
-<span class="fc" id="L133">    		token = getNextValidToken();</span>
+<span class="fc bfc" id="L131" title="All 2 branches covered.">    	while (token.enumeration == TokenEnum.NONE) {</span>
+<span class="fc" id="L132">    		token = getNextValidToken();</span>
     	}
     	
-<span class="fc" id="L136">    	return token;</span>
+<span class="fc" id="L135">    	return token;</span>
     }
     
     /**
@@ -142,154 +141,154 @@ import main.java.main.TokenList;
      * @return the the next scanned token.
      */
     public Token getNextValidToken() {
-<span class="fc" id="L145">    	boolean endOfCommentFound = false;</span>
-<span class="fc" id="L146">    	char sign = ' ';     	</span>
+<span class="fc" id="L144">    	boolean endOfCommentFound = false;</span>
+<span class="fc" id="L145">    	char sign = ' ';     	</span>
         StringBuffer buffer;
 
-<span class="fc bfc" id="L149" title="All 2 branches covered.">        while (isWhitespace(ch)) {</span>
-<span class="fc" id="L150">        	nextCh();</span>
+<span class="fc bfc" id="L148" title="All 2 branches covered.">        while (isWhitespace(ch)) {</span>
+<span class="fc" id="L149">        	nextCh();</span>
         }
         
-<span class="fc" id="L153">        sign = ' ';</span>
-<span class="fc" id="L154">        lineNumber = input.lineNumber();</span>
-<span class="fc bfc" id="L155" title="All 30 branches covered.">        switch (ch) {</span>
+<span class="fc" id="L152">        sign = ' ';</span>
+<span class="fc" id="L153">        lineNumber = input.lineNumber();</span>
+<span class="fc bfc" id="L154" title="All 30 branches covered.">        switch (ch) {</span>
         case '~':
-<span class="fc" id="L157">            nextCh();</span>
-<span class="fc" id="L158">            return new Token(TokenEnum.TILDE, lineNumber);</span>
+<span class="fc" id="L156">            nextCh();</span>
+<span class="fc" id="L157">            return new Token(TokenEnum.TILDE, lineNumber);</span>
         case '(':
-<span class="fc" id="L160">            nextCh();</span>
-<span class="fc" id="L161">            return new Token(TokenEnum.LPAREN, lineNumber);</span>
+<span class="fc" id="L159">            nextCh();</span>
+<span class="fc" id="L160">            return new Token(TokenEnum.LPAREN, lineNumber);</span>
         case ')':
-<span class="fc" id="L163">            nextCh();</span>
-<span class="fc" id="L164">            return new Token(TokenEnum.RPAREN, lineNumber);</span>
+<span class="fc" id="L162">            nextCh();</span>
+<span class="fc" id="L163">            return new Token(TokenEnum.RPAREN, lineNumber);</span>
         case '{':
-<span class="fc" id="L166">            nextCh();</span>
-<span class="fc" id="L167">            return new Token(TokenEnum.LBRACE, lineNumber);</span>
+<span class="fc" id="L165">            nextCh();</span>
+<span class="fc" id="L166">            return new Token(TokenEnum.LBRACE, lineNumber);</span>
         case '}':
-<span class="fc" id="L169">            nextCh();</span>
-<span class="fc" id="L170">            return new Token(TokenEnum.RBRACE, lineNumber);</span>
+<span class="fc" id="L168">            nextCh();</span>
+<span class="fc" id="L169">            return new Token(TokenEnum.RBRACE, lineNumber);</span>
         case '[':
-<span class="fc" id="L172">            nextCh();</span>
-<span class="fc" id="L173">            return new Token(TokenEnum.LBRACKET, lineNumber);</span>
+<span class="fc" id="L171">            nextCh();</span>
+<span class="fc" id="L172">            return new Token(TokenEnum.LBRACKET, lineNumber);</span>
         case ']':
-<span class="fc" id="L175">            nextCh();</span>
-<span class="fc" id="L176">            return new Token(TokenEnum.RBRACKET, lineNumber);</span>
+<span class="fc" id="L174">            nextCh();</span>
+<span class="fc" id="L175">            return new Token(TokenEnum.RBRACKET, lineNumber);</span>
         case ';':
-<span class="fc" id="L178">            nextCh();</span>
-<span class="fc" id="L179">            return new Token(TokenEnum.SEMICOLON, lineNumber);</span>
+<span class="fc" id="L177">            nextCh();</span>
+<span class="fc" id="L178">            return new Token(TokenEnum.SEMICOLON, lineNumber);</span>
         case ',':
-<span class="fc" id="L181">            nextCh();</span>
-<span class="fc" id="L182">            return new Token(TokenEnum.COMMA, lineNumber);</span>
+<span class="fc" id="L180">            nextCh();</span>
+<span class="fc" id="L181">            return new Token(TokenEnum.COMMA, lineNumber);</span>
         case '.':
-<span class="fc" id="L184">        	nextCh();</span>
-<span class="fc" id="L185">   			return new Token(TokenEnum.PERIOD, lineNumber);</span>
+<span class="fc" id="L183">        	nextCh();</span>
+<span class="fc" id="L184">   			return new Token(TokenEnum.PERIOD, lineNumber);</span>
         case '?':
-<span class="fc" id="L187">            nextCh();</span>
-<span class="fc" id="L188">            return new Token(TokenEnum.QUESTION_MARK, lineNumber);</span>
+<span class="fc" id="L186">            nextCh();</span>
+<span class="fc" id="L187">            return new Token(TokenEnum.QUESTION_MARK, lineNumber);</span>
         case ':':
-<span class="fc" id="L190">            nextCh();</span>
-<span class="fc" id="L191">            return new Token(TokenEnum.COLON, lineNumber);</span>
+<span class="fc" id="L189">            nextCh();</span>
+<span class="fc" id="L190">            return new Token(TokenEnum.COLON, lineNumber);</span>
         case '=':
-<span class="fc" id="L193">            nextCh();</span>
-<span class="fc bfc" id="L194" title="All 2 branches covered.">            if (ch == '=') {</span>
-<span class="fc" id="L195">                nextCh();</span>
-<span class="fc" id="L196">                return new Token(TokenEnum.EQUAL_EQUAL, lineNumber);</span>
+<span class="fc" id="L192">            nextCh();</span>
+<span class="fc bfc" id="L193" title="All 2 branches covered.">            if (ch == '=') {</span>
+<span class="fc" id="L194">                nextCh();</span>
+<span class="fc" id="L195">                return new Token(TokenEnum.EQUAL_EQUAL, lineNumber);</span>
             } else {
-<span class="fc" id="L198">                return new Token(TokenEnum.EQUALS, lineNumber);</span>
+<span class="fc" id="L197">                return new Token(TokenEnum.EQUALS, lineNumber);</span>
             }
         case '!':
-<span class="fc" id="L201">        	nextCh();</span>
-<span class="fc bfc" id="L202" title="All 2 branches covered.">            if (ch == '=') {</span>
-<span class="fc" id="L203">                nextCh();</span>
-<span class="fc" id="L204">                return new Token(TokenEnum.NOT_EQUALS, lineNumber);</span>
+<span class="fc" id="L200">        	nextCh();</span>
+<span class="fc bfc" id="L201" title="All 2 branches covered.">            if (ch == '=') {</span>
+<span class="fc" id="L202">                nextCh();</span>
+<span class="fc" id="L203">                return new Token(TokenEnum.NOT_EQUALS, lineNumber);</span>
             } else {
-<span class="fc" id="L206">                return new Token(TokenEnum.NOT, lineNumber);</span>
+<span class="fc" id="L205">                return new Token(TokenEnum.NOT, lineNumber);</span>
             }
         case '|':
-<span class="fc" id="L209">        	nextCh();</span>
-<span class="fc bfc" id="L210" title="All 2 branches covered.">            if (ch == '=') {</span>
-<span class="fc" id="L211">                nextCh();</span>
-<span class="fc" id="L212">                return new Token(TokenEnum.OR_EQUALS, lineNumber);</span>
-<span class="fc bfc" id="L213" title="All 2 branches covered.">            } else if (ch == '|') {</span>
-<span class="fc" id="L214">            	nextCh();</span>
-<span class="fc" id="L215">                return new Token(TokenEnum.OROR, lineNumber);</span>
+<span class="fc" id="L208">        	nextCh();</span>
+<span class="fc bfc" id="L209" title="All 2 branches covered.">            if (ch == '=') {</span>
+<span class="fc" id="L210">                nextCh();</span>
+<span class="fc" id="L211">                return new Token(TokenEnum.OR_EQUALS, lineNumber);</span>
+<span class="fc bfc" id="L212" title="All 2 branches covered.">            } else if (ch == '|') {</span>
+<span class="fc" id="L213">            	nextCh();</span>
+<span class="fc" id="L214">                return new Token(TokenEnum.OROR, lineNumber);</span>
             } else {
-<span class="fc" id="L217">                return new Token(TokenEnum.OR, lineNumber);</span>
+<span class="fc" id="L216">                return new Token(TokenEnum.OR, lineNumber);</span>
            	
             }
        case '^':
-<span class="fc" id="L221">    	   nextCh();</span>
-<span class="fc bfc" id="L222" title="All 2 branches covered.">            if (ch == '=') {</span>
-<span class="fc" id="L223">                nextCh();</span>
-<span class="fc" id="L224">                return new Token(TokenEnum.CARET_EQUALS, lineNumber);</span>
+<span class="fc" id="L220">    	   nextCh();</span>
+<span class="fc bfc" id="L221" title="All 2 branches covered.">            if (ch == '=') {</span>
+<span class="fc" id="L222">                nextCh();</span>
+<span class="fc" id="L223">                return new Token(TokenEnum.CARET_EQUALS, lineNumber);</span>
             } else {
-<span class="fc" id="L226">            	nextCh();</span>
-<span class="fc" id="L227">                return new Token(TokenEnum.CARET, lineNumber);</span>
+<span class="fc" id="L225">            	nextCh();</span>
+<span class="fc" id="L226">                return new Token(TokenEnum.CARET, lineNumber);</span>
             }
         case '%':
-<span class="fc" id="L230">        	nextCh();</span>
-<span class="fc bfc" id="L231" title="All 2 branches covered.">            if (ch == '=') {</span>
-<span class="fc" id="L232">                nextCh();</span>
-<span class="fc" id="L233">                return new Token(TokenEnum.MOD_EQUALS, lineNumber);</span>
+<span class="fc" id="L229">        	nextCh();</span>
+<span class="fc bfc" id="L230" title="All 2 branches covered.">            if (ch == '=') {</span>
+<span class="fc" id="L231">                nextCh();</span>
+<span class="fc" id="L232">                return new Token(TokenEnum.MOD_EQUALS, lineNumber);</span>
             } else {
-<span class="fc" id="L235">            	nextCh();</span>
-<span class="fc" id="L236">                return new Token(TokenEnum.MOD, lineNumber);</span>
+<span class="fc" id="L234">            	nextCh();</span>
+<span class="fc" id="L235">                return new Token(TokenEnum.MOD, lineNumber);</span>
             }
         case '*':
-<span class="fc" id="L239">        	nextCh();</span>
-<span class="fc bfc" id="L240" title="All 2 branches covered.">            if (ch == '=') {</span>
-<span class="fc" id="L241">                nextCh();</span>
-<span class="fc" id="L242">                return new Token(TokenEnum.MULTIPLY_EQUALS, lineNumber);</span>
+<span class="fc" id="L238">        	nextCh();</span>
+<span class="fc bfc" id="L239" title="All 2 branches covered.">            if (ch == '=') {</span>
+<span class="fc" id="L240">                nextCh();</span>
+<span class="fc" id="L241">                return new Token(TokenEnum.MULTIPLY_EQUALS, lineNumber);</span>
             } else {
-<span class="fc" id="L244">                return new Token(TokenEnum.ASTERISK, lineNumber);</span>
+<span class="fc" id="L243">                return new Token(TokenEnum.ASTERISK, lineNumber);</span>
             }
         case '/':
-<span class="fc" id="L247">        	nextCh();</span>
-<span class="fc bfc" id="L248" title="All 2 branches covered.">            if (ch == '=') {</span>
-<span class="fc" id="L249">                nextCh();</span>
-<span class="fc" id="L250">                return new Token(TokenEnum.DIVIDE_EQUALS, lineNumber);</span>
+<span class="fc" id="L246">        	nextCh();</span>
+<span class="fc bfc" id="L247" title="All 2 branches covered.">            if (ch == '=') {</span>
+<span class="fc" id="L248">                nextCh();</span>
+<span class="fc" id="L249">                return new Token(TokenEnum.DIVIDE_EQUALS, lineNumber);</span>
             } else {
-<span class="fc bfc" id="L252" title="All 2 branches covered.">                if (ch == '/') {</span>
+<span class="fc bfc" id="L251" title="All 2 branches covered.">                if (ch == '/') {</span>
                    // CharReader maps all new lineNumbers to '\n'
-<span class="pc bpc" id="L254" title="1 of 4 branches missed.">                   while (ch != '\n' &amp;&amp; ch != EOFCH) { //single line command</span>
-<span class="fc" id="L255">                       nextCh();</span>
+<span class="pc bpc" id="L253" title="1 of 4 branches missed.">                   while (ch != '\n' &amp;&amp; ch != EOFCH) { //single line command</span>
+<span class="fc" id="L254">                       nextCh();</span>
                    }
-<span class="fc" id="L257">                   return new Token(TokenEnum.NONE, lineNumber);</span>
+<span class="fc" id="L256">                   return new Token(TokenEnum.NONE, lineNumber);</span>
                }  
                 else {
-<span class="fc bfc" id="L260" title="All 2 branches covered.">                   if (ch == '*') { // multiline comment</span>
-<span class="fc" id="L261">              	       nextCh();</span>
-<span class="fc" id="L262">              	       endOfCommentFound = false;</span>
-<span class="pc bpc" id="L263" title="1 of 4 branches missed.">                       while (ch != EOFCH &amp;&amp; !endOfCommentFound) { // scan though comment</span>
-<span class="fc bfc" id="L264" title="All 2 branches covered.">                    	    if (ch == '*') {</span>
-<span class="fc" id="L265">                    	    	nextCh();</span>
-<span class="fc bfc" id="L266" title="All 2 branches covered.">                    	    	if (ch == '/') { // end of multilineNumber comment</span>
-<span class="fc" id="L267">                    	    		endOfCommentFound = true;</span>
-<span class="fc" id="L268">                    	    		nextCh();</span>
+<span class="fc bfc" id="L259" title="All 2 branches covered.">                   if (ch == '*') { // multiline comment</span>
+<span class="fc" id="L260">              	       nextCh();</span>
+<span class="fc" id="L261">              	       endOfCommentFound = false;</span>
+<span class="pc bpc" id="L262" title="1 of 4 branches missed.">                       while (ch != EOFCH &amp;&amp; !endOfCommentFound) { // scan though comment</span>
+<span class="fc bfc" id="L263" title="All 2 branches covered.">                    	    if (ch == '*') {</span>
+<span class="fc" id="L264">                    	    	nextCh();</span>
+<span class="fc bfc" id="L265" title="All 2 branches covered.">                    	    	if (ch == '/') { // end of multilineNumber comment</span>
+<span class="fc" id="L266">                    	    		endOfCommentFound = true;</span>
+<span class="fc" id="L267">                    	    		nextCh();</span>
                     	    	} // if                    	    		
                             }
                     	    else {
-<span class="fc" id="L272">                    	    	nextCh();</span>
+<span class="fc" id="L271">                    	    	nextCh();</span>
                     	    }
                        } // while
-<span class="fc" id="L275">                       return new Token(TokenEnum.NONE, lineNumber);</span>
+<span class="fc" id="L274">                       return new Token(TokenEnum.NONE, lineNumber);</span>
                    } // if
                    else {
-<span class="fc" id="L278">                       return new Token(TokenEnum.DIVIDE, lineNumber);</span>
+<span class="fc" id="L277">                       return new Token(TokenEnum.DIVIDE, lineNumber);</span>
                    }
                 } 
             }
         case '+':
-<span class="fc" id="L283">            nextCh();</span>
-<span class="fc bfc" id="L284" title="All 2 branches covered.">            if (ch == '=') {</span>
-<span class="fc" id="L285">                nextCh();</span>
-<span class="fc" id="L286">                return new Token(TokenEnum.PLUS_EQUALS, lineNumber);</span>
+<span class="fc" id="L282">            nextCh();</span>
+<span class="fc bfc" id="L283" title="All 2 branches covered.">            if (ch == '=') {</span>
+<span class="fc" id="L284">                nextCh();</span>
+<span class="fc" id="L285">                return new Token(TokenEnum.PLUS_EQUALS, lineNumber);</span>
             } else 
-<span class="fc bfc" id="L288" title="All 2 branches covered.">            if (ch == '+') {</span>
-<span class="fc" id="L289">                nextCh();</span>
-<span class="fc" id="L290">                return new Token(TokenEnum.INCREMENT, lineNumber);</span>
+<span class="fc bfc" id="L287" title="All 2 branches covered.">            if (ch == '+') {</span>
+<span class="fc" id="L288">                nextCh();</span>
+<span class="fc" id="L289">                return new Token(TokenEnum.INCREMENT, lineNumber);</span>
             } else {
-<span class="fc bfc" id="L292" title="All 2 branches covered.">            	switch (ch) {</span>
+<span class="fc bfc" id="L291" title="All 2 branches covered.">            	switch (ch) {</span>
             		case '1':
             		case '2':
             		case '3':
@@ -299,21 +298,21 @@ import main.java.main.TokenList;
             		case '7':
             		case '8':
             		case '9':
-<span class="fc" id="L302">            			buffer = new StringBuffer();</span>
-<span class="fc" id="L303">            			sign = '+';</span>
-<span class="fc" id="L304">            			return decimalLiteral(sign, buffer);</span>
+<span class="fc" id="L301">            			buffer = new StringBuffer();</span>
+<span class="fc" id="L302">            			sign = '+';</span>
+<span class="fc" id="L303">            			return decimalLiteral(sign, buffer);</span>
             		default:
-<span class="fc" id="L306">            			nextCh();</span>
-<span class="fc" id="L307">            			return new Token(TokenEnum.PLUS, lineNumber);</span>
+<span class="fc" id="L305">            			nextCh();</span>
+<span class="fc" id="L306">            			return new Token(TokenEnum.PLUS, lineNumber);</span>
             	}
             }
         case '-':
-<span class="fc" id="L311">            nextCh();</span>
-<span class="fc bfc" id="L312" title="All 2 branches covered.">            if (ch == '-') {</span>
-<span class="fc" id="L313">                nextCh();</span>
-<span class="fc" id="L314">                return new Token(TokenEnum.DECREMENT, lineNumber);</span>
+<span class="fc" id="L310">            nextCh();</span>
+<span class="fc bfc" id="L311" title="All 2 branches covered.">            if (ch == '-') {</span>
+<span class="fc" id="L312">                nextCh();</span>
+<span class="fc" id="L313">                return new Token(TokenEnum.DECREMENT, lineNumber);</span>
             } else {
-<span class="fc bfc" id="L316" title="All 2 branches covered.">            	switch (ch) {</span>
+<span class="fc bfc" id="L315" title="All 2 branches covered.">            	switch (ch) {</span>
         		case '1':
         		case '2':
         		case '3':
@@ -323,171 +322,171 @@ import main.java.main.TokenList;
         		case '7':
         		case '8':
         		case '9':
-<span class="fc" id="L326">        			buffer = new StringBuffer();</span>
-<span class="fc" id="L327">        			sign = '-';</span>
-<span class="fc" id="L328">        			return decimalLiteral(sign, buffer);</span>
+<span class="fc" id="L325">        			buffer = new StringBuffer();</span>
+<span class="fc" id="L326">        			sign = '-';</span>
+<span class="fc" id="L327">        			return decimalLiteral(sign, buffer);</span>
         		default:
-<span class="fc" id="L330">        			nextCh();</span>
-<span class="fc" id="L331">        			return new Token(TokenEnum.MINUS, lineNumber);</span>
+<span class="fc" id="L329">        			nextCh();</span>
+<span class="fc" id="L330">        			return new Token(TokenEnum.MINUS, lineNumber);</span>
             	}
             }
         case '&amp;':
-<span class="fc" id="L335">            nextCh();</span>
-<span class="fc bfc" id="L336" title="All 2 branches covered.">            if (ch == '&amp;') {</span>
-<span class="fc" id="L337">                nextCh();</span>
-<span class="fc" id="L338">                return new Token(TokenEnum.AMPERSAND_AMPERSAND, lineNumber);</span>
+<span class="fc" id="L334">            nextCh();</span>
+<span class="fc bfc" id="L335" title="All 2 branches covered.">            if (ch == '&amp;') {</span>
+<span class="fc" id="L336">                nextCh();</span>
+<span class="fc" id="L337">                return new Token(TokenEnum.AMPERSAND_AMPERSAND, lineNumber);</span>
             } else {
-<span class="fc" id="L340">                return new Token(TokenEnum.AMPERSAND, lineNumber);</span>
+<span class="fc" id="L339">                return new Token(TokenEnum.AMPERSAND, lineNumber);</span>
             }
         case '&gt;':
-<span class="fc" id="L343">            nextCh();</span>
-<span class="fc bfc" id="L344" title="All 2 branches covered.">            if (ch == '=') {</span>
-<span class="fc" id="L345">                nextCh();</span>
-<span class="fc" id="L346">                return new Token(TokenEnum.GT_EQUALS, lineNumber);</span>
+<span class="fc" id="L342">            nextCh();</span>
+<span class="fc bfc" id="L343" title="All 2 branches covered.">            if (ch == '=') {</span>
+<span class="fc" id="L344">                nextCh();</span>
+<span class="fc" id="L345">                return new Token(TokenEnum.GT_EQUALS, lineNumber);</span>
             } else
-<span class="fc bfc" id="L348" title="All 2 branches covered.">            if (ch == '&gt;') {</span>
-<span class="fc" id="L349">                nextCh();</span>
-<span class="fc bfc" id="L350" title="All 2 branches covered.">                if (ch == '&gt;') {</span>
-<span class="fc" id="L351">                    nextCh();</span>
-<span class="fc bfc" id="L352" title="All 2 branches covered.">                    if (ch == '=') {</span>
-<span class="fc" id="L353">                        nextCh();</span>
-<span class="fc" id="L354">                    	return new Token(TokenEnum.UNSIGNED_SHIFT_RIGHT_EQUALS, lineNumber);</span>
+<span class="fc bfc" id="L347" title="All 2 branches covered.">            if (ch == '&gt;') {</span>
+<span class="fc" id="L348">                nextCh();</span>
+<span class="fc bfc" id="L349" title="All 2 branches covered.">                if (ch == '&gt;') {</span>
+<span class="fc" id="L350">                    nextCh();</span>
+<span class="fc bfc" id="L351" title="All 2 branches covered.">                    if (ch == '=') {</span>
+<span class="fc" id="L352">                        nextCh();</span>
+<span class="fc" id="L353">                    	return new Token(TokenEnum.UNSIGNED_SHIFT_RIGHT_EQUALS, lineNumber);</span>
                     }
                     else {
-<span class="fc" id="L357">                       	return new Token(TokenEnum.UNSIGNED_SHIFT_RIGHT, lineNumber);</span>
+<span class="fc" id="L356">                       	return new Token(TokenEnum.UNSIGNED_SHIFT_RIGHT, lineNumber);</span>
                     }
                 } else 
-<span class="fc bfc" id="L360" title="All 2 branches covered.">                    if (ch == '=') {</span>
-<span class="fc" id="L361">                        nextCh();</span>
-<span class="fc" id="L362">                    	return new Token(TokenEnum.SHIFT_RIGHT_EQUALS, lineNumber);</span>
+<span class="fc bfc" id="L359" title="All 2 branches covered.">                    if (ch == '=') {</span>
+<span class="fc" id="L360">                        nextCh();</span>
+<span class="fc" id="L361">                    	return new Token(TokenEnum.SHIFT_RIGHT_EQUALS, lineNumber);</span>
                     }
                     else {
-<span class="fc" id="L365">                       	return new Token(TokenEnum.SHIFT_RIGHT, lineNumber);</span>
+<span class="fc" id="L364">                       	return new Token(TokenEnum.SHIFT_RIGHT, lineNumber);</span>
                     }
             }  else 
-<span class="fc" id="L368">            	return new Token(TokenEnum.GT, lineNumber);</span>
+<span class="fc" id="L367">            	return new Token(TokenEnum.GT, lineNumber);</span>
         case '&lt;':
-<span class="fc" id="L370">            nextCh();</span>
-<span class="fc bfc" id="L371" title="All 2 branches covered.">            if (ch == '=') {</span>
-<span class="fc" id="L372">                nextCh();</span>
-<span class="fc" id="L373">                return new Token(TokenEnum.LESS_EQUALS, lineNumber);</span>
+<span class="fc" id="L369">            nextCh();</span>
+<span class="fc bfc" id="L370" title="All 2 branches covered.">            if (ch == '=') {</span>
+<span class="fc" id="L371">                nextCh();</span>
+<span class="fc" id="L372">                return new Token(TokenEnum.LESS_EQUALS, lineNumber);</span>
             } else {
-<span class="fc bfc" id="L375" title="All 2 branches covered.">            	if (ch == '&lt;') {</span>
-<span class="fc" id="L376">            		nextCh();</span>
-<span class="fc bfc" id="L377" title="All 2 branches covered.">                    if (ch == '=') {</span>
-<span class="fc" id="L378">                    	nextCh();</span>
-<span class="fc" id="L379">                    	return new Token(TokenEnum.SHIFT_LEFT_EQUALS, lineNumber);</span>
+<span class="fc bfc" id="L374" title="All 2 branches covered.">            	if (ch == '&lt;') {</span>
+<span class="fc" id="L375">            		nextCh();</span>
+<span class="fc bfc" id="L376" title="All 2 branches covered.">                    if (ch == '=') {</span>
+<span class="fc" id="L377">                    	nextCh();</span>
+<span class="fc" id="L378">                    	return new Token(TokenEnum.SHIFT_LEFT_EQUALS, lineNumber);</span>
                     }
                     else {
-<span class="fc" id="L382">                        return new Token(TokenEnum.SHIFT_LEFT, lineNumber);</span>
+<span class="fc" id="L381">                        return new Token(TokenEnum.SHIFT_LEFT, lineNumber);</span>
                     }
                 }
                 else {
-<span class="fc" id="L386">                    return new Token(TokenEnum.LESS, lineNumber);</span>
+<span class="fc" id="L385">                    return new Token(TokenEnum.LESS, lineNumber);</span>
                 }
             }          
         case '\'':
-<span class="fc" id="L390">            buffer = new StringBuffer();</span>
-<span class="fc" id="L391">            buffer.append('\'');</span>
-<span class="fc" id="L392">            nextCh();</span>
-<span class="fc bfc" id="L393" title="All 2 branches covered.">            if (ch == '\\') {</span>
-<span class="fc" id="L394">                nextCh();</span>
-<span class="fc" id="L395">                buffer.append(escape());</span>
+<span class="fc" id="L389">            buffer = new StringBuffer();</span>
+<span class="fc" id="L390">            buffer.append('\'');</span>
+<span class="fc" id="L391">            nextCh();</span>
+<span class="fc bfc" id="L392" title="All 2 branches covered.">            if (ch == '\\') {</span>
+<span class="fc" id="L393">                nextCh();</span>
+<span class="fc" id="L394">                buffer.append(escape());</span>
             } else {
-<span class="fc" id="L397">                buffer.append(ch);</span>
-<span class="fc" id="L398">                nextCh();</span>
+<span class="fc" id="L396">                buffer.append(ch);</span>
+<span class="fc" id="L397">                nextCh();</span>
             }
-<span class="pc bpc" id="L400" title="1 of 2 branches missed.">            if (ch == '\'') {</span>
-<span class="fc" id="L401">                buffer.append('\'');</span>
-<span class="fc" id="L402">                nextCh();</span>
-<span class="fc" id="L403">                return new Token(TokenEnum.CHAR, buffer.toString(), lineNumber);</span>
+<span class="pc bpc" id="L399" title="1 of 2 branches missed.">            if (ch == '\'') {</span>
+<span class="fc" id="L400">                buffer.append('\'');</span>
+<span class="fc" id="L401">                nextCh();</span>
+<span class="fc" id="L402">                return new Token(TokenEnum.CHAR, buffer.toString(), lineNumber);</span>
             } else {
                 // Expected a ' ; report error and try to
                 // recover.
-<span class="nc" id="L407">                reportScannerError(ch</span>
+<span class="nc" id="L406">                reportScannerError(ch</span>
                         + &quot; found by scanner where closing ' was expected.&quot;);
-<span class="nc bnc" id="L409" title="All 6 branches missed.">                while (ch != '\'' &amp;&amp; ch != ';' &amp;&amp; ch != '\n') {</span>
-<span class="nc" id="L410">                    nextCh();</span>
+<span class="nc bnc" id="L408" title="All 6 branches missed.">                while (ch != '\'' &amp;&amp; ch != ';' &amp;&amp; ch != '\n') {</span>
+<span class="nc" id="L409">                    nextCh();</span>
                 }
-<span class="nc" id="L412">                return new Token(TokenEnum.CHAR, buffer.toString(), lineNumber);</span>
+<span class="nc" id="L411">                return new Token(TokenEnum.CHAR, buffer.toString(), lineNumber);</span>
             }
         case '&quot;':
-<span class="fc" id="L415">            buffer = new StringBuffer();</span>
-<span class="fc" id="L416">            buffer.append(&quot;\&quot;&quot;);</span>
-<span class="fc" id="L417">            nextCh();</span>
-<span class="pc bpc" id="L418" title="2 of 6 branches missed.">            while (ch != '&quot;' &amp;&amp; ch != '\n' &amp;&amp; ch != EOFCH) {</span>
-<span class="fc bfc" id="L419" title="All 2 branches covered.">                if (ch == '\\') {</span>
-<span class="fc" id="L420">                    nextCh();</span>
-<span class="fc" id="L421">                    buffer.append(escape());</span>
+<span class="fc" id="L414">            buffer = new StringBuffer();</span>
+<span class="fc" id="L415">            buffer.append(&quot;\&quot;&quot;);</span>
+<span class="fc" id="L416">            nextCh();</span>
+<span class="pc bpc" id="L417" title="2 of 6 branches missed.">            while (ch != '&quot;' &amp;&amp; ch != '\n' &amp;&amp; ch != EOFCH) {</span>
+<span class="fc bfc" id="L418" title="All 2 branches covered.">                if (ch == '\\') {</span>
+<span class="fc" id="L419">                    nextCh();</span>
+<span class="fc" id="L420">                    buffer.append(escape());</span>
                 } else {
-<span class="fc" id="L423">                    buffer.append(ch);</span>
-<span class="fc" id="L424">                    nextCh();</span>
+<span class="fc" id="L422">                    buffer.append(ch);</span>
+<span class="fc" id="L423">                    nextCh();</span>
                 }
             }
-<span class="pc bpc" id="L427" title="1 of 2 branches missed.">            if (ch == '\n') {</span>
-<span class="nc" id="L428">                reportScannerError(&quot;Unexpected end of lineNumber found in String&quot;);</span>
-<span class="pc bpc" id="L429" title="1 of 2 branches missed.">            } else if (ch == EOFCH) {</span>
-<span class="nc" id="L430">                reportScannerError(&quot;Unexpected end of file found in String&quot;);</span>
+<span class="pc bpc" id="L426" title="1 of 2 branches missed.">            if (ch == '\n') {</span>
+<span class="nc" id="L427">                reportScannerError(&quot;Unexpected end of lineNumber found in String&quot;);</span>
+<span class="pc bpc" id="L428" title="1 of 2 branches missed.">            } else if (ch == EOFCH) {</span>
+<span class="nc" id="L429">                reportScannerError(&quot;Unexpected end of file found in String&quot;);</span>
             } else {
                 // Scan the closing &quot;
-<span class="fc" id="L433">                nextCh();</span>
-<span class="fc" id="L434">                buffer.append(&quot;\&quot;&quot;);</span>
+<span class="fc" id="L432">                nextCh();</span>
+<span class="fc" id="L433">                buffer.append(&quot;\&quot;&quot;);</span>
             }
-<span class="fc" id="L436">            return new Token(TokenEnum.STRING_LITERAL, buffer.toString(), lineNumber);</span>
+<span class="fc" id="L435">            return new Token(TokenEnum.STRING_LITERAL, buffer.toString(), lineNumber);</span>
         case EOFCH:
-<span class="fc" id="L438">        	nextCh();</span>
-<span class="fc" id="L439">            return new Token(TokenEnum.EOF, lineNumber);</span>
+<span class="fc" id="L437">        	nextCh();</span>
+<span class="fc" id="L438">            return new Token(TokenEnum.EOF, lineNumber);</span>
         case '0':
-<span class="fc" id="L441">            nextCh();</span>
-<span class="fc" id="L442">            buffer = new StringBuffer();</span>
-<span class="fc" id="L443">            buffer.append('0');</span>
+<span class="fc" id="L440">            nextCh();</span>
+<span class="fc" id="L441">            buffer = new StringBuffer();</span>
+<span class="fc" id="L442">            buffer.append('0');</span>
             
-<span class="fc bfc" id="L445" title="All 4 branches covered.">            if (ch == 'x' || ch == 'X') {</span>
-<span class="fc" id="L446">            	buffer.append(ch);</span>
-<span class="fc" id="L447">            	nextCh();</span>
-<span class="fc bfc" id="L448" title="All 2 branches covered.">            	while (isHexDigit(ch)) {</span>
-<span class="fc" id="L449">            		buffer.append(ch);</span>
-<span class="fc" id="L450">            		nextCh();           		</span>
+<span class="fc bfc" id="L444" title="All 4 branches covered.">            if (ch == 'x' || ch == 'X') {</span>
+<span class="fc" id="L445">            	buffer.append(ch);</span>
+<span class="fc" id="L446">            	nextCh();</span>
+<span class="fc bfc" id="L447" title="All 2 branches covered.">            	while (isHexDigit(ch)) {</span>
+<span class="fc" id="L448">            		buffer.append(ch);</span>
+<span class="fc" id="L449">            		nextCh();           		</span>
             	}
-<span class="fc" id="L452"> 	            return new Token(TokenEnum.BASE16_INTEGER, buffer.toString(), lineNumber);</span>
+<span class="fc" id="L451"> 	            return new Token(TokenEnum.BASE16_INTEGER, buffer.toString(), lineNumber);</span>
             }
             else
-<span class="fc bfc" id="L455" title="All 4 branches covered.">            if (ch == 'b' || ch == 'B') {</span>
-<span class="fc" id="L456">            	buffer.append(ch);</span>
-<span class="fc" id="L457">            	nextCh();</span>
-<span class="fc bfc" id="L458" title="All 2 branches covered.">            	while (isBinaryDigit(ch)) {</span>
-<span class="fc" id="L459">            		buffer.append(ch);</span>
-<span class="fc" id="L460">            		nextCh();</span>
+<span class="fc bfc" id="L454" title="All 4 branches covered.">            if (ch == 'b' || ch == 'B') {</span>
+<span class="fc" id="L455">            	buffer.append(ch);</span>
+<span class="fc" id="L456">            	nextCh();</span>
+<span class="fc bfc" id="L457" title="All 2 branches covered.">            	while (isBinaryDigit(ch)) {</span>
+<span class="fc" id="L458">            		buffer.append(ch);</span>
+<span class="fc" id="L459">            		nextCh();</span>
             		
             	}
-<span class="fc" id="L463"> 	            return new Token(TokenEnum.BASE2_INTEGER, buffer.toString(), lineNumber);</span>
+<span class="fc" id="L462"> 	            return new Token(TokenEnum.BASE2_INTEGER, buffer.toString(), lineNumber);</span>
            }
             else {
-<span class="pc bpc" id="L466" title="1 of 6 branches missed.">                if (ch == 'f' || ch == 'F' || ch == '.') {</span>
-<span class="fc bfc" id="L467" title="All 2 branches covered.">                	if (ch == '.') {</span>
-<span class="fc" id="L468">                		buffer.append(ch);</span>
-<span class="fc" id="L469">                		nextCh();</span>
+<span class="pc bpc" id="L465" title="1 of 6 branches missed.">                if (ch == 'f' || ch == 'F' || ch == '.') {</span>
+<span class="fc bfc" id="L466" title="All 2 branches covered.">                	if (ch == '.') {</span>
+<span class="fc" id="L467">                		buffer.append(ch);</span>
+<span class="fc" id="L468">                		nextCh();</span>
                 	}
                 	
-<span class="fc bfc" id="L472" title="All 2 branches covered.">                	while (isDigit(ch)) {</span>
-<span class="fc" id="L473">                		buffer.append(ch);</span>
-<span class="fc" id="L474">                		nextCh();</span>
+<span class="fc bfc" id="L471" title="All 2 branches covered.">                	while (isDigit(ch)) {</span>
+<span class="fc" id="L472">                		buffer.append(ch);</span>
+<span class="fc" id="L473">                		nextCh();</span>
                 		
                 	}
-<span class="pc bpc" id="L477" title="1 of 4 branches missed.">                    if (ch == 'f' || ch == 'F') {</span>
-<span class="fc" id="L478">                        buffer.append(ch);</span>
-<span class="fc" id="L479">                        nextCh();</span>
-<span class="fc" id="L480">         	            return new Token(TokenEnum.FLOAT, buffer.toString(), lineNumber);</span>
+<span class="pc bpc" id="L476" title="1 of 4 branches missed.">                    if (ch == 'f' || ch == 'F') {</span>
+<span class="fc" id="L477">                        buffer.append(ch);</span>
+<span class="fc" id="L478">                        nextCh();</span>
+<span class="fc" id="L479">         	            return new Token(TokenEnum.FLOAT, buffer.toString(), lineNumber);</span>
                     }
                     else
-<span class="fc" id="L483">         	            return new Token(TokenEnum.DOUBLE, buffer.toString(), lineNumber);</span>
+<span class="fc" id="L482">         	            return new Token(TokenEnum.DOUBLE, buffer.toString(), lineNumber);</span>
                 }
                 else
-<span class="fc bfc" id="L486" title="All 2 branches covered.">            	while (isOctalDigit(ch)) {</span>
-<span class="fc" id="L487">            		buffer.append(ch);</span>
-<span class="fc" id="L488">            		nextCh();</span>
+<span class="fc bfc" id="L485" title="All 2 branches covered.">            	while (isOctalDigit(ch)) {</span>
+<span class="fc" id="L486">            		buffer.append(ch);</span>
+<span class="fc" id="L487">            		nextCh();</span>
             	}
-<span class="fc" id="L490"> 	            return new Token(TokenEnum.BASE8_INTEGER, buffer.toString(), lineNumber);</span>
+<span class="fc" id="L489"> 	            return new Token(TokenEnum.BASE8_INTEGER, buffer.toString(), lineNumber);</span>
             }
             
 //          buffer = new StringBuffer();
@@ -500,30 +499,30 @@ import main.java.main.TokenList;
         case '7':
         case '8':
         case '9':
-<span class="fc" id="L503">        	buffer = new StringBuffer();</span>
-<span class="fc" id="L504">        	return decimalLiteral(sign, buffer);</span>
+<span class="fc" id="L502">        	buffer = new StringBuffer();</span>
+<span class="fc" id="L503">        	return decimalLiteral(sign, buffer);</span>
         default:
-<span class="fc" id="L506">           	buffer = new StringBuffer();</span>
-<span class="fc bfc" id="L507" title="All 2 branches covered.">            if (ch == '@') {</span>
-<span class="fc" id="L508">            	buffer.append(ch);</span>
-<span class="fc" id="L509">            	nextCh();</span>
+<span class="fc" id="L505">           	buffer = new StringBuffer();</span>
+<span class="fc bfc" id="L506" title="All 2 branches covered.">            if (ch == '@') {</span>
+<span class="fc" id="L507">            	buffer.append(ch);</span>
+<span class="fc" id="L508">            	nextCh();</span>
             }
-<span class="pc bpc" id="L511" title="1 of 2 branches missed.">            if (isIdentifier(ch)) {</span>
-<span class="fc bfc" id="L512" title="All 2 branches covered.">                while (isIdentifierPartial(ch)) {</span>
-<span class="fc" id="L513">                    buffer.append(ch);</span>
-<span class="fc" id="L514">                    nextCh();</span>
+<span class="pc bpc" id="L510" title="1 of 2 branches missed.">            if (isIdentifier(ch)) {</span>
+<span class="fc bfc" id="L511" title="All 2 branches covered.">                while (isIdentifierPartial(ch)) {</span>
+<span class="fc" id="L512">                    buffer.append(ch);</span>
+<span class="fc" id="L513">                    nextCh();</span>
                 }
-<span class="fc" id="L516">                String identifier = buffer.toString();</span>
-<span class="fc bfc" id="L517" title="All 2 branches covered.">                if (reserved.containsKey(identifier)) {</span>
-<span class="fc" id="L518">                    return new Token(reserved.get(identifier), lineNumber);</span>
+<span class="fc" id="L515">                String identifier = buffer.toString();</span>
+<span class="fc bfc" id="L516" title="All 2 branches covered.">                if (reserved.containsKey(identifier)) {</span>
+<span class="fc" id="L517">                    return new Token(reserved.get(identifier), lineNumber);</span>
                 } else {
-<span class="fc" id="L520">                    return new Token(TokenEnum.IDENTIFIER, identifier, lineNumber);</span>
+<span class="fc" id="L519">                    return new Token(TokenEnum.IDENTIFIER, identifier, lineNumber);</span>
                 }
             } else {
-<span class="nc bnc" id="L523" title="All 2 branches missed.">            	if (ch != '\n')</span>
-<span class="nc" id="L524">            		reportScannerError(&quot;Unidentified input token: '%c'&quot;, ch);</span>
-<span class="nc" id="L525">                nextCh();</span>
-<span class="nc" id="L526">                return getNextToken();</span>
+<span class="nc bnc" id="L522" title="All 2 branches missed.">            	if (ch != '\n')</span>
+<span class="nc" id="L523">            		reportScannerError(&quot;Unidentified input token: '%c'&quot;, ch);</span>
+<span class="nc" id="L524">                nextCh();</span>
+<span class="nc" id="L525">                return getNextToken();</span>
             }
         }
    }
@@ -531,9 +530,10 @@ import main.java.main.TokenList;
     /**
      *  Build a INT, FLOAT or a DOUBLE
      *
-     *  @params void
+     *  @param sign a negative sign is needed
+     *  @param buffer create a String object
      *
-     *  @returns Token
+     *  @return Token
      */
     public Token decimalLiteral(char sign, StringBuffer buffer) {
     	// Add in the sign

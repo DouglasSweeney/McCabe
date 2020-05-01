@@ -1,0 +1,1860 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>FindBugs Report</title>
+        <style type="text/css">
+		.tablerow0 {
+			background: #EEEEEE;
+		}
+
+		.tablerow1 {
+			background: white;
+		}
+
+		.detailrow0 {
+			background: #EEEEEE;
+		}
+
+		.detailrow1 {
+			background: white;
+		}
+
+		.tableheader {
+			background: #b9b9fe;
+			font-size: larger;
+		}
+
+		.tablerow0:hover, .tablerow1:hover {
+			background: #aaffaa;
+		}
+
+		.priority-1 {
+		    color: red;
+		    font-weight: bold;
+		}
+		.priority-2 {
+		    color: orange;
+		    font-weight: bold;
+		}
+		.priority-3 {
+		    color: green;
+		    font-weight: bold;
+		}
+		.priority-4 {
+		    color: blue;
+		    font-weight: bold;
+		}
+		</style>
+        <script type="text/javascript">
+			function toggleRow(elid) {
+				if (document.getElementById) {
+					element = document.getElementById(elid);
+					if (element) {
+						if (element.style.display == 'none') {
+							element.style.display = 'block';
+							//window.status = 'Toggle on!';
+						} else {
+							element.style.display = 'none';
+							//window.status = 'Toggle off!';
+						}
+					}
+				}
+			}
+		</script>
+    </head>
+    <body>
+        <h1>
+            <a href="http://findbugs.sourceforge.net">FindBugs</a>
+             Report
+        </h1>
+        <h2>Project Information</h2>
+        <p>Project: 
+		</p>
+        <p>FindBugs version: 3.0.1</p>
+        <p>Code analyzed:</p>
+        <ul>
+            <li>/home/dks/git/McCabe_v1/McCabe/McCabe.jar</li>
+        </ul>
+        <p>
+            <br />
+            <br />
+        </p>
+        <h2>Metrics</h2>
+        <p>3124 lines of code analyzed,
+	in 38 classes, 
+	in 11 packages.</p>
+        <table width="500" cellpadding="5" cellspacing="2">
+            <tr class="tableheader">
+                <th align="left">Metric</th>
+                <th align="right">Total</th>
+                <th align="right">Density*</th>
+            </tr>
+            <tr class="tablerow0">
+                <td>High Priority Warnings</td>
+                <td align="right">70</td>
+                <td align="right">22.41</td>
+            </tr>
+            <tr class="tablerow1">
+                <td>Medium Priority Warnings</td>
+                <td align="right" />
+                <td align="right">0.00</td>
+            </tr>
+            <tr class="$totalClass">
+                <td>
+                    <b>Total Warnings</b>
+                </td>
+                <td align="right">
+                    <b>70</b>
+                </td>
+                <td align="right">
+                    <b>22.41</b>
+                </td>
+            </tr>
+        </table>
+        <p>
+            <i>(* Defects per Thousand lines of non-commenting source statements)</i>
+        </p>
+        <p>
+            <br />
+            <br />
+        </p>
+        <h2>Contents</h2>
+        <ul>
+            <li>
+                <a href="#Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+            </li>
+            <li>
+                <a href="#Warnings_CORRECTNESS">Correctness Warnings</a>
+            </li>
+            <li>
+                <a href="#Warnings_I18N">Internationalization Warnings</a>
+            </li>
+            <li>
+                <a href="#Warnings_PERFORMANCE">Performance Warnings</a>
+            </li>
+            <li>
+                <a href="#Warnings_STYLE">Dodgy code Warnings</a>
+            </li>
+            <li>
+                <a href="#Details">Details</a>
+            </li>
+        </ul>
+        <h1>Summary</h1>
+        <table width="500" cellpadding="5" cellspacing="2">
+            <tr class="tableheader">
+                <th align="left">Warning Type</th>
+                <th align="right">Number</th>
+            </tr>
+            <tr class="tablerow0">
+                <td>
+                    <a href="#Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+                </td>
+                <td align="right">1</td>
+            </tr>
+            <tr class="tablerow1">
+                <td>
+                    <a href="#Warnings_CORRECTNESS">Correctness Warnings</a>
+                </td>
+                <td align="right">1</td>
+            </tr>
+            <tr class="tablerow0">
+                <td>
+                    <a href="#Warnings_I18N">Internationalization Warnings</a>
+                </td>
+                <td align="right">1</td>
+            </tr>
+            <tr class="tablerow1">
+                <td>
+                    <a href="#Warnings_PERFORMANCE">Performance Warnings</a>
+                </td>
+                <td align="right">2</td>
+            </tr>
+            <tr class="tablerow0">
+                <td>
+                    <a href="#Warnings_STYLE">Dodgy code Warnings</a>
+                </td>
+                <td align="right">65</td>
+            </tr>
+            <tr class="tablerow1">
+                <td>
+                    <b>Total</b>
+                </td>
+                <td align="right">
+                    <b>70</b>
+                </td>
+            </tr>
+        </table>
+        <h1>Warnings</h1>
+        <p>Click on a warning row to see full context information.</p>
+        <h2>
+            <a name="Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+        </h2>
+        <table class="warningtable" width="100%" cellspacing="0">
+            <tr class="tableheader">
+                <th align="left">Code</th>
+                <th align="left">Warning</th>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N65716');">
+                <td>
+                    <span class="priority-1">CN</span>
+                </td>
+                <td>main.java.main.TokenList defines clone() but doesn't implement Cloneable</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N65716" style="display: none;">
+                        <a href="#CN_IMPLEMENTS_CLONE_BUT_NOT_CLONEABLE">Bug type CN_IMPLEMENTS_CLONE_BUT_NOT_CLONEABLE (click for details)</a>
+                        <br />
+                        In class main.java.main.TokenList
+                        <br />
+                        In method main.java.main.TokenList.clone()
+                        <br />
+                        At TokenList.java:[lines 109-117]
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <h2>
+            <a name="Warnings_CORRECTNESS">Correctness Warnings</a>
+        </h2>
+        <table class="warningtable" width="100%" cellspacing="0">
+            <tr class="tableheader">
+                <th align="left">Code</th>
+                <th align="left">Warning</th>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N66026');">
+                <td>
+                    <span class="priority-1">IL</span>
+                </td>
+                <td>There is an apparent infinite loop in test.TestInput.other4()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N66026" style="display: none;">
+                        <a href="#IL_INFINITE_LOOP">Bug type IL_INFINITE_LOOP (click for details)</a>
+                        <br />
+                        In class test.TestInput
+                        <br />
+                        In method test.TestInput.other4()
+                        <br />
+                        At TestInput.java:[line 339]
+                        <br />
+                        Local variable named bool
+                        <br />
+                        At TestInput.java:[line 324]
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <h2>
+            <a name="Warnings_I18N">Internationalization Warnings</a>
+        </h2>
+        <table class="warningtable" width="100%" cellspacing="0">
+            <tr class="tableheader">
+                <th align="left">Code</th>
+                <th align="left">Warning</th>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N65963');">
+                <td>
+                    <span class="priority-1">Dm</span>
+                </td>
+                <td>Found reliance on default encoding in new main.java.scanner.CharReader(String): new java.io.FileReader(String)</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N65963" style="display: none;">
+                        <a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+                        <br />
+                        In class main.java.scanner.CharReader
+                        <br />
+                        In method new main.java.scanner.CharReader(String)
+                        <br />
+                        Called method new java.io.FileReader(String)
+                        <br />
+                        At CharReader.java:[line 43]
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <h2>
+            <a name="Warnings_PERFORMANCE">Performance Warnings</a>
+        </h2>
+        <table class="warningtable" width="100%" cellspacing="0">
+            <tr class="tableheader">
+                <th align="left">Code</th>
+                <th align="left">Warning</th>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N65552');">
+                <td>
+                    <span class="priority-1">Bx</span>
+                </td>
+                <td>Boxing/unboxing to parse a primitive GetoptDemo.main(String[])</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N65552" style="display: none;">
+                        <a href="#DM_BOXED_PRIMITIVE_FOR_PARSING">Bug type DM_BOXED_PRIMITIVE_FOR_PARSING (click for details)</a>
+                        <br />
+                        In class GetoptDemo
+                        <br />
+                        In method GetoptDemo.main(String[])
+                        <br />
+                        Called method Integer.intValue()
+                        <br />
+                        Should call Integer.parseInt(String) instead
+                        <br />
+                        At GetoptDemo.java:[line 34]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N65623');">
+                <td>
+                    <span class="priority-1">Bx</span>
+                </td>
+                <td>Boxing/unboxing to parse a primitive new main.java.main.Options(String[])</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N65623" style="display: none;">
+                        <a href="#DM_BOXED_PRIMITIVE_FOR_PARSING">Bug type DM_BOXED_PRIMITIVE_FOR_PARSING (click for details)</a>
+                        <br />
+                        In class main.java.main.Options
+                        <br />
+                        In method new main.java.main.Options(String[])
+                        <br />
+                        Called method Integer.intValue()
+                        <br />
+                        Should call Integer.parseInt(String) instead
+                        <br />
+                        At Options.java:[line 49]
+                        <br />
+                        Another occurrence at Options.java:[line 52]
+                        <br />
+                        Another occurrence at Options.java:[line 55]
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <h2>
+            <a name="Warnings_STYLE">Dodgy code Warnings</a>
+        </h2>
+        <table class="warningtable" width="100%" cellspacing="0">
+            <tr class="tableheader">
+                <th align="left">Code</th>
+                <th align="left">Warning</th>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N66361');">
+                <td>
+                    <span class="priority-1">DLS</span>
+                </td>
+                <td>Dead store to options in test.java.main.OptionsTest.checkHelpArgumentCommandLine()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N66361" style="display: none;">
+                        <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                        <br />
+                        In class test.java.main.OptionsTest
+                        <br />
+                        In method test.java.main.OptionsTest.checkHelpArgumentCommandLine()
+                        <br />
+                        Local variable named options
+                        <br />
+                        At OptionsTest.java:[line 88]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N66431');">
+                <td>
+                    <span class="priority-1">DLS</span>
+                </td>
+                <td>Dead store to options in test.java.main.OptionsTest.checkNoArgumentsCommandLine()</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N66431" style="display: none;">
+                        <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                        <br />
+                        In class test.java.main.OptionsTest
+                        <br />
+                        In method test.java.main.OptionsTest.checkNoArgumentsCommandLine()
+                        <br />
+                        Local variable named options
+                        <br />
+                        At OptionsTest.java:[line 81]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N66501');">
+                <td>
+                    <span class="priority-1">DLS</span>
+                </td>
+                <td>Dead store to options in test.java.main.OptionsTest.checkOptionM()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N66501" style="display: none;">
+                        <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                        <br />
+                        In class test.java.main.OptionsTest
+                        <br />
+                        In method test.java.main.OptionsTest.checkOptionM()
+                        <br />
+                        Local variable named options
+                        <br />
+                        At OptionsTest.java:[line 34]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N66571');">
+                <td>
+                    <span class="priority-1">DLS</span>
+                </td>
+                <td>Dead store to options in test.java.main.OptionsTest.checkOptionMFilename()</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N66571" style="display: none;">
+                        <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                        <br />
+                        In class test.java.main.OptionsTest
+                        <br />
+                        In method test.java.main.OptionsTest.checkOptionMFilename()
+                        <br />
+                        Local variable named options
+                        <br />
+                        At OptionsTest.java:[line 44]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N65904');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in main.java.metrics.Packages.main(String[])</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N65904" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class main.java.metrics.Packages
+                        <br />
+                        In method main.java.metrics.Packages.main(String[])
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/main
+                        <br />
+                        At Packages.java:[line 137]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N66719');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.ampersand()</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N66719" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.ampersand()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/ampersand.txt
+                        <br />
+                        At ScannerTest.java:[line 310]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N66778');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.ampersandampersand()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N66778" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.ampersandampersand()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/ampersandampersand.txt
+                        <br />
+                        At ScannerTest.java:[line 302]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N66837');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.asterisk()</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N66837" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.asterisk()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/asterisk.txt
+                        <br />
+                        At ScannerTest.java:[line 238]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N66896');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.base16integer()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N66896" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.base16integer()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/base16integer.txt
+                        <br />
+                        At ScannerTest.java:[line 414]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N66955');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.base2integer()</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N66955" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.base2integer()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/base2integer.txt
+                        <br />
+                        At ScannerTest.java:[line 422]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N67014');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.base8integer()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N67014" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.base8integer()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/base8integer.txt
+                        <br />
+                        At ScannerTest.java:[line 430]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N67073');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.caret()</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N67073" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.caret()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/caret.txt
+                        <br />
+                        At ScannerTest.java:[line 206]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N67132');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.caretequals()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N67132" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.caretequals()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/caretequals.txt
+                        <br />
+                        At ScannerTest.java:[line 198]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N67191');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.colon()</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N67191" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.colon()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/colon.txt
+                        <br />
+                        At ScannerTest.java:[line 134]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N67250');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.comma()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N67250" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.comma()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/comma.txt
+                        <br />
+                        At ScannerTest.java:[line 110]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N67309');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.decrement()</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N67309" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.decrement()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/decrement.txt
+                        <br />
+                        At ScannerTest.java:[line 286]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N67368');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.divide()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N67368" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.divide()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/divide.txt
+                        <br />
+                        At ScannerTest.java:[line 254]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N67427');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.divideequals()</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N67427" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.divideequals()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/divideequals.txt
+                        <br />
+                        At ScannerTest.java:[line 246]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N67486');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.eof()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N67486" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.eof()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/eof.txt
+                        <br />
+                        At ScannerTest.java:[line 406]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N67545');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.equalequal()</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N67545" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.equalequal()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/equalequal.txt
+                        <br />
+                        At ScannerTest.java:[line 142]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N67604');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.equals()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N67604" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.equals()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/equals.txt
+                        <br />
+                        At ScannerTest.java:[line 150]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N67663');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.gt()</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N67663" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.gt()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/gt.txt
+                        <br />
+                        At ScannerTest.java:[line 358]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N67722');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.gtequals()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N67722" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.gtequals()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/gtequals.txt
+                        <br />
+                        At ScannerTest.java:[line 318]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N67781');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.identifier()</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N67781" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.identifier()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/identifier.txt
+                        <br />
+                        At ScannerTest.java:[line 446]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N67840');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.increment()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N67840" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.increment()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/increment.txt
+                        <br />
+                        At ScannerTest.java:[line 270]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N67899');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.lBrace()</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N67899" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.lBrace()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/lbrace.txt
+                        <br />
+                        At ScannerTest.java:[line 70]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N67958');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.lBracket()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N67958" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.lBracket()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/lbracket.txt
+                        <br />
+                        At ScannerTest.java:[line 86]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N68017');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.lParen()</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N68017" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.lParen()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/lparen.txt
+                        <br />
+                        At ScannerTest.java:[line 54]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N68076');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.less()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N68076" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.less()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/less.txt
+                        <br />
+                        At ScannerTest.java:[line 390]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N68135');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.lessequals()</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N68135" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.lessequals()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/lessequals.txt
+                        <br />
+                        At ScannerTest.java:[line 366]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N68194');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.longLiteral()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N68194" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.longLiteral()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/longliteral.txt
+                        <br />
+                        At ScannerTest.java:[line 438]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N68253');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.minus()</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N68253" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.minus()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/minus.txt
+                        <br />
+                        At ScannerTest.java:[line 294]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N68312');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.mod()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N68312" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.mod()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/mod.txt
+                        <br />
+                        At ScannerTest.java:[line 222]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N68371');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.modequals()</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N68371" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.modequals()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/modequals.txt
+                        <br />
+                        At ScannerTest.java:[line 214]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N68430');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.multiplyequals()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N68430" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.multiplyequals()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/multiplyequals.txt
+                        <br />
+                        At ScannerTest.java:[line 230]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N68489');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.not()</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N68489" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.not()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/not.txt
+                        <br />
+                        At ScannerTest.java:[line 166]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N68548');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.notequals()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N68548" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.notequals()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/notequals.txt
+                        <br />
+                        At ScannerTest.java:[line 158]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N68607');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.or()</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N68607" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.or()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/or.txt
+                        <br />
+                        At ScannerTest.java:[line 182]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N68666');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.orequals()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N68666" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.orequals()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/orequals.txt
+                        <br />
+                        At ScannerTest.java:[line 174]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N68725');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.oror()</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N68725" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.oror()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/oror.txt
+                        <br />
+                        At ScannerTest.java:[line 190]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N68784');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.period()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N68784" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.period()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/period.txt
+                        <br />
+                        At ScannerTest.java:[line 118]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N68843');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.plus()</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N68843" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.plus()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/plus.txt
+                        <br />
+                        At ScannerTest.java:[line 278]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N68902');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.plusequals()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N68902" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.plusequals()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/plusequals.txt
+                        <br />
+                        At ScannerTest.java:[line 262]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N68961');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.questionmark()</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N68961" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.questionmark()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/questionmark.txt
+                        <br />
+                        At ScannerTest.java:[line 126]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N69020');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.rBrace()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N69020" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.rBrace()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/rbrace.txt
+                        <br />
+                        At ScannerTest.java:[line 78]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N69079');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.rBracket()</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N69079" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.rBracket()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/rbracket.txt
+                        <br />
+                        At ScannerTest.java:[line 94]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N69138');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.rParen()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N69138" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.rParen()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/rparen.txt
+                        <br />
+                        At ScannerTest.java:[line 62]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N69197');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.semiColon()</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N69197" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.semiColon()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/semicolon.txt
+                        <br />
+                        At ScannerTest.java:[line 102]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N69256');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.shiftleft()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N69256" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.shiftleft()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/shiftleft.txt
+                        <br />
+                        At ScannerTest.java:[line 374]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N69315');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.shiftleftequals()</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N69315" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.shiftleftequals()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/shiftleftequals.txt
+                        <br />
+                        At ScannerTest.java:[line 382]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N69374');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.shiftright()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N69374" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.shiftright()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/shiftright.txt
+                        <br />
+                        At ScannerTest.java:[line 342]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N69433');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.shiftrightequals()</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N69433" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.shiftrightequals()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/shiftrightequals.txt
+                        <br />
+                        At ScannerTest.java:[line 350]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N69492');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.stringliteral()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N69492" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.stringliteral()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/stringliteral.txt
+                        <br />
+                        At ScannerTest.java:[line 398]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N69551');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.testInput()</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N69551" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.testInput()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/TestInput.java
+                        <br />
+                        At ScannerTest.java:[line 36]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N69610');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.tilde()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N69610" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.tilde()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/tilde.txt
+                        <br />
+                        At ScannerTest.java:[line 46]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N69669');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.unsignedshiftright()</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N69669" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.unsignedshiftright()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/unsignedshiftright.txt
+                        <br />
+                        At ScannerTest.java:[line 326]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N69728');">
+                <td>
+                    <span class="priority-1">DMI</span>
+                </td>
+                <td>Hard coded reference to an absolute pathname in test.java.scanner.ScannerTest.unsignedshiftrightequals()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N69728" style="display: none;">
+                        <a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+                        <br />
+                        In class test.java.scanner.ScannerTest
+                        <br />
+                        In method test.java.scanner.ScannerTest.unsignedshiftrightequals()
+                        <br />
+                        File name /home/dks/git/McCabe_v1/McCabe/src/test/java/scanner/inputs/unsignedshiftrightequals.txt
+                        <br />
+                        At ScannerTest.java:[line 334]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N66096');">
+                <td>
+                    <span class="priority-1">INT</span>
+                </td>
+                <td>Integer remainder modulo 1 computed in test.TestInput.other3() </td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N66096" style="display: none;">
+                        <a href="#INT_BAD_REM_BY_1">Bug type INT_BAD_REM_BY_1 (click for details)</a>
+                        <br />
+                        In class test.TestInput
+                        <br />
+                        In method test.TestInput.other3()
+                        <br />
+                        At TestInput.java:[line 314]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N65770');">
+                <td>
+                    <span class="priority-1">ST</span>
+                </td>
+                <td>Write to static field main.java.main.TokenList.list from instance method new main.java.main.TokenList()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N65770" style="display: none;">
+                        <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                        <br />
+                        In class main.java.main.TokenList
+                        <br />
+                        In method new main.java.main.TokenList()
+                        <br />
+                        Field main.java.main.TokenList.list
+                        <br />
+                        At TokenList.java:[line 31]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N65837');">
+                <td>
+                    <span class="priority-1">ST</span>
+                </td>
+                <td>Write to static field main.java.main.TokenList.currentIndex from instance method main.java.main.TokenList.setCurrentIndex(Integer)</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N65837" style="display: none;">
+                        <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                        <br />
+                        In class main.java.main.TokenList
+                        <br />
+                        In method main.java.main.TokenList.setCurrentIndex(Integer)
+                        <br />
+                        Field main.java.main.TokenList.currentIndex
+                        <br />
+                        At TokenList.java:[line 126]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N66641');">
+                <td>
+                    <span class="priority-1">ST</span>
+                </td>
+                <td>Write to static field test.java.metrics.MccabeTest.token from instance method test.java.metrics.MccabeTest.setUp()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N66641" style="display: none;">
+                        <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                        <br />
+                        In class test.java.metrics.MccabeTest
+                        <br />
+                        In method test.java.metrics.MccabeTest.setUp()
+                        <br />
+                        Field test.java.metrics.MccabeTest.token
+                        <br />
+                        At MccabeTest.java:[line 43]
+                        <br />
+                        Another occurrence at MccabeTest.java:[line 47]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N66149');">
+                <td>
+                    <span class="priority-1">UC</span>
+                </td>
+                <td>Method test.TestInput.forStatement() seems to be useless</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N66149" style="display: none;">
+                        <a href="#UC_USELESS_VOID_METHOD">Bug type UC_USELESS_VOID_METHOD (click for details)</a>
+                        <br />
+                        In class test.TestInput
+                        <br />
+                        In method test.TestInput.forStatement()
+                        <br />
+                        At TestInput.java:[line 47]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N66202');">
+                <td>
+                    <span class="priority-1">UC</span>
+                </td>
+                <td>Method test.TestInput.ifStatement(boolean) seems to be useless</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N66202" style="display: none;">
+                        <a href="#UC_USELESS_VOID_METHOD">Bug type UC_USELESS_VOID_METHOD (click for details)</a>
+                        <br />
+                        In class test.TestInput
+                        <br />
+                        In method test.TestInput.ifStatement(boolean)
+                        <br />
+                        At TestInput.java:[line 93]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N66255');">
+                <td>
+                    <span class="priority-1">UC</span>
+                </td>
+                <td>Method test.TestInput.main3() seems to be useless</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N66255" style="display: none;">
+                        <a href="#UC_USELESS_VOID_METHOD">Bug type UC_USELESS_VOID_METHOD (click for details)</a>
+                        <br />
+                        In class test.TestInput
+                        <br />
+                        In method test.TestInput.main3()
+                        <br />
+                        At TestInput.java:[line 403]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N66308');">
+                <td>
+                    <span class="priority-1">UC</span>
+                </td>
+                <td>Method test.TestInput.other3() seems to be useless</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N66308" style="display: none;">
+                        <a href="#UC_USELESS_VOID_METHOD">Bug type UC_USELESS_VOID_METHOD (click for details)</a>
+                        <br />
+                        In class test.TestInput
+                        <br />
+                        In method test.TestInput.other3()
+                        <br />
+                        At TestInput.java:[line 320]
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <h1>
+            <a name="Details">Details</a>
+        </h1>
+        <h2>
+            <a name="DM_BOXED_PRIMITIVE_FOR_PARSING">DM_BOXED_PRIMITIVE_FOR_PARSING: Boxing/unboxing to parse a primitive</a>
+        </h2>
+          <p>A boxed primitive is created from a String, just to extract the unboxed primitive value.
+  It is more efficient to just call the static parseXXX method.</p>
+
+    
+        <h2>
+            <a name="CN_IMPLEMENTS_CLONE_BUT_NOT_CLONEABLE">CN_IMPLEMENTS_CLONE_BUT_NOT_CLONEABLE: Class defines clone() but doesn't implement Cloneable</a>
+        </h2>
+        <p> This class defines a clone() method but the class doesn't implement Cloneable.
+There are some situations in which this is OK (e.g., you want to control how subclasses
+can clone themselves), but just make sure that this is what you intended.
+</p>
+
+    
+        <h2>
+            <a name="DLS_DEAD_LOCAL_STORE">DLS_DEAD_LOCAL_STORE: Dead store to local variable</a>
+        </h2>
+        <p>
+This instruction assigns a value to a local variable,
+but the value is not read or used in any subsequent instruction.
+Often, this indicates an error, because the value computed is never
+used.
+</p>
+<p>
+Note that Sun's javac compiler often generates dead stores for
+final local variables.  Because FindBugs is a bytecode-based tool,
+there is no easy way to eliminate these false positives.
+</p>
+
+    
+        <h2>
+            <a name="DM_DEFAULT_ENCODING">DM_DEFAULT_ENCODING: Reliance on default encoding</a>
+        </h2>
+        <p> Found a call to a method which will perform a byte to String (or String to byte) conversion, and will assume that the default platform encoding is suitable. This will cause the application behaviour to vary between platforms. Use an alternative API and specify a charset name or Charset object explicitly.  </p>
+
+      
+        <h2>
+            <a name="DMI_HARDCODED_ABSOLUTE_FILENAME">DMI_HARDCODED_ABSOLUTE_FILENAME: Code contains a hard coded reference to an absolute pathname</a>
+        </h2>
+        <p>This code constructs a File object using a hard coded to an absolute pathname
+(e.g., <code>new File("/home/dannyc/workspace/j2ee/src/share/com/sun/enterprise/deployment");</code>
+</p>
+
+    
+        <h2>
+            <a name="IL_INFINITE_LOOP">IL_INFINITE_LOOP: An apparent infinite loop</a>
+        </h2>
+        <p>This loop doesn't seem to have a way to terminate (other than by perhaps
+throwing an exception).</p>
+
+    
+        <h2>
+            <a name="INT_BAD_REM_BY_1">INT_BAD_REM_BY_1: Integer remainder modulo 1</a>
+        </h2>
+        <p> Any expression (exp % 1) is guaranteed to always return zero.
+Did you mean (exp &amp; 1) or (exp % 2) instead?
+</p>
+
+    
+        <h2>
+            <a name="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD: Write to static field from instance method</a>
+        </h2>
+          <p> This instance method writes to a static field. This is tricky to get
+correct if multiple instances are being manipulated,
+and generally bad practice.
+</p>
+
+    
+        <h2>
+            <a name="UC_USELESS_VOID_METHOD">UC_USELESS_VOID_METHOD: Useless non-empty void method</a>
+        </h2>
+        <p>Our analysis shows that this non-empty void method does not actually perform any useful work.
+Please check it: probably there's a mistake in its code or its body can be fully removed.
+</p>
+<p>We are trying to reduce the false positives as much as possible, but in some cases this warning might be wrong.
+Common false-positive cases include:</p>
+<p>- The method is intended to trigger loading of some class which may have a side effect.</p>
+<p>- The method is intended to implicitly throw some obscure exception.</p>
+
+    
+    </body>
+</html>

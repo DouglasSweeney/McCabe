@@ -45,10 +45,9 @@ public class Scanner {
     /**
      * Construct a Scanner object.
      * 
-     * @param fileName
-     *            the name of the file containing the source.
-     * @exception FileNotFoundException
-     *                when the named file cannot be found.
+     * @param fileName the name of the file containing the source.
+     * 
+     * @throws FileNotFoundException when the named file cannot be found.
      */
     public Scanner(String fileName) throws FileNotFoundException {
         this.input = new CharReader(fileName);
@@ -531,9 +530,10 @@ public class Scanner {
     /**
      *  Build a INT, FLOAT or a DOUBLE
      *
-     *  @params void
+     *  @param sign a negative sign is needed
+     *  @param buffer create a String object
      *
-     *  @returns Token
+     *  @return Token
      */
     public Token decimalLiteral(char sign, StringBuffer buffer) {
     	// Add in the sign

@@ -98,7 +98,9 @@ public class Packages extends TokenList {
 		}
 	}
 	/**
-	 * Get the number of packages
+	 * Get the number of packages.
+	 * 
+	 * @return number of packages
 	 */
 	public int size() {
 	    return packageList.size();

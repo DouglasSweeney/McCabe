@@ -28,8 +28,8 @@ import main.java.scanner.TokenEnum;
  * @since 1.0
  */
 <span class="pc bpc" id="L30" title="1 of 2 branches missed.">public class Mccabe extends TokenList {</span>
-<span class="fc" id="L31">	List&lt;String&gt; classList = new ArrayList();</span>
-<span class="fc" id="L32">	static List&lt;MccabeNode&gt; methods = new ArrayList();</span>
+<span class="fc" id="L31">	List&lt;String&gt; classList = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L32">	static List&lt;MccabeNode&gt; methods = new ArrayList&lt;&gt;();</span>
     Integer mccabeComplexityFactor;
 <span class="fc" id="L34">	Utils utils = new Utils();</span>
 <span class="fc" id="L35">    String previousMethodName = &quot;&quot;;</span>
@@ -313,12 +313,12 @@ import main.java.scanner.TokenEnum;
      * 
      * @return the new value of the index
      */
-    private Integer computeCurrentTokenIndex(Integer currentTokenIndex,
-    		                                 List&lt;Token&gt; procedureList) {
-<span class="nc" id="L318">        currentTokenIndex += procedureList.size();</span>
-        
-<span class="nc" id="L320">        return currentTokenIndex;</span>
-    }
+//    private Integer computeCurrentTokenIndex(Integer currentTokenIndex,
+//    		                                 List&lt;Token&gt; procedureList) {
+//        currentTokenIndex += procedureList.size();
+//        
+//        return currentTokenIndex;
+//    }
     
     /**
      * Determine the methodName and the complexity factor of each method.
@@ -334,30 +334,29 @@ import main.java.scanner.TokenEnum;
 			                                    Integer currentTokenIndex,
 			                                    String className, Integer classNumber,
 			                                    boolean useExceptions) {
-<span class="fc" id="L337">		List&lt;Token&gt; procedureList = new ArrayList();</span>
+<span class="fc" id="L337">		List&lt;Token&gt; procedureList = new ArrayList&lt;&gt;();</span>
 <span class="fc" id="L338">		Token token = list.get(currentTokenIndex);</span>
 <span class="fc" id="L339">		String methodName = &quot;&quot;;</span>
 <span class="fc" id="L340">		Token token2 = null;</span>
-<span class="fc" id="L341">		Token token3 = null;</span>
-<span class="fc" id="L342">		Integer braces = 0;</span>
+<span class="fc" id="L341">		Integer braces = 0;</span>
 		
-<span class="fc bfc" id="L344" title="All 2 branches covered.">		while (token.enumeration != TokenEnum.EOF) {</span>
+<span class="fc bfc" id="L343" title="All 2 branches covered.">		while (token.enumeration != TokenEnum.EOF) {</span>
 			
-<span class="fc" id="L346">			braces = countBraces(methodName, token, braces, list);</span>
+<span class="fc" id="L345">			braces = countBraces(methodName, token, braces, list);</span>
 			
 
   			// look for class inside a class
-<span class="fc bfc" id="L350" title="All 2 branches covered.">			if (token.enumeration == TokenEnum.CLASS) {</span>
-<span class="fc" id="L351">     		    token = list.get(currentTokenIndex + 1);</span>
-<span class="pc bpc" id="L352" title="1 of 4 branches missed.">				if (token.enumeration == TokenEnum.IDENTIFIER &amp;&amp; </span>
+<span class="fc bfc" id="L349" title="All 2 branches covered.">			if (token.enumeration == TokenEnum.CLASS) {</span>
+<span class="fc" id="L350">     		    token = list.get(currentTokenIndex + 1);</span>
+<span class="pc bpc" id="L351" title="1 of 4 branches missed.">				if (token.enumeration == TokenEnum.IDENTIFIER &amp;&amp; </span>
 				   token.enumeration != TokenEnum.EOF &amp;&amp;
-<span class="fc bfc" id="L354" title="All 2 branches covered.">				   braces % 2 == 0) {</span>
-<span class="fc" id="L355">					className = token.string;</span>
+<span class="fc bfc" id="L353" title="All 2 branches covered.">				   braces % 2 == 0) {</span>
+<span class="fc" id="L354">					className = token.string;</span>
 //					classList.add(className);
-<span class="fc" id="L357">					currentTokenIndex++;</span>
+<span class="fc" id="L356">					currentTokenIndex++;</span>
 //currentTokenIndex++;
-<span class="fc" id="L359">					findMethodsAndComplexityFactor(filename, list, currentTokenIndex, </span>
-<span class="fc" id="L360">							                       token.string, classNumber++, useExceptions);</span>
+<span class="fc" id="L358">					findMethodsAndComplexityFactor(filename, list, currentTokenIndex, </span>
+<span class="fc" id="L359">							                       token.string, classNumber++, useExceptions);</span>
 					// Optimization - readjust the token pointer for each input procedure. Rather 
 //	                than allow the while() loop to process extra tokens.
 //currentTokenIndex = computeCurrentTokenIndex(currentTokenIndex, procedureList);
@@ -365,17 +364,17 @@ import main.java.scanner.TokenEnum;
 			}
 			
 			// look for '(' inside a class
-<span class="fc bfc" id="L368" title="All 2 branches covered.">			if (token.enumeration == TokenEnum.LPAREN &amp;&amp; </span>
-<span class="pc bpc" id="L369" title="1 of 2 branches missed.">					classNumber &gt;= 1 &amp;&amp; </span>
-<span class="fc bfc" id="L370" title="All 2 branches covered.">					braces == 1) {</span>
+<span class="fc bfc" id="L367" title="All 2 branches covered.">			if (token.enumeration == TokenEnum.LPAREN &amp;&amp; </span>
+<span class="pc bpc" id="L368" title="1 of 2 branches missed.">					classNumber &gt;= 1 &amp;&amp; </span>
+<span class="fc bfc" id="L369" title="All 2 branches covered.">					braces == 1) {</span>
 				
 				// remember the procedure name
-<span class="fc" id="L373">     			token2 = list.get(currentTokenIndex - 1);</span>
-<span class="fc bfc" id="L374" title="All 2 branches covered.">				if (token2.enumeration == TokenEnum.IDENTIFIER) {</span>
-<span class="fc" id="L375">					methodName = token2.string;</span>
+<span class="fc" id="L372">     			token2 = list.get(currentTokenIndex - 1);</span>
+<span class="fc bfc" id="L373" title="All 2 branches covered.">				if (token2.enumeration == TokenEnum.IDENTIFIER) {</span>
+<span class="fc" id="L374">					methodName = token2.string;</span>
 					// look for type
-<span class="fc" id="L377">	     			token = list.get(currentTokenIndex - 2);</span>
-<span class="pc bpc" id="L378" title="3 of 24 branches missed.">					if (token.enumeration == TokenEnum.GT || // return type of a procedure: i.e.List&lt;Token&gt;</span>
+<span class="fc" id="L376">	     			token = list.get(currentTokenIndex - 2);</span>
+<span class="pc bpc" id="L377" title="3 of 24 branches missed.">					if (token.enumeration == TokenEnum.GT || // return type of a procedure: i.e.List&lt;Token&gt;</span>
 						token.enumeration == TokenEnum.IDENTIFIER ||
 					    token.enumeration == TokenEnum.BYTE ||
 						token.enumeration == TokenEnum.CHAR ||
@@ -395,51 +394,51 @@ import main.java.scanner.TokenEnum;
 //								methodName = token2.string;
 								
 			     				// Set the mcCabe Complexity Factor to 1 for a new method
-<span class="fc" id="L398">					        	mccabeComplexityFactor = 1;</span>
-<span class="fc" id="L399">					        	procedureList = utils.getProcedureTokens(list, currentTokenIndex);</span>
-<span class="fc" id="L400">					        	Debug.println(Categories.INPUT_METHODS, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
+<span class="fc" id="L397">					        	mccabeComplexityFactor = 1;</span>
+<span class="fc" id="L398">					        	procedureList = utils.getProcedureTokens(list, currentTokenIndex);</span>
+<span class="fc" id="L399">					        	Debug.println(Categories.INPUT_METHODS, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
 					        			&quot;findMethodsAndComplexityFactor() &quot;
 					        			+ &quot;methodName: &quot; + methodName + &quot;()&quot;);
-<span class="fc" id="L403">					        	Debug.println(Categories.TOKENS, methodName, procedureList, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
+<span class="fc" id="L402">					        	Debug.println(Categories.TOKENS, methodName, procedureList, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
 					        			&quot;findMethodsAndComplexityFactor()&quot;);
-<span class="fc bfc" id="L405" title="All 2 branches covered.">					        	if (Utils.throwsToken)</span>
-<span class="fc bfc" id="L406" title="All 2 branches covered.">					        		if (useExceptions)</span>
-<span class="fc" id="L407">					        			mccabeComplexityFactor++;</span>
+<span class="fc bfc" id="L404" title="All 2 branches covered.">					        	if (Utils.throwsToken)</span>
+<span class="fc bfc" id="L405" title="All 2 branches covered.">					        		if (useExceptions)</span>
+<span class="fc" id="L406">					        			mccabeComplexityFactor++;</span>
 	
 					        	// compute the McCabe Complexity Factor
-<span class="fc" id="L410">					        	computeMcCabeComplexityFactor(methodName, procedureList, useExceptions);</span>
+<span class="fc" id="L409">					        	computeMcCabeComplexityFactor(methodName, procedureList, useExceptions);</span>
 
 					        	// Optimization - readjust the token pointer for each input procedure. Rather 
 					        	//                than allow the while() loop to process extra tokens.
 //					        	currentTokenIndex = computeCurrentTokenIndex(currentTokenIndex, procedureList);
 
-<span class="fc" id="L416">					        	MccabeNode mccabeNode = new MccabeNode(filename, </span>
+<span class="fc" id="L415">					        	MccabeNode mccabeNode = new MccabeNode(filename, </span>
 					        								  className,
  						                                      methodName, 
  							                                  token2.lineNumber, 
  							                                  mccabeComplexityFactor);
-<span class="fc" id="L421">					        	methods.add(mccabeNode);</span>
+<span class="fc" id="L420">					        	methods.add(mccabeNode);</span>
 //					        }
 //					    }
 					}
 				}
 			}
 			
-<span class="fc" id="L428">			currentTokenIndex = currentTokenIndex + 1;</span>
-<span class="fc" id="L429">			token = list.get(currentTokenIndex);</span>
+<span class="fc" id="L427">			currentTokenIndex = currentTokenIndex + 1;</span>
+<span class="fc" id="L428">			token = list.get(currentTokenIndex);</span>
 		}
-<span class="fc" id="L431">	}</span>
+<span class="fc" id="L430">	}</span>
 	
 	private double getTotalComplexity(String filename) {
-<span class="fc" id="L434">		double total = 0;</span>
+<span class="fc" id="L433">		double total = 0;</span>
 		
-<span class="fc bfc" id="L436" title="All 2 branches covered.">    	for (MccabeNode item : methods) { // get the file Mccabe Complexity Factor</span>
-<span class="fc bfc" id="L437" title="All 2 branches covered.">    		if (item.getFilename().equals(filename)) {</span>
-<span class="fc" id="L438">    			total += item.getMccabeComplexityFactor();</span>
+<span class="fc bfc" id="L435" title="All 2 branches covered.">    	for (MccabeNode item : methods) { // get the file Mccabe Complexity Factor</span>
+<span class="fc bfc" id="L436" title="All 2 branches covered.">    		if (item.getFilename().equals(filename)) {</span>
+<span class="fc" id="L437">    			total += item.getMccabeComplexityFactor();</span>
     		}
-<span class="fc" id="L440">   	    }</span>
+<span class="fc" id="L439">   	    }</span>
     	
-<span class="fc" id="L442">		return total;</span>
+<span class="fc" id="L441">		return total;</span>
 	}
 	
 	/**
@@ -450,21 +449,22 @@ import main.java.scanner.TokenEnum;
 	 * @param options arguments specified on the command line
 	 */
     public void compute(String filename, List&lt;Token&gt; list, Options options) {
-<span class="fc" id="L453">       	Debug.println(Categories.OPTIONS, options, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
+<span class="fc" id="L452">       	Debug.println(Categories.OPTIONS, options, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
 			      &quot;compute()&quot;);
-<span class="fc" id="L455">    	Debug.println(Categories.INTERNAL_METHODS, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
+<span class="fc" id="L454">    	Debug.println(Categories.INTERNAL_METHODS, Mccabe.class.getCanonicalName() + &quot; &quot; + </span>
 			      &quot;compute()&quot;);
-<span class="fc" id="L457">    	Integer currentTokenIndex = 0;</span>
-<span class="fc" id="L458">    	Integer classNumber = 0;</span>
-<span class="fc" id="L459">    	String  className = &quot;&quot;;</span>
-<span class="fc" id="L460">    	boolean useExceptions = options.getUseExceptions();</span>
+<span class="fc" id="L456">    	Integer currentTokenIndex = 0;</span>
+<span class="fc" id="L457">    	Integer classNumber = 0;</span>
+<span class="fc" id="L458">    	String  className = &quot;&quot;;</span>
+<span class="fc" id="L459">    	boolean useExceptions = options.getUseExceptions();</span>
     	
-<span class="fc" id="L462">    	Token token = list.get(currentTokenIndex);</span>
-<span class="fc bfc" id="L463" title="All 2 branches covered.">    	while (token.enumeration != TokenEnum.EOF) {</span>
-<span class="fc" id="L464">    		currentTokenIndex++;</span>
-<span class="fc" id="L465">    	    token = list.get(currentTokenIndex);</span>
+<span class="fc" id="L461">    	Token token = list.get(currentTokenIndex);</span>
+<span class="fc bfc" id="L462" title="All 2 branches covered.">    	while (token.enumeration != TokenEnum.EOF) {</span>
+<span class="fc" id="L463">    		currentTokenIndex++;</span>
+<span class="fc" id="L464">    	    token = list.get(currentTokenIndex);</span>
     	
-<span class="fc bfc" id="L467" title="All 2 branches covered.">    	    if (token.enumeration == TokenEnum.CLASS) {</span>
+<span class="fc bfc" id="L466" title="All 4 branches covered.">    	    if (token.enumeration == TokenEnum.CLASS ||</span>
+    	        token.enumeration == TokenEnum.ENUM) {
 <span class="fc" id="L468">    	    	classNumber = 1;</span>
 <span class="fc" id="L469">    	    	currentTokenIndex++;</span>
 <span class="fc" id="L470">    	    	className = list.get(currentTokenIndex).string; // get the class name</span>

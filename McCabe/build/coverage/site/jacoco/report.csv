@@ -11,7 +11,7 @@ McCabe project,main.java.scanner,TokenEnum,0,1084,0,0,0,109,0,1,0,1
 McCabe project,main.java.debug,Debug,10,190,10,24,3,48,10,18,0,11
 McCabe project,main.java.debug,Categories,0,64,0,0,0,7,0,1,0,1
 McCabe project,main.java.metrics,Packages,111,165,8,20,28,41,8,16,3,7
-McCabe project,main.java.metrics,Mccabe,213,1282,28,146,56,223,30,84,9,18
+McCabe project,main.java.metrics,Mccabe,204,1284,28,148,54,222,29,85,8,18
 McCabe project,main.java.metrics,SlocNode,0,16,0,0,0,6,0,1,0,1
-McCabe project,main.java.metrics,Slocs,153,202,16,22,35,48,15,16,5,7
+McCabe project,main.java.metrics,Slocs,150,198,16,22,35,46,15,16,5,7
 McCabe project,main.java.metrics,MccabeNode,0,37,0,0,0,13,0,6,0,6

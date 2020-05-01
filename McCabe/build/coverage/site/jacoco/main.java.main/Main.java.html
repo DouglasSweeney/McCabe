@@ -20,7 +20,6 @@ import java.util.stream.Stream;
 
 import main.java.debug.Categories;
 import main.java.debug.Debug;
-import main.java.metrics.Packages;
 import main.java.scanner.Scanner;
 import main.java.scanner.Token;
 import main.java.scanner.TokenEnum;
@@ -32,9 +31,9 @@ import main.java.scanner.TokenEnum;
  * @since  1.0
  *
  */
-<span class="pc bpc" id="L35" title="1 of 2 branches missed.">public class Main {</span>
-<span class="fc" id="L36">	TokenList tokenList = new TokenList();</span>
-<span class="fc" id="L37">	Metrics metrics = new Metrics(); </span>
+<span class="pc bpc" id="L34" title="1 of 2 branches missed.">public class Main {</span>
+<span class="fc" id="L35">	TokenList tokenList = new TokenList();</span>
+<span class="fc" id="L36">	Metrics metrics = new Metrics(); </span>
 
 	/**
 	 * Create the scanner.
@@ -44,15 +43,15 @@ import main.java.scanner.TokenEnum;
 	 * @return the scanner that was created
 	 */
 	private Scanner createScanner(String directoryAndFilename) {
-<span class="fc" id="L47">	    Scanner scanner = null;</span>
+<span class="fc" id="L46">	    Scanner scanner = null;</span>
 	    
 	   	try {
-<span class="fc" id="L50">    		scanner = new Scanner(directoryAndFilename);</span>
-<span class="nc" id="L51">    	} catch (FileNotFoundException e) {</span>
-<span class="nc" id="L52">    		e.printStackTrace();</span>
-<span class="fc" id="L53">	    }</span>
+<span class="fc" id="L49">    		scanner = new Scanner(directoryAndFilename);</span>
+<span class="nc" id="L50">    	} catch (FileNotFoundException e) {</span>
+<span class="nc" id="L51">    		e.printStackTrace();</span>
+<span class="fc" id="L52">	    }</span>
 
-<span class="fc" id="L55">		return scanner;</span>
+<span class="fc" id="L54">		return scanner;</span>
 	}
 	
 	/**
@@ -63,12 +62,12 @@ import main.java.scanner.TokenEnum;
 	private void buildTokenList(Scanner scanner) {
 		Token token;
 		
-<span class="fc" id="L66">	    token = new Token(TokenEnum.NONE, 0);</span>
-<span class="fc bfc" id="L67" title="All 2 branches covered.">	    while  (token.enumeration != TokenEnum.EOF) {</span>
-<span class="fc" id="L68">	    	token = scanner.getNextToken();</span>
-<span class="fc" id="L69">	    	tokenList.add(token);;</span>
+<span class="fc" id="L65">	    token = new Token(TokenEnum.NONE, 0);</span>
+<span class="fc bfc" id="L66" title="All 2 branches covered.">	    while  (token.enumeration != TokenEnum.EOF) {</span>
+<span class="fc" id="L67">	    	token = scanner.getNextToken();</span>
+<span class="fc" id="L68">	    	tokenList.add(token);;</span>
 	    }
-<span class="fc" id="L71">	}</span>
+<span class="fc" id="L70">	}</span>
 	
 	/**
 	 * Builds the scanner and gets a list of the tokens.
@@ -77,14 +76,14 @@ import main.java.scanner.TokenEnum;
 	 */
     private void getTokensFromFile(String directoryAndFilename) {
 		
-<span class="fc" id="L80">	    Scanner scanner = null;</span>
+<span class="fc" id="L79">	    Scanner scanner = null;</span>
 	    
-<span class="fc" id="L82">   		scanner = createScanner(directoryAndFilename);</span>
+<span class="fc" id="L81">   		scanner = createScanner(directoryAndFilename);</span>
    		
-<span class="fc" id="L84">   		buildTokenList(scanner);</span>
+<span class="fc" id="L83">   		buildTokenList(scanner);</span>
    		
 	    //tokenList.print(tokenList.getList());
-<span class="fc" id="L87">	}</span>
+<span class="fc" id="L86">	}</span>
 
     /**
      * Process the list of tokens.
@@ -93,12 +92,12 @@ import main.java.scanner.TokenEnum;
      * @param options  the user options of the program
      */
     private void processTokens(String filename, Options options) {    	
-<span class="fc" id="L96">    	Debug.println(Categories.OPTIONS, options, Main.class.getCanonicalName() + &quot; &quot; + </span>
+<span class="fc" id="L95">    	Debug.println(Categories.OPTIONS, options, Main.class.getCanonicalName() + &quot; &quot; + </span>
 			      &quot;processTokens()&quot;);
-<span class="fc" id="L98">    	Debug.println(Categories.INTERNAL_METHODS, Main.class.getCanonicalName() + &quot; &quot; + </span>
+<span class="fc" id="L97">    	Debug.println(Categories.INTERNAL_METHODS, Main.class.getCanonicalName() + &quot; &quot; + </span>
 			      &quot;processTokens()&quot; + &quot; filename: &quot; + filename);
-<span class="fc" id="L100">		metrics.compute(filename, tokenList.clone(), options);</span>
-<span class="fc" id="L101">    }</span>
+<span class="fc" id="L99">		metrics.compute(filename, tokenList.clone(), options);</span>
+<span class="fc" id="L100">    }</span>
     
     /**
      * A single .java file was passed in.
@@ -106,23 +105,23 @@ import main.java.scanner.TokenEnum;
      * @param options the user options of the program
      */
     private void runOneFile(Options options) {
-<span class="fc" id="L109">    	Debug.println(Categories.OPTIONS, options, Main.class.getCanonicalName() + &quot; &quot; + </span>
+<span class="fc" id="L108">    	Debug.println(Categories.OPTIONS, options, Main.class.getCanonicalName() + &quot; &quot; + </span>
     			&quot;runOneFile()&quot;);
-<span class="fc" id="L111">    	Debug.println(Categories.INTERNAL_METHODS, Main.class.getCanonicalName() + &quot; &quot; + </span>
+<span class="fc" id="L110">    	Debug.println(Categories.INTERNAL_METHODS, Main.class.getCanonicalName() + &quot; &quot; + </span>
     			&quot;runOneFile()&quot;);
-<span class="fc" id="L113">		File file = new File(options.getMcCabeDirectory());</span>
+<span class="fc" id="L112">		File file = new File(options.getMcCabeDirectory());</span>
 		
-<span class="pc bpc" id="L115" title="1 of 2 branches missed.">		if (file.exists()) {</span>
+<span class="pc bpc" id="L114" title="1 of 2 branches missed.">		if (file.exists()) {</span>
 		//			System.out.println(options.getMcCabeDirectory());
-<span class="fc" id="L117">			getTokensFromFile(options.getMcCabeDirectory());</span>
-<span class="fc" id="L118">			processTokens(options.getMcCabeDirectory(), options);</span>
+<span class="fc" id="L116">			getTokensFromFile(options.getMcCabeDirectory());</span>
+<span class="fc" id="L117">			processTokens(options.getMcCabeDirectory(), options);</span>
 		}
 		else {
-<span class="nc" id="L121">			System.err.println(Main.class.getCanonicalName() + </span>
+<span class="nc" id="L120">			System.err.println(Main.class.getCanonicalName() + </span>
     			&quot; main(): File doesn't exist: &quot; + file);
 		}
 	
-<span class="fc" id="L125">    }</span>
+<span class="fc" id="L124">    }</span>
     
     
     /**
@@ -132,48 +131,48 @@ import main.java.scanner.TokenEnum;
      * @param options the user options of the program
      */
     private void runDirectory(boolean PRINT_JUST_FILENAME, Options options) {
-<span class="fc" id="L135">       	Debug.println(Categories.OPTIONS, options, Main.class.getCanonicalName() + &quot; &quot; + </span>
+<span class="fc" id="L134">       	Debug.println(Categories.OPTIONS, options, Main.class.getCanonicalName() + &quot; &quot; + </span>
 			      &quot;runDirectory()&quot;);
-<span class="fc" id="L137">       	Debug.println(Categories.INTERNAL_METHODS, Main.class.getCanonicalName() + &quot; &quot; + </span>
+<span class="fc" id="L136">       	Debug.println(Categories.INTERNAL_METHODS, Main.class.getCanonicalName() + &quot; &quot; + </span>
 			      &quot;runDirectory()&quot;);
-<span class="fc" id="L139">		File dir = new File(options.getMcCabeDirectory());</span>
+<span class="fc" id="L138">		File dir = new File(options.getMcCabeDirectory());</span>
 		
-<span class="pc bpc" id="L141" title="1 of 2 branches missed.">		if (dir.exists()) {</span>
+<span class="pc bpc" id="L140" title="1 of 2 branches missed.">		if (dir.exists()) {</span>
 			try {
-<span class="fc" id="L143">				Stream&lt;Path&gt; walk = Files.walk(Paths.get(options.getMcCabeDirectory()));</span>
+<span class="fc" id="L142">				Stream&lt;Path&gt; walk = Files.walk(Paths.get(options.getMcCabeDirectory()));</span>
 
-<span class="fc" id="L145">				List&lt;String&gt; result = walk.filter(Files::isRegularFile)</span>
-<span class="fc" id="L146">						.map(x -&gt; x.toString()).collect(Collectors.toList());</span>
+<span class="fc" id="L144">				List&lt;String&gt; result = walk.filter(Files::isRegularFile)</span>
+<span class="fc" id="L145">						.map(x -&gt; x.toString()).collect(Collectors.toList());</span>
 
-<span class="fc bfc" id="L148" title="All 2 branches covered.">				for (String filename : result) {</span>
-<span class="pc bpc" id="L149" title="1 of 2 branches missed.">					if (PRINT_JUST_FILENAME) {</span>
-<span class="nc" id="L150">						System.out.println(filename);</span>
+<span class="fc bfc" id="L147" title="All 2 branches covered.">				for (String filename : result) {</span>
+<span class="pc bpc" id="L148" title="1 of 2 branches missed.">					if (PRINT_JUST_FILENAME) {</span>
+<span class="nc" id="L149">						System.out.println(filename);</span>
 					}
 					else {
-<span class="pc bpc" id="L153" title="1 of 2 branches missed.">						if (filename.endsWith(&quot;.java&quot;)) { // not a .c/.txt file;</span>
+<span class="pc bpc" id="L152" title="1 of 2 branches missed.">						if (filename.endsWith(&quot;.java&quot;)) { // not a .c/.txt file;</span>
 //	    					System.out.println(filename); 
-<span class="fc" id="L155">							getTokensFromFile(filename);  </span>
-<span class="fc" id="L156">							processTokens(filename, options);</span>
-<span class="fc" id="L157">							tokenList.clear();</span>
+<span class="fc" id="L154">							getTokensFromFile(filename);  </span>
+<span class="fc" id="L155">							processTokens(filename, options);</span>
+<span class="fc" id="L156">							tokenList.clear();</span>
 						}
 					}
-<span class="fc" id="L160">				}</span>
-<span class="fc" id="L161">				walk.close();</span>
-<span class="nc" id="L162">			} catch (IOException e) {</span>
-<span class="nc" id="L163">				e.printStackTrace();</span>
-<span class="fc" id="L164">			}</span>
+<span class="fc" id="L159">				}</span>
+<span class="fc" id="L160">				walk.close();</span>
+<span class="nc" id="L161">			} catch (IOException e) {</span>
+<span class="nc" id="L162">				e.printStackTrace();</span>
+<span class="fc" id="L163">			}</span>
 			
-<span class="pc bpc" id="L166" title="1 of 2 branches missed.">			if (!PRINT_JUST_FILENAME) {</span>
-<span class="fc" id="L167">				System.out.println();</span>
-<span class="fc" id="L168">				metrics.print();</span>
+<span class="pc bpc" id="L165" title="1 of 2 branches missed.">			if (!PRINT_JUST_FILENAME) {</span>
+<span class="fc" id="L166">				System.out.println();</span>
+<span class="fc" id="L167">				metrics.print();</span>
 			}
 		}
 		else {
-<span class="nc" id="L172">			System.err.println(Main.class.getCanonicalName() + </span>
+<span class="nc" id="L171">			System.err.println(Main.class.getCanonicalName() + </span>
 				           &quot; main() directory doesn't exist (&quot; +
-<span class="nc" id="L174">		                   dir.getName() + &quot;)&quot;);</span>
+<span class="nc" id="L173">		                   dir.getName() + &quot;)&quot;);</span>
 		}    	
-<span class="fc" id="L176">    }</span>
+<span class="fc" id="L175">    }</span>
     
     /** 
      * Process a single .java file or a directory of .java files.
@@ -183,13 +182,13 @@ import main.java.scanner.TokenEnum;
      */
     public void run(boolean PRINT_JUST_FILENAME, Options options) {
  		
-<span class="fc bfc" id="L186" title="All 2 branches covered.">    	if (options.getMcCabeDirectory().endsWith(&quot;.java&quot;)) {</span>
-<span class="fc" id="L187">    		runOneFile(options);</span>
+<span class="fc bfc" id="L185" title="All 2 branches covered.">    	if (options.getMcCabeDirectory().endsWith(&quot;.java&quot;)) {</span>
+<span class="fc" id="L186">    		runOneFile(options);</span>
     	}
     	else {
-<span class="fc" id="L190">    		runDirectory(PRINT_JUST_FILENAME, options);</span>
+<span class="fc" id="L189">    		runDirectory(PRINT_JUST_FILENAME, options);</span>
 		}    	
-<span class="fc" id="L192">    }</span>
+<span class="fc" id="L191">    }</span>
     
     /**
      * The main entry point of the McCabe application program.
@@ -199,17 +198,17 @@ import main.java.scanner.TokenEnum;
  	public static void main(String[] args) {
 // 		System.out.println(System.getProperty(&quot;sun.java.command&quot;));
  		
-<span class="nc" id="L202"> 		Debug.setProperties();</span>
+<span class="nc" id="L201"> 		Debug.setProperties();</span>
  		
-<span class="nc" id="L204"> 		Main main = new Main();</span>
+<span class="nc" id="L203"> 		Main main = new Main();</span>
  		
-<span class="nc" id="L206">		final boolean PRINT_JUST_FILENAME = false;</span>
+<span class="nc" id="L205">		final boolean PRINT_JUST_FILENAME = false;</span>
 		
-<span class="nc bnc" id="L208" title="All 4 branches missed.">		assert args.length &gt; 0 : Main.class.getCanonicalName() + &quot; main(): No input directory&quot;;</span>
+<span class="nc bnc" id="L207" title="All 4 branches missed.">		assert args.length &gt; 0 : Main.class.getCanonicalName() + &quot; main(): No input directory&quot;;</span>
 		
-<span class="nc" id="L210">		Options options = new Options(args);		</span>
+<span class="nc" id="L209">		Options options = new Options(args);		</span>
 	        
-<span class="nc" id="L212">		main.run(PRINT_JUST_FILENAME, options);</span>
-<span class="nc" id="L213">	}</span>
+<span class="nc" id="L211">		main.run(PRINT_JUST_FILENAME, options);</span>
+<span class="nc" id="L212">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
