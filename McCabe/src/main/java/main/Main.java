@@ -169,7 +169,7 @@ public class Main {
 		}
 		else {
 			System.err.println(Main.class.getCanonicalName() + 
-				           " main() directory doesn't exist (" +
+				           " directory doesn't exist (" +
 		                   dir.getName() + ")");
 		}    	
     }
