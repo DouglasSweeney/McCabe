@@ -98,6 +98,6 @@ public class MetricsTest {
 		metrics.clearSlocList();
 		main.run(PRINT_JUST_FILENAME, options);
 
-		assertEquals(122, metrics.getNumberOfSlocs(options.getMcCabeDirectory())); 
+		assertEquals(123, metrics.getNumberOfSlocs(options.getMcCabeDirectory())); 
 	}
 }

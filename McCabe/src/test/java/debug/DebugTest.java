@@ -62,6 +62,7 @@ public class DebugTest {
 		
 		assertEquals(true, System.getProperty("debug.internal_methods") != null);
 	}
+	
 	@Test
 	public void checkSetPropertiesDoesNotExist() {
 		Debug.setProperties();

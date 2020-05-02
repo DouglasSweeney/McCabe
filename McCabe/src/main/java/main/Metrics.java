@@ -12,9 +12,11 @@ import java.util.List;
 
 import main.java.debug.Categories;
 import main.java.debug.Debug;
+import main.java.metrics.CountFiles;
 import main.java.metrics.Mccabe;
 import main.java.metrics.Packages;
 import main.java.metrics.Slocs;
+import main.java.metrics.Tests;
 import main.java.scanner.Token;
 
 /**
@@ -25,9 +27,11 @@ import main.java.scanner.Token;
  *
  */
 public class Metrics {
-    Packages packageIdentifier = null;
-    Slocs    slocCounter = null;
-    Mccabe   mccabeComplexity = null;
+    Packages   packageIdentifier = null;
+    Slocs      slocCounter = null;
+    Mccabe     mccabeComplexity = null;
+    Tests      tests = null;
+    CountFiles files = null;
 	
     /**
      * The constructor - creates some classes. Then the post condition assert are called.
@@ -36,13 +40,19 @@ public class Metrics {
     	packageIdentifier = new Packages();
     	slocCounter = new Slocs();
     	mccabeComplexity = new Mccabe();
+    	tests = new Tests();
+    	files = new CountFiles();
     	
     	assert packageIdentifier != null : Metrics.class.getCanonicalName() + 
     			" constructor: packageIdentifier = null";
     	assert slocCounter != null : Metrics.class.getCanonicalName() + 
     			" constructor: slocCounter = null";
-    	assert mccabeComplexity != null : Metrics.class.getCanonicalName() + 
-    			" constructor: mcCabeComplexity = null";
+        assert mccabeComplexity != null : Metrics.class.getCanonicalName() + 
+                " constructor: mcCabeComplexity = null";
+        assert tests != null : Metrics.class.getCanonicalName() + 
+                " constructor: tests = null";
+        assert files != null : Metrics.class.getCanonicalName() + 
+                " constructor: files = null";
     }
     
     /** 
@@ -61,6 +71,9 @@ public class Metrics {
       	if (options != null) {
     		mccabeComplexity.compute(filename, list, options);
     	}
+      	
+      	tests.compute(filename, list);
+      	files.compute(filename);
     	//debugging_print();
     }
     
@@ -71,6 +84,15 @@ public class Metrics {
     	slocCounter.clearList();
     }
     
+    /**
+     * Debugging only.
+     * 
+     * @return number of packages
+     */
+    public int getNumberOfTests() {
+        return tests.getNumberOfTests();
+    }
+
     /**
      * Debugging only.
      * 
@@ -100,7 +122,9 @@ public class Metrics {
     	packageIdentifier.debugging_print();
     	slocCounter.debugging_print();
     	mccabeComplexity.debugging_print();
-    }
+    	tests.debugging_print();
+        files.debugging_print();
+   }
 
     /** 
      * Print a non-verbose output of the metrics.
@@ -109,5 +133,7 @@ public class Metrics {
     	packageIdentifier.print();
     	slocCounter.print();
     	mccabeComplexity.print();
+    	tests.print();
+    	files.print();
     }
 }

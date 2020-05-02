@@ -112,9 +112,7 @@ public class Scanner {
         reserved.put("volatile", TokenEnum.VOLATILE);
         reserved.put("while", TokenEnum.WHILE);
         
-        reserved.put("@Override", TokenEnum.OVERRIDE_ANNOTATION);
-        reserved.put("@Deprecated", TokenEnum.DEPRECATED_ANNOTATION);
-        reserved.put("@SuppressWarnings", TokenEnum.SUPPRESSWARNINGS_ANNOTATION);
+        reserved.put("@Test", TokenEnum.TEST_ANNOTATION);
 
         // Prime the pump.
         nextCh();
@@ -507,6 +505,7 @@ public class Scanner {
             	buffer.append(ch);
             	nextCh();
             }
+            
             if (isIdentifier(ch)) {
                 while (isIdentifierPartial(ch)) {
                     buffer.append(ch);

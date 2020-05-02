@@ -197,8 +197,9 @@ public class Main {
      */
  	public static void main(String[] args) {
 // 		System.out.println(System.getProperty("sun.java.command"));
- 		
- 		Debug.setProperties();
+ 
+ 	    // The following line is for debugging only
+// 		Debug.setProperties();
  		
  		Main main = new Main();
  		

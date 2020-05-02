@@ -19,6 +19,7 @@ import org.junit.runners.Suite.SuiteClasses;
 	           test.java.metrics.PackagesTest.class,
 	           test.java.metrics.SlocNodeTest.class,
 	           test.java.metrics.SlocsTest.class,
+	           test.java.metrics.TestsTest.class,
 	           
 	           test.java.scanner.ScannerTest.class})
 

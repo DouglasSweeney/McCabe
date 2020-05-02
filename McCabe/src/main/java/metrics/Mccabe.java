@@ -467,8 +467,9 @@ public class Mccabe extends TokenList {
     	        token.enumeration == TokenEnum.ENUM) {
     	    	classNumber = 1;
     	    	currentTokenIndex++;
-    	    	className = list.get(currentTokenIndex).string; // get the class name
-    	    	classList.add(className);
+    	    	className = list.get(currentTokenIndex).string; // get the class name; IDENTIFIER
+    	    	if (className != null)
+    	    	    classList.add(className);
     	    	currentTokenIndex++;
     	    	findMethodsAndComplexityFactor(filename, list, currentTokenIndex, className, 
     	    								   classNumber, useExceptions);

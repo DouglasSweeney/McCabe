@@ -233,7 +233,7 @@
 	           <zipgroupfileset dir="${lib.getopt.dir}" includes="*.jar" />
 	           <manifest>
 	                <attribute name="Main-Class"
-	                    value="main.java.Main"/>
+	                    value="main.java.main.Main"/>
 	           </manifest>
 	        </jar>
 	</target>
