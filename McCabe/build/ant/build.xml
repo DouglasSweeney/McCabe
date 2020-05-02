@@ -64,7 +64,7 @@
 	<target name="compile">
 		<mkdir dir="${result.classes.dir}" />
 
-		<javac srcdir="${src.dir}" destdir="${result.classes.dir}" classpathref="dependency.path" debug="true" includeantruntime="false">
+		<javac srcdir="${src.dir}" destdir="${result.classes.dir}" classpathref="dependency.path" debug="false" includeantruntime="false">
                      <include name="**/*.java"/>
                      <!-- <exclude name="**/*Test.java"/> -->
                 </javac>
