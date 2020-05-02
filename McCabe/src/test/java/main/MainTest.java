@@ -54,6 +54,6 @@ public class MainTest {
     
 		main.run(PRINT_JUST_FILENAME, options);
 		
-		assertEquals(4.94, mcCabe.getOverallComplexityFactor(), EPSILON);
+		assertEquals(4.91, mcCabe.getOverallComplexityFactor(), EPSILON);
 	}
 }

@@ -253,6 +253,7 @@
 
 	<target name="rebuild" depends="clean,compile,test,report" />
     	
+	<!-- target "findbugs" depends on the "jar" target -->
     <target name="all" description="Create all the targets for the application." 
 		      depends="rebuild, javadoc, checkstyle, pmd, cpd, findbugs" > 
     </target>

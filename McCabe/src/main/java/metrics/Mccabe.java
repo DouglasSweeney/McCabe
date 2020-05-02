@@ -345,24 +345,6 @@ public class Mccabe extends TokenList {
 			braces = countBraces(methodName, token, braces, list);
 			
 
-  			// look for class inside a class
-			if (token.enumeration == TokenEnum.CLASS) {
-     		    token = list.get(currentTokenIndex + 1);
-				if (token.enumeration == TokenEnum.IDENTIFIER && 
-				   token.enumeration != TokenEnum.EOF &&
-				   braces % 2 == 0) {
-					className = token.string;
-//					classList.add(className);
-					currentTokenIndex++;
-//currentTokenIndex++;
-					findMethodsAndComplexityFactor(filename, list, currentTokenIndex, 
-							                       token.string, classNumber++, useExceptions);
-					// Optimization - readjust the token pointer for each input procedure. Rather 
-//	                than allow the while() loop to process extra tokens.
-//currentTokenIndex = computeCurrentTokenIndex(currentTokenIndex, procedureList);
-				}
-			}
-			
 			// look for '(' inside a class
 			if (token.enumeration == TokenEnum.LPAREN && 
 					classNumber >= 1 && 
@@ -456,20 +438,25 @@ public class Mccabe extends TokenList {
     	Integer currentTokenIndex = 0;
     	Integer classNumber = 0;
     	String  className = "";
+    	Token   token;
     	boolean useExceptions = options.getUseExceptions();
     	
-    	Token token = list.get(currentTokenIndex);
+    	token = list.get(currentTokenIndex);
     	while (token.enumeration != TokenEnum.EOF) {
     		currentTokenIndex++;
     	    token = list.get(currentTokenIndex);
     	
-    	    if (token.enumeration == TokenEnum.CLASS ||
+ 	    if (token.enumeration == TokenEnum.CLASS ||
     	        token.enumeration == TokenEnum.ENUM) {
     	    	classNumber = 1;
+    	    	
     	    	currentTokenIndex++;
-    	    	className = list.get(currentTokenIndex).string; // get the class name; IDENTIFIER
-    	    	if (className != null)
+    	    	token = list.get(currentTokenIndex);
+    	    	if (token.enumeration == TokenEnum.IDENTIFIER) {
+                    className = token.string; // get the class name; IDENTIFIER
     	    	    classList.add(className);
+    	    	}
+    	    	
     	    	currentTokenIndex++;
     	    	findMethodsAndComplexityFactor(filename, list, currentTokenIndex, className, 
     	    								   classNumber, useExceptions);
@@ -637,7 +624,7 @@ public class Mccabe extends TokenList {
 		args[0] = "-exceptions";
 		args[1] = "-m";
 		args[2] = "temp.dat";
-		args[3] = "/home/dks/git/McCabe_v1/McCabe/src/test/source/metrics/TestInput.java";
+		args[3] = "/home/dks/git/McCabe_v1/McCabe/src/test/TestInput.java";
     	Options options = new Options(args);
 
     	return options;
