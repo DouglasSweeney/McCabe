@@ -1,6 +1,7 @@
 ======================
 cd build/ant of the eclipse project
-ant all
+ant -v
+
 cd ../..
 java -jar McCabe.jar /home/dks/git/McCabe_v1/McCabe/src/main/java
 
@@ -9,7 +10,7 @@ SOURCE CODE METRICS
 
 Lines of Code (McCabe)
 ======================
-3626 (v4)
+3613 (v4)
      	
 Number of javadocs
 ==================
@@ -20,11 +21,15 @@ find . -type f -exec grep -i '/\*\*' {} + | wc -l
 
 McCabe Cyclomatic Complexity (McCabe)
 =====================================
-4.94 (v4)
+4.91 (v4)
 
 Number of files (McCabe)
 ========================
 18 (v4)
+
+Number of packages (McCabe)
+===========================
+4 (v4)
 
 Number of Classes (McCabe)
 ==========================
@@ -43,15 +48,15 @@ DEVELOPMENT METRICS
 
 checkstyle (google style) (logs/checkstyle/checkstyle.html - "Warnings" at top)
 =========================
-0 errors (3664 warnings) (v4)
+0 errors (3808 warnings) (v4)
 
-findbugs (possible bugs) (logs/findbugs/spotbugs.html)
-===========================================================
-70 (v4)
+findbugs (possible bugs) (logs/findbugs/spotbugs.html -  Table "Metrics" (Total) - near top)
+============================================================================================
+72 (v4)
 
-pmd (smells) (logs/pmd/index.html)
+pmd (smells) (logs/pmd/index.html - Table "Problems found" - near bottom)
 ==================================
-387 (v4)
+424 (v4)
 
 cpd (duplicates - (logs/cpd/cpd.txt - grep duplication <cpd.txt | wc -l                           )
 ==================
@@ -62,13 +67,14 @@ TESTING METRICS
 
 Number of tests
 ===============
+cd /home/dks/git/McCabe_v1/McCabe
 java -jar McCabe.jar /home/dks/git/McCabe_v1/McCabe/src/test
 
-136 (v4)
+137 (v4)
 
 Test Coverage (build/ant/coverage/site/jacoco/index.html & bc scale=3)
 ======================================================================
-1 - (998 / 6562) = 84.8% (v4)
+1 - (1262 / 6906) = 81.8% (v4)
 
 Number of test files
 ====================
